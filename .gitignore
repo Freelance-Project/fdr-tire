@@ -1,5 +1,5 @@
-# Object file
-*.o
+/vendor
+/node_modules
+/public/storage
+.env
 
-# Ada Library Information
-*.ali
