@@ -24,15 +24,17 @@ motor_tire
 - motor_type_id
 - tire_category_id
 - tire_size_id
+- tire_type_id
 
 tire
 - id
+- slug
 - name
 - description
 - rating
 - overview
 
-tire_categories
+tire_categories (standar, modif)
 - id
 - name
 
@@ -41,10 +43,51 @@ tire_sizes
 - tire_rim_id
 - tire_ratio_id
 
-tire_rim
+tire_rim (14,15,16)
 - id
 - rim
 
-tire_ratio
+tire_ratio (100/80)
 - id
 - ratio
+
+tire_types (road, racing, tube)
+- id
+- name
+
+news_contents
+- id
+- title
+- brief
+- description
+- image
+- category
+- author_id
+- views
+- share
+- status
+
+news_content_repos
+- id
+- title
+- description
+- news_content_id
+- file
+- author_id
+- status
+- type
+
+careers
+- id
+- name
+- email
+- bod
+- address
+
+clubs
+- id
+- name
+- description
+- logo
+- status
+
