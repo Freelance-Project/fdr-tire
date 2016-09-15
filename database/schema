@@ -1,0 +1,50 @@
+
+motor_brands
+- id
+- name
+
+motor_types
+- id
+- name
+- motor_brand_id
+
+motor_tire_categories
+- id
+- motor_type_id
+- tire_category_id
+
+motor_tire_sizes
+- id
+- motor_type_id
+- motor_tire_category_id
+- tire_size
+
+motor_tire
+- id
+- motor_type_id
+- tire_category_id
+- tire_size_id
+
+tire
+- id
+- name
+- description
+- rating
+- overview
+
+tire_categories
+- id
+- name
+
+tire_sizes
+- id
+- tire_rim_id
+- tire_ratio_id
+
+tire_rim
+- id
+- rim
+
+tire_ratio
+- id
+- ratio
