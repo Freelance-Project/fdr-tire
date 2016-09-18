@@ -43,7 +43,7 @@ class EventController extends Controller
 		$model = $this->model;
 		$date = '';
 
-		return view('backend.page.news.form', ['model' => $model,'date' => $date]);
+		return view('backend.news.news.form', ['model' => $model,'date' => $date]);
 	}
 
 
