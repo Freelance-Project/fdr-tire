@@ -126,5 +126,61 @@ class MenuSeed extends Seeder
                     'order'         => '2'
                 ],['index','create','update','delete']
         ); 
+
+        // About us
+        \helper::addMenu([
+                    'parent_id'     => null,
+                    'title'         => 'About Us',
+                    'controller'    => '#',
+                    'slug'          => 'about',
+                    'order'         => 1,
+        ],[]);
+
+        \helper::addMenu([ 
+                    'parent_id'     => 'about',
+                    'title'         => 'Company Profile',
+                    'controller'    => 'About\ProfileController',
+                    'slug'          => 'company-profile',
+                    'order'         => '1'
+                ],['index','create','update','delete']
+        ); 
+
+        \helper::addMenu([ 
+                    'parent_id'     => 'about',
+                    'title'         => 'Vision',
+                    'controller'    => 'About\VisionController',
+                    'slug'          => 'about-vision',
+                    'order'         => '2'
+                ],['index','create','update','delete']
+        ); 
+
+        \helper::addMenu([ 
+                    'parent_id'     => 'about',
+                    'title'         => 'CSR Activity',
+                    'controller'    => 'About\CsrController',
+                    'slug'          => 'about-csr',
+                    'order'         => '3'
+                ],['index','create','update','delete']
+        ); 
+
+        \helper::addMenu([ 
+                    'parent_id'     => 'about',
+                    'title'         => 'Racing Experience',
+                    'controller'    => 'About\RacingController',
+                    'slug'          => 'about-racing',
+                    'order'         => '4'
+                ],['index','create','update','delete']
+        ); 
+
+        \helper::addMenu([ 
+                    'parent_id'     => 'about',
+                    'title'         => 'Awards',
+                    'controller'    => 'About\AwardController',
+                    'slug'          => 'about-award',
+                    'order'         => '5'
+                ],['index','create','update','delete']
+        ); 
+
+        
     }
 }
