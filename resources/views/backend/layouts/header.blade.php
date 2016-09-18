@@ -26,6 +26,8 @@
        <link href="{{ asset(null) }}backend/assets/plugins/flot/examples/examples.css" rel="stylesheet" />
        <link rel="stylesheet" href="{{ asset(null) }}backend/assets/plugins/timeline/timeline.css" />
     <!-- END PAGE LEVEL  STYLES -->
+    
+<link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" media="screen" href="{{ asset(null) }}backend//elfinder/css/elfinder.min.css">
      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -36,6 +38,7 @@
 
 
     <script src="{{ asset(null) }}backend/assets/plugins/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
      <script src="{{ asset(null) }}backend/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="{{ asset(null) }}backend/assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     <!-- END GLOBAL SCRIPTS -->
@@ -67,7 +70,7 @@
                 <header class="navbar-header">
 
                     <a href="index.html" class="navbar-brand">
-                    <img src="{{ asset(null) }}backend/assets/img/logo.png" alt="" />
+                    Content Management System FDR TIRE
                         
                         </a>
                 </header>

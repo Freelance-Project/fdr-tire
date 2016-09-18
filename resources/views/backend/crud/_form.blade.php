@@ -1,16 +1,21 @@
 @extends('backend.layouts.layout')
 @section('content')
 
-<div id="app_header_shadowing"></div>
-<div id="app_content">
-    <div id="content_header">
-        <h3 class="user"> Menu</h3>
+<div class="inner" style="min-height: 700px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1> {{ helper::titleActionForm() }} </h1>
+        </div>
     </div>
-        <div id="content_body">
-            
-            <div class = 'row'>
+      <hr />
 
-                <div class = 'col-md-8'>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    DataTables Advanced Tables
+                </div>
+                <div class="panel-body">
 
                     @include('backend.common.errors')
 
@@ -48,11 +53,8 @@
                       <button type="submit" class="btn btn-primary">{{ !empty($model->id) ? 'Update' : 'Save' }}</button>
                     
                     {!! Form::close() !!}
-
                 </div>
-
             </div>
-
         </div>
     </div>
 @endsection
