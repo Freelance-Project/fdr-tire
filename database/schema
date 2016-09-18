@@ -21,10 +21,12 @@ motor_tire_sizes
 
 motor_tire
 - id
+- tire_id
 - motor_type_id
 - tire_category_id
 - tire_size_id
 - tire_type_id
+
 
 tire
 - id
