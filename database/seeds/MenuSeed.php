@@ -99,5 +99,32 @@ class MenuSeed extends Seeder
                     'order'         => '1'
                 ],['index','create','update','delete']
         );
+
+        // news event
+        \helper::updateMenu([
+                    'parent_id'     => null,
+                    'title'         => 'News Event',
+                    'controller'    => '#',
+                    'slug'          => 'news',
+                    'order'         => 1,
+        ],[]);
+
+        \helper::updateMenu([ 
+                    'parent_id'     => 'news',
+                    'title'         => 'News',
+                    'controller'    => 'News\NewsController',
+                    'slug'          => 'news-update',
+                    'order'         => '1'
+                ],['index','create','update','delete']
+        ); 
+
+        \helper::addMenu([ 
+                    'parent_id'     => 'news',
+                    'title'         => 'Event',
+                    'controller'    => 'News\EventController',
+                    'slug'          => 'event',
+                    'order'         => '2'
+                ],['index','create','update','delete']
+        ); 
     }
 }
