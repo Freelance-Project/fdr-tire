@@ -30,6 +30,7 @@
 <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" media="screen" href="{{ asset(null) }}backend//elfinder/css/elfinder.min.css">
+<link rel="stylesheet" type="text/css" href="{{ asset(null) }}backend/sweetalert/dist/sweetalert.css">
      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -45,6 +46,7 @@
 
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <!-- PAGE LEVEL SCRIPTS -->
+<script src="{{ asset(null) }}backend/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript" src="{{ asset(null) }}backend/elfinder/js/elfinder.min.js"></script>
 <script src="{{ asset(null) }}backend/ckeditor/ckeditor.js"></script>
    
@@ -87,11 +89,7 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="icon-user"></i> User Profile </a>
-                            </li>
-                            <li><a href="#"><i class="icon-gear"></i> Settings </a>
-                            </li>
-                            <li class="divider"></li>
+                          
                             <li><a href="{{ url('login/logout') }}"><i class="icon-signout"></i> Logout </a>
                             </li>
                         </ul>
