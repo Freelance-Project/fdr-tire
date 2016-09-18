@@ -59,7 +59,7 @@
                     </a>   
 
                     @if(!empty($row->childs->first()->id))
-                    <ul class="collapse" id="component-nav{{$row->id}}">
+                    <ul class="collapse {{ $search($row->id,'in') }}" id="component-nav{{$row->id}}">
                         
                         @foreach($row->childs as $child)
                         <li class="">
@@ -72,6 +72,7 @@
                     @endif             
                 </li>
             @endforeach
+                <li><a target="_blank" href="{{ url('/') }}">GO TO WEB</a></li>
             </ul>
 
         </div>
