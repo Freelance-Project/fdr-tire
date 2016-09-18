@@ -49,7 +49,7 @@
                 <li class="panel {{ $search($row->id,'active') }}">
 
                     <a href="{{ ($row->controller != '#' ? urlBackend($row->slug.'/index') : '#') }}" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav{{$row->id}}">
-                        <i class="icon-table"></i> {{ $row->title }}
+                        <i class="icon-folder-open-alt"></i> {{ $row->title }}
        
                        @if(!empty($row->childs->first()->id))
                         <span class="pull-right">
