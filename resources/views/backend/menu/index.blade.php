@@ -18,7 +18,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                         <table class = 'table' id = 'table'>
                             <thead>
                                 <tr>
                                     <th>Parent</th>
@@ -66,9 +66,11 @@
 @section('script')
     
     <script type="text/javascript">
-         $(document).ready(function () {
-             $('#dataTables-example').dataTable();
-         });
+        $(document).ready(function(){
+            $("#table").DataTable({
+                ordering :false,
+            });
+        });
     </script>
 
 @endsection

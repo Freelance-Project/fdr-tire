@@ -20,6 +20,8 @@
 </script>
 
 @endif
+
+@yield('script')
 </body>
 
     <!-- END BODY -->
