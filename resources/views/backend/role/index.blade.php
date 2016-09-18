@@ -1,41 +1,42 @@
 @extends('backend.layouts.layout')
 @section('content')
 
-<div id="app_header_shadowing"></div>
-<div id="app_content">
-    <div id="content_header">
-        <h3 class="user">{{ helper::titleActionForm() }}</h3>
-    </div>
-    <div id="content_body">
 
-        @include('backend.common.flashes')
-
-        <div class = 'row'>
-           <div class = 'col-md-12'>
-
-                    {!! helper::buttonCreate() !!}
-                
-                
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-
-                <table class = 'table' id = 'table'>
-                    <thead>
-                        <tr>
-                            <th width = '80%'>Role</th>
-                            <th width = '20%'>Action</th>
-                        </tr>
-                    </thead>
-                    
-                </table>
-
-            </div>
-
+@include('backend.common.flashes')
+<div class="inner" style="min-height: 700px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1> {{ helper::titleActionForm() }} </h1>
         </div>
+    </div>
+      <hr />
 
-        
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    DataTables Advanced Tables
+                </div>
+                <div class="panel-body">
+                        {!! helper::buttonCreate() !!}
+                
+                
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
 
+                    <table class = 'table' id = 'table'>
+                        <thead>
+                            <tr>
+                                <th width = '80%'>Role</th>
+                                <th width = '20%'>Action</th>
+                            </tr>
+                        </thead>
+                        
+                    </table>
 
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

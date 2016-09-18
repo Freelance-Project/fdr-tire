@@ -20,37 +20,59 @@
         return $eachId == $id ? $return : $else;
     };
 ?>
+        <!-- MENU SECTION -->
+       <div id="left" >
+            <div class="media user-media well-small">
+                <a class="user-link" href="#">
+                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="{{ asset(null) }}backend/assets/img/user.gif" />
+                </a>
+                <br />
+                <div class="media-body">
+                    <h5 class="media-heading"> {{ getUser()->username }}</h5>
+                    <ul class="list-unstyled user-info">
+                        
+                        <li>
+                             <a class="btn btn-success btn-xs btn-circle" style="width: 10px;height: 12px;"></a> Online
+                           
+                        </li>
+                       
+                    </ul>
+                </div>
+                <br />
+            </div>
 
-<div class="wg_base_module_navigation" id="main" >
-    <ul id="list_container">
+            <ul id="menu" class="collapse">
 
-        @foreach(injectModel('Menu')->whereParentId(null)->orderBy('order','asc')->get() as $row)
+                
+            @foreach(injectModel('Menu')->whereParentId(null)->orderBy('order','asc')->get() as $row)
 
-            <li class="root {{ $search($row->id,'hover') }}">
-                <a class="{{ $row->slug }}" onclick = "openChild('{{ $row->id }}')" href="{{ ($row->controller != '#' ? urlBackend($row->slug.'/index') : '#') }}"><span>{{ $row->title }}</span></a>
-            </li>
+                <li class="panel {{ $search($row->id,'active') }}">
 
-        @endforeach
+                    <a href="{{ ($row->controller != '#' ? urlBackend($row->slug.'/index') : '#') }}" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav{{$row->id}}">
+                        <i class="icon-table"></i> {{ $row->title }}
        
-       
-    </ul>
-    </div>
-</div>
-<div id="navigation-slick-children">
-     @foreach(injectModel('Menu')->whereParentId(null)->get() as $parent)
-        <ul class="child" id = 'child{{ $parent->id }}' onclick = '' style = 'margin-top:5px;display:{{ $search($parent->id,"block","none") }};'>
+                       @if(!empty($row->childs->first()->id))
+                        <span class="pull-right">
+                          <i class="icon-angle-left"></i>
+                        </span>
+                        @endif
+                    </a>   
 
-            @foreach($parent->childs as $child)
-                <li>
-                    <a style = 'margin-right:15px;{{ $search($child->id,"color:green;","","child") }}' href="{{ urlBackend($child->slug.'/index') }}">{{ $child->title }}</a>
+                    @if(!empty($row->childs->first()->id))
+                    <ul class="collapse" id="component-nav{{$row->id}}">
+                        
+                        @foreach($row->childs as $child)
+                        <li class="">
+                            <a href="{{ urlBackend($child->slug.'/index') }}">
+                                <i class="icon-angle-right"></i> {{ $child->title}} 
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>   
+                    @endif             
                 </li>
             @endforeach
+            </ul>
 
-        </ul>
-
-     @endforeach
-
-        
-    <div id="snbp">&lt;</div>
-    <div id="snbn">&gt;</div>
-</div>
+        </div>
+        <!--END MENU SECTION -->

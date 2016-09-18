@@ -1,18 +1,22 @@
 @extends('backend.layouts.layout')
 @section('content')
 
-<div id="app_header_shadowing"></div>
-<div id="app_content">
-    <div id="content_header">
-        <h3 class="user"> Menu</h3>
+  @include('backend.common.errors')
+<div class="inner" style="min-height: 700px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1> {{ helper::titleActionForm() }} </h1>
+        </div>
     </div>
-        <div id="content_body">
-            
-            <div class = 'row'>
+      <hr />
 
-                <div class = 'col-md-6'>
-
-                    @include('backend.common.errors')
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    DataTables Advanced Tables
+                </div>
+                <div class="panel-body">
 
                      {!! Form::model($model) !!} 
 
@@ -41,9 +45,9 @@
                     {!! Form::close() !!}
 
                 </div>
-
             </div>
-
         </div>
     </div>
+
+</div>
 @endsection
