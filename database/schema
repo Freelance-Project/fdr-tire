@@ -79,10 +79,39 @@ news_content_repos
 
 careers
 - id
+- id_number
 - name
+- fullname
+- gender
 - email
-- bod
+- birthplace
+- dob
+- religion
+- phone
+- tlp
+- npwp
+- experience
 - address
+- province
+- city
+- district
+- subdistrict
+- postcode
+- status (accept, posting)
+
+career_submits
+- id
+- career_id
+- province_id
+- city_id
+- school
+- major
+- year_entry
+- graduation_year
+- gpa
+- un
+- uas
+- level (sma,kuliah)
 
 clubs
 - id
@@ -91,3 +120,22 @@ clubs
 - logo
 - status
 
+provinces
+- id
+- code
+- name
+
+cities
+- id
+- name
+- province_id
+
+district
+- id
+- name
+- city_id
+
+subdistrict
+- id
+- name
+- district_id
