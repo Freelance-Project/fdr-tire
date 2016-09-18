@@ -71,7 +71,7 @@
                 <!-- LOGO SECTION -->
                 <header class="navbar-header">
 
-                    <a href="index.html" class="navbar-brand">
+                    <a href="{{urlBackend('dashboard/index')}}" class="navbar-brand">
                     Content Management System FDR TIRE
                         
                         </a>
