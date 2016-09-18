@@ -57,7 +57,7 @@
                 ajax: '{{ urlBackendAction("data") }}',
                 columns: [
                     { data: 'title', name: 'title' },
-                    { data: 'thumbnail', name: 'thumbnail' },
+                    { data: 'image', name: 'image' },
                     { data: 'created_at', name: 'created_at' },
                     { data: 'status', name: 'status' },
                     { data: 'action', name: 'action' , searchable: false, "orderable":false},

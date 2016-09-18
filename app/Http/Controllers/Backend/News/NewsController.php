@@ -30,8 +30,8 @@ class NewsController extends Controller
 	{
 		$model = $this->model->select('id' , 'title' , 'brief', 'image', 'status');
 		return Table::of($model)
-			->addColumn('thumbnail',function($model){
-				return '<img src = "'.asset('contents/news/small/'.$model->thumbnail).'"/>';
+			->addColumn('image',function($model){
+				return '<img src = "'.asset('contents/news/small/'.$model->image).'"/>';
 			})
 			->addColumn('action' , function($model){
 			return \Helper::buttons($model->id);
