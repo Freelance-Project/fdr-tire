@@ -1,29 +1,43 @@
 @extends('backend.layouts.login')
 @section('content') 
-            <div class="wg-content">
-                <div class="wording">
-                    {!! Form::open() !!}
-                        <div class="fl label username"></div>
-                        <div class="fl input">
-                            {!! Form::text('username' , null ,  ['placeholder' => 'Username'] ) !!}
-                        </div>
-                        <div class="clear break15"></div>
-                        <div class="fl label password"></div>
-                        <div class="fl input">
-                             {!! Form::password('password' ,  ['placeholder' => 'Password'] ) !!}
-                        </div>
-                        <div class="clear break15"></div>
-                       
-                       <div>
-                            <div class="fl">
-                                <a class="forgot-password" style="color:#1076bc;font:11px/32px verdana;" href = '{{ url("login/forgot-password") }}'>Forgot password ?</a>
-                            </div>
-                            <input type="submit" class="submit" value=""/>
-                            <div class="clear break1"></div>
-                        </div>
-                    {!! Form::close() !!}
-                </div>
-            </div>
+          
+    <div class="container">
+    <div class="text-center">
+      <h3>Content Management System FDR TIRE</h3>
+    </div>
+    <div class="tab-content">
+        <div id="login" class="tab-pane active">
+                {!! Form::open(['class'=>'form-signin']) !!}
+                <p class="text-muted text-center btn-block btn btn-primary btn-rect">
+                    Enter your username and password
+                </p>
+                {!! Form::text('username' , null ,  ['placeholder' => 'Username','class' => 'form-control'] ) !!}
+                {!! Form::password('password' ,  ['placeholder' => 'Password','class' => 'form-control'] ) !!}
+                <button class="btn text-muted text-center btn-danger" type="submit">Sign in</button>
+            
+              {!! Form::close() !!}
+        </div>
+        <div id="forgot" class="tab-pane">
+                {!! Form::open(['class'=>'form-signin']) !!}
+                <p class="text-muted text-center btn-block btn btn-primary btn-rect">Enter your valid e-mail</p>
+                {!! Form::text('email' , null ,  ['placeholder' => 'Email','class' => 'form-control'] ) !!}
+                <div style = 'margin-top:10px;color:red;'> {{ @$errors->first('email') }} </div>
+                <p>&nbsp;</p>
+                <button class="btn text-muted text-center btn-success" type="submit">Recover Password</button>
+            
+              {!! Form::close() !!}
+        </div>
+    </div>
+    <div class="text-center">
+        <ul class="list-inline">
+            <li><a class="text-muted" href="#login" data-toggle="tab">Login</a></li>
+            <li><a class="text-muted" href="#forgot" data-toggle="tab">Forgot Password</a></li>
+        </ul>
+    </div>
+
+
+</div>
+           
 @endsection
 @section('script')
     

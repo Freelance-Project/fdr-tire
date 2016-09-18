@@ -1,48 +1,48 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-<meta name="keywords" content="WCMS Version 1.0.0"/>
-<meta name="description" content="WCMS Version 1.0.0 Laravel 5.2"/>
-<meta name="_token" id = 'csrf-token' content="{{ csrf_token() }}"/>
-<link type="text/css" href="{{ asset(null) }}backend/css/reset.css" rel="stylesheet" media="screen,projection"/>
-
-<link type="text/css" href="{{ asset(null) }}backend/css/function.css" rel="stylesheet" media="screen,projection"/>
-<link type="text/css" href="{{ asset(null) }}backend/css/login/style.css" rel="stylesheet"/>
-
-<link rel="stylesheet" type="text/css" href="{{ asset(null) }}backend/sweetalert/dist/sweetalert.css">
-<script type="text/javascript" src="{{ asset(null) }}backend/js/1.8.0.js"></script>
-<script src="{{ asset(null) }}backend/sweetalert/dist/sweetalert.min.js"></script>
-
-
-<title>{{ $title }}</title>
+     <meta charset="UTF-8" />
+    <title>{{ $title }}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+     <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <!-- GLOBAL STYLES -->
+     <!-- PAGE LEVEL STYLES -->
+     <link rel="stylesheet" href="{{ asset(null) }}backend/assets/plugins/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="{{ asset(null) }}backend/assets/css/login.css" />
+    <link rel="stylesheet" href="{{ asset(null) }}backend/assets/plugins/magic/magic.css" />
+     <!-- END PAGE LEVEL STYLES -->
+   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body>
-<div id="body-wrapper">
-    <div id="wrapper-content">
-        <div id="wg-user-admin-webarq-login" class="normal" style="margin-top:10%;">
-            <div class="wg-header header-left">
-                <div class="wg-header header-right">
-                    <div class="wg-header header-center">
-                        <div id="inner-header-right">
-                            <div class="logo-client">
-                                &nbsp;
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- END HEAD -->
+    <!-- BEGIN BODY -->
+<body style="background-image:url('{{ asset(null) }}backend/assets/img/pattern-bg.png')">
+
+   <!-- PAGE CONTENT --> 
+
             @yield('content')
-            <div class="wg-footer">
-                <div class="wording">Content Management System</div>
-            </div>
-            <div class="break10"></div>
-            
-        </div>
-    </div>
-</div>
-</div>
-</body>
+
+
+      <!--END PAGE CONTENT -->     
+          
+      <!-- PAGE LEVEL SCRIPTS -->
+      <script src="{{ asset(null) }}backend/assets/plugins/jquery-2.0.3.min.js"></script>
+      <script src="{{ asset(null) }}backend/assets/plugins/bootstrap/js/bootstrap.js"></script>
+   <script src="{{ asset(null) }}backend/assets/js/login.js"></script>
+      <!--END PAGE LEVEL SCRIPTS -->
+
 @yield('script')
+</body>
+    <!-- END BODY -->
 </html>
