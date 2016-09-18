@@ -26,7 +26,7 @@
                         {!! Form::text('title' , null ,['class' => 'form-control']) !!}
                       </div>
                       
-					  <div class="form-group">
+					            <div class="form-group">
                         <label>Intro Text</label>
                         {!! Form::textarea('intro' , null ,['class' => 'form-control','id'=>'intro']) !!}
                       </div>
@@ -38,17 +38,18 @@
 
                       <div class="form-group">
                         <label>File</label>
-                        {!! Form::file('image' , null ,['class' => 'form-control']) !!}
-                      </div>
-
-                      @if(!empty($model->image))
-
-                        <div class="form-group">
-                          <label>Old Image</label><br/>
-                          <img src = '{{ asset("contents/".$model->image) }}' width = '200' height = '100'/>
+                        <div>
+                          <a class="Wbutton" onclick = "return browseElfinder('image'  , 'image_tempel' , 'elfinder_browse1' , 'cancelBrowse')" >Browse</a>
+                          Suggestion Image Size (726,449)
                         </div>
-
-                      @endif
+                        <input type = 'hidden' name = 'image' id = 'image' />
+                        
+                      </div>
+                      <div id="image_tempel" style = 'margin-top:30px;'>
+                        @if(!empty($model->image))
+                          <img src="{{ asset('contents/news/thumbnail').'/'.$model->image }}" width="200" height="200" />
+                        @endif
+                      </div>
 
                       <div class="form-group">
                         <label>Status</label>
@@ -62,6 +63,7 @@
             </div>
         </div>
     </div>
+    @include('backend.popElfinder');
 @endsection
 @section('script')
 <script type="text/javascript">
