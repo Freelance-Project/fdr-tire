@@ -72,7 +72,7 @@
                 <header class="navbar-header">
 
                     <a href="{{urlBackend('dashboard/index')}}" class="navbar-brand">
-                    Content Management System FDR TIRE
+                    Content Management System
                         
                         </a>
                 </header>
