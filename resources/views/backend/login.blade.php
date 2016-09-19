@@ -3,7 +3,7 @@
           
     <div class="container">
     <div class="text-center">
-      <h3>Content Management System FDR TIRE</h3>
+      <h3>Content Management System</h3>
     </div>
     <div class="tab-content">
         <div id="login" class="tab-pane active">
