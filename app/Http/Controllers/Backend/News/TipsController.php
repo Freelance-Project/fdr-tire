@@ -12,7 +12,7 @@ use Datatables;
 use Table;
 // use App\Models\Comment;
 
-class NewsController extends Controller
+class TipsController extends Controller
 {
 	public function __construct()
 	{
@@ -23,15 +23,16 @@ class NewsController extends Controller
 
 	public function getIndex()
 	{
-		return view('backend.news.news.index');
+		return view('backend.news.tips.index');
+		
 	}
 
 	public function getData()
 	{
-		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('news');
+		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('tips');
 		return Table::of($model)
 			->addColumn('image',function($model){
-				return '<img src = "'.asset('contents/news/small/'.$model->image).'"/>';
+				return '<img src = "'.asset('contents/tips/small/'.$model->image).'"/>';
 			})
 			->addColumn('action' , function($model){
 			return \Helper::buttons($model->id);
@@ -43,7 +44,7 @@ class NewsController extends Controller
 		$model = $this->model;
 		$date = '';
 
-		return view('backend.news.news.form', ['model' => $model,'date' => $date]);
+		return view('backend.news.tips.form', ['model' => $model,'date' => $date]);
 	}
 
 
@@ -59,7 +60,7 @@ class NewsController extends Controller
 			'created_at' => \Helper::dateToDb($request->date),
 			'slug' => str_slug($request->title),
 			'status' => $request->status,
-			'category' => 'news',
+			'category' => 'tips',
 		];
 		
 		$save = $this->model->create($values);
@@ -69,8 +70,8 @@ class NewsController extends Controller
         if(!empty($image))
         {
 
-            $imageName = "news-".$save->id;
-			$uploadImage = \Helper::handleUpload($request, $imageName);
+            $imageName = "tips-".$save->id;
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'tips');
 			
 			$this->model->whereId($save->id)->update([
             		'image' => $uploadImage['filename']          		
@@ -87,7 +88,7 @@ class NewsController extends Controller
 		
 		$date = \Helper::dbToDate($model->created_at);
 		
-		return view('backend.news.news.form' , [
+		return view('backend.news.tips.form' , [
 
 			'model' => $model,
 			'date' => $date,
@@ -134,7 +135,7 @@ class NewsController extends Controller
             {
                 $updateStatus = 'n';
                 $message = 'Data has been unpublished';
-                $words = 'Un published';
+                $words = 'Unpublished';
             }else{
                 $updateStatus = 'y';
                 $message = 'Data has been published';

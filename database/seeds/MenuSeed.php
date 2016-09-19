@@ -4,29 +4,7 @@ use Illuminate\Database\Seeder;
 
 
 class MenuSeed extends Seeder
-{
-    /* example add menu
-        \webarq::addMenu([ 
-                'parent_id'     => null,
-                'title'         => 'Management product',
-                'controller'    => '#',
-                'slug'          => 'product',
-                'order'         => 1,
-            ],[]);
-
-                \webarq::addMenu([ 
-                    'parent_id'     => 'product',
-                    'title'         => 'Category',
-                    'controller'    => 'CategoryController',
-                    'slug'          => 'category',
-                    'order'         => '1'
-                ],['index','create','update','delete']
-            ); 
-
-    */
-   
-
-         
+{        
     public function run()
     {
         \helper::addMenu([ 
@@ -68,8 +46,35 @@ class MenuSeed extends Seeder
                     'parent_id'     => 'news',
                     'title'         => 'Event',
                     'controller'    => 'News\EventController',
-                    'slug'          => 'event',
+                    'slug'          => 'news-event',
                     'order'         => '2'
+                ],['index','create','update','delete']
+        ); 
+		
+		\helper::addMenu([ 
+                    'parent_id'     => 'news',
+                    'title'         => 'Tips',
+                    'controller'    => 'News\TipsController',
+                    'slug'          => 'news-tips',
+                    'order'         => '3'
+                ],['index','create','update','delete']
+        ); 
+		
+		\helper::addMenu([ 
+                    'parent_id'     => 'news',
+                    'title'         => 'FDR News',
+                    'controller'    => 'News\FDRNewsController',
+                    'slug'          => 'news-fdrnews',
+                    'order'         => '4'
+                ],['index','create','update','delete']
+        ); 
+		
+		\helper::addMenu([ 
+                    'parent_id'     => 'news',
+                    'title'         => 'Media Highlights',
+                    'controller'    => 'News\MediaHighlightsController',
+                    'slug'          => 'news-highlights',
+                    'order'         => '5'
                 ],['index','create','update','delete']
         ); 
 
@@ -85,7 +90,7 @@ class MenuSeed extends Seeder
         \helper::addMenu([ 
                     'parent_id'     => 'about',
                     'title'         => 'Company Profile',
-                    'controller'    => 'About\ProfileController',
+                    'controller'    => 'AboutUs\CompanyController',
                     'slug'          => 'company-profile',
                     'order'         => '1'
                 ],['index','create','update','delete']
@@ -94,7 +99,7 @@ class MenuSeed extends Seeder
         \helper::addMenu([ 
                     'parent_id'     => 'about',
                     'title'         => 'Vision',
-                    'controller'    => 'About\VisionController',
+                    'controller'    => 'AboutUs\VisionController',
                     'slug'          => 'about-vision',
                     'order'         => '2'
                 ],['index','create','update','delete']
@@ -103,7 +108,7 @@ class MenuSeed extends Seeder
         \helper::addMenu([ 
                     'parent_id'     => 'about',
                     'title'         => 'CSR Activity',
-                    'controller'    => 'About\CsrController',
+                    'controller'    => 'AboutUs\CsrController',
                     'slug'          => 'about-csr',
                     'order'         => '3'
                 ],['index','create','update','delete']
@@ -112,7 +117,7 @@ class MenuSeed extends Seeder
         \helper::addMenu([ 
                     'parent_id'     => 'about',
                     'title'         => 'Racing Experience',
-                    'controller'    => 'About\RacingController',
+                    'controller'    => 'AboutUs\RacingController',
                     'slug'          => 'about-racing',
                     'order'         => '4'
                 ],['index','create','update','delete']
@@ -121,7 +126,7 @@ class MenuSeed extends Seeder
         \helper::addMenu([ 
                     'parent_id'     => 'about',
                     'title'         => 'Awards',
-                    'controller'    => 'About\AwardController',
+                    'controller'    => 'AboutUs\AwardsController',
                     'slug'          => 'about-award',
                     'order'         => '5'
                 ],['index','create','update','delete']
