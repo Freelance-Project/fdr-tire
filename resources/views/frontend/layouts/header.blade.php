@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BSN SEARCH</title>
+<title>FDR TIRE</title>
 <meta name="description" content="">
 <meta name="_token" content="{!! csrf_token() !!}"/>
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
