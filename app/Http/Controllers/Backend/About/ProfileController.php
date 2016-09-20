@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\News;
+namespace App\Http\Controllers\Backend\about;
 
 use Illuminate\Http\Request;
 
@@ -12,7 +12,7 @@ use Datatables;
 use Table;
 // use App\Models\Comment;
 
-class MediaHighlightsController extends Controller
+class ProfileController extends Controller
 {
 	public function __construct()
 	{
@@ -23,16 +23,16 @@ class MediaHighlightsController extends Controller
 
 	public function getIndex()
 	{
-		return view('backend.news.mediahighlights.index');
+		return view('backend.about.profile.index');
 		
 	}
 
 	public function getData()
 	{
-		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('mediahighlights');
+		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('profile');
 		return Table::of($model)
 			->addColumn('image',function($model){
-				return '<img src = "'.asset('contents/news/small/'.$model->image).'"/>';
+				return '<img src = "'.asset('contents/about/small/'.$model->image).'"/>';
 			})
 			->addColumn('action' , function($model){
 			return \Helper::buttons($model->id);
@@ -44,7 +44,7 @@ class MediaHighlightsController extends Controller
 		$model = $this->model;
 		$date = '';
 
-		return view('backend.news.mediahighlights.form', ['model' => $model,'date' => $date]);
+		return view('backend.about.profile.form', ['model' => $model,'date' => $date]);
 	}
 
 
@@ -60,7 +60,7 @@ class MediaHighlightsController extends Controller
 			'created_at' => \Helper::dateToDb($request->date),
 			'slug' => str_slug($request->title),
 			'status' => $request->status,
-			'category' => 'mediahighlights',
+			'category' => 'profile',
 		];
 		
 		$save = $this->model->create($values);
@@ -70,8 +70,8 @@ class MediaHighlightsController extends Controller
         if(!empty($image))
         {
 
-            $imageName = "mediahighlights-".$save->id;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'news');
+            $imageName = "profile-".$save->id;
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'about');
 			
 			$this->model->whereId($save->id)->update([
             		'image' => $uploadImage['filename']          		
@@ -88,7 +88,7 @@ class MediaHighlightsController extends Controller
 		
 		$date = \Helper::dbToDate($model->created_at);
 		
-		return view('backend.news.mediahighlights.form' , [
+		return view('backend.about.profile.form' , [
 
 			'model' => $model,
 			'date' => $date,
@@ -116,8 +116,8 @@ class MediaHighlightsController extends Controller
         if(!empty($image))
         {
 
-            $imageName = "mediahighlights-".$id;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'news');
+            $imageName = "profile-".$id;
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'about');
 			
 			$this->model->whereId($id)->update([
             		'image' => $uploadImage['filename']
@@ -160,7 +160,7 @@ class MediaHighlightsController extends Controller
         {
 			$model = $this->model->whereId($getmodel->id);
 			
-            $path_image = public_path('contents/news');
+            $path_image = public_path('contents/about');
             @unlink($path_image. '/large/'.$model->image);
             @unlink($path_image. '/medium/'.$model->image);
             @unlink($path_image. '/small/'.$model->image);

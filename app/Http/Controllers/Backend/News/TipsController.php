@@ -32,7 +32,7 @@ class TipsController extends Controller
 		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('tips');
 		return Table::of($model)
 			->addColumn('image',function($model){
-				return '<img src = "'.asset('contents/tips/small/'.$model->image).'"/>';
+				return '<img src = "'.asset('contents/news/small/'.$model->image).'"/>';
 			})
 			->addColumn('action' , function($model){
 			return \Helper::buttons($model->id);
@@ -71,7 +71,7 @@ class TipsController extends Controller
         {
 
             $imageName = "tips-".$save->id;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'tips');
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'news');
 			
 			$this->model->whereId($save->id)->update([
             		'image' => $uploadImage['filename']          		
@@ -117,7 +117,7 @@ class TipsController extends Controller
         {
 
             $imageName = "news-".$id;
-			$uploadImage = \Helper::handleUpload($request, $imageName);
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'news');
 			
 			$this->model->whereId($id)->update([
             		'image' => $uploadImage['filename']

@@ -32,7 +32,7 @@ class EventController extends Controller
 		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('event');
 		return Table::of($model)
 			->addColumn('image',function($model){
-				return '<img src = "'.asset('contents/event/small/'.$model->image).'"/>';
+				return '<img src = "'.asset('contents/news/small/'.$model->image).'"/>';
 			})
 			->addColumn('action' , function($model){
 			return \Helper::buttons($model->id);
@@ -71,7 +71,7 @@ class EventController extends Controller
         {
 
             $imageName = "event-".$save->id;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'event');
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'news');
 			
 			$this->model->whereId($save->id)->update([
             		'image' => $uploadImage['filename']          		
@@ -116,8 +116,8 @@ class EventController extends Controller
         if(!empty($image))
         {
 
-            $imageName = "news-".$id;
-			$uploadImage = \Helper::handleUpload($request, $imageName);
+            $imageName = "event-".$id;
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'news');
 			
 			$this->model->whereId($id)->update([
             		'image' => $uploadImage['filename']

@@ -90,7 +90,7 @@ class MenuSeed extends Seeder
         \helper::addMenu([ 
                     'parent_id'     => 'about',
                     'title'         => 'Company Profile',
-                    'controller'    => 'AboutUs\CompanyController',
+                    'controller'    => 'About\ProfileController',
                     'slug'          => 'company-profile',
                     'order'         => '1'
                 ],['index','create','update','delete']
@@ -99,7 +99,7 @@ class MenuSeed extends Seeder
         \helper::addMenu([ 
                     'parent_id'     => 'about',
                     'title'         => 'Vision',
-                    'controller'    => 'AboutUs\VisionController',
+                    'controller'    => 'About\VisionController',
                     'slug'          => 'about-vision',
                     'order'         => '2'
                 ],['index','create','update','delete']
@@ -108,7 +108,7 @@ class MenuSeed extends Seeder
         \helper::addMenu([ 
                     'parent_id'     => 'about',
                     'title'         => 'CSR Activity',
-                    'controller'    => 'AboutUs\CsrController',
+                    'controller'    => 'About\CsrController',
                     'slug'          => 'about-csr',
                     'order'         => '3'
                 ],['index','create','update','delete']
@@ -117,7 +117,7 @@ class MenuSeed extends Seeder
         \helper::addMenu([ 
                     'parent_id'     => 'about',
                     'title'         => 'Racing Experience',
-                    'controller'    => 'AboutUs\RacingController',
+                    'controller'    => 'About\RacingController',
                     'slug'          => 'about-racing',
                     'order'         => '4'
                 ],['index','create','update','delete']
@@ -126,7 +126,7 @@ class MenuSeed extends Seeder
         \helper::addMenu([ 
                     'parent_id'     => 'about',
                     'title'         => 'Awards',
-                    'controller'    => 'AboutUs\AwardsController',
+                    'controller'    => 'About\AwardController',
                     'slug'          => 'about-award',
                     'order'         => '5'
                 ],['index','create','update','delete']

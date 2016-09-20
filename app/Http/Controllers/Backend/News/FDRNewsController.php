@@ -32,7 +32,7 @@ class FDRNewsController extends Controller
 		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('fdrnews');
 		return Table::of($model)
 			->addColumn('image',function($model){
-				return '<img src = "'.asset('contents/fdrnews/small/'.$model->image).'"/>';
+				return '<img src = "'.asset('contents/news/small/'.$model->image).'"/>';
 			})
 			->addColumn('action' , function($model){
 			return \Helper::buttons($model->id);
@@ -71,7 +71,7 @@ class FDRNewsController extends Controller
         {
 
             $imageName = "fdrnews-".$save->id;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'fdrnews');
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'news');
 			
 			$this->model->whereId($save->id)->update([
             		'image' => $uploadImage['filename']          		
@@ -116,8 +116,8 @@ class FDRNewsController extends Controller
         if(!empty($image))
         {
 
-            $imageName = "news-".$id;
-			$uploadImage = \Helper::handleUpload($request, $imageName);
+            $imageName = "fdrnews-".$id;
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'news');
 			
 			$this->model->whereId($id)->update([
             		'image' => $uploadImage['filename']
