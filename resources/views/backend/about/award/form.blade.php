@@ -1,7 +1,6 @@
 @extends('backend.layouts.layout')
 @section('content')
 
-  @include('backend.common.sweet_flashes')
 <div class="inner" style="min-height: 700px;">
     <div class="row">
         <div class="col-lg-12">
@@ -18,9 +17,10 @@
                 </div>
                 <div class="panel-body">
 
+                    @include('backend.common.errors')
 
-                     {!! Form::model($model) !!} 
-                        
+                     {!! Form::model($model,['files' => true]) !!} 
+
                       <div class="form-group">
                         <label>Title</label>
                         {!! Form::text('title' , null ,['class' => 'form-control']) !!}
@@ -52,14 +52,38 @@
                       </div>
 					  <div class="row">
 						<div class="col-md-6">
-                      
+							
+						  <div class="form-group">
+							<label>Date</label>
+							{!!  Form::text('date', $date , ['id' => 'datepicker', 'class'=>'form-control']) !!}
+						  </div>
+						</div>
+						
+						<div class="col-md-6">							
+
+						  <div class="form-group">
+							<label>Status</label>
+							{!! Form::select('status' , ['publish' => 'Published' , 'unpublish' => 'Unpublished'] , null ,['class' => 'form-control']) !!}
+						  </div>
+						</div>
+					  </div>
+
                       <button type="submit" class="btn btn-primary">{{ !empty($model->id) ? 'Update' : 'Save' }}</button>
                     
                     {!! Form::close() !!}
-
                 </div>
             </div>
         </div>
     </div>
-</div>
+    @include('backend.popElfinder');
+@endsection
+@section('script')
+<script type="text/javascript">
+  
+  window.onload = function()
+  {
+      CKEDITOR.replace( 'description',{
+      filebrowserBrowseUrl: '{{ urlBackend("image/lib")}}'});
+  }
+</script>
 @endsection
