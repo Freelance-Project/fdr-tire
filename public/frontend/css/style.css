@@ -449,12 +449,12 @@ ul#homeSlider,ul#newsSlider{
 .sub-cap .side-triangle:after{
 	content: '';
 	position: absolute;
-	right: -45px;
+	right: -25px;
 	top: 0;
 	width: 0;
 	height: 0;
 	border-style: solid;
-	border-width: 45px 45px 0 0;
+	border-width: 45px 25px 0 0;
 	border-color: #404041 transparent transparent transparent;
 }
 .sub-cap .side-triangle.white-triangle:after{
@@ -463,12 +463,12 @@ ul#homeSlider,ul#newsSlider{
 .sub-cap .side-triangle:before{
 	content: '';
 	position: absolute;
-	left: -45px;
+	left: -25px;
 	top: 0;
 	width: 0;
 	height: 0;
 	border-style: solid;
-	border-width: 0 0 45px 45px;
+	border-width: 0 0 45px 25px;
 	border-color: transparent transparent #404041 transparent;
 }
 .sub-cap .side-triangle.white-triangle:before{
@@ -596,11 +596,23 @@ a.learnMore{
 .date-event{
 	display: inline-block;
 	background: #404041;
-	padding: 10px 20px;
-	border-radius: 20px;
+	padding: 10px 30px 10px 20px;
+	height:78px;
+	border-radius:20px 0 20px 20px;
 	text-align: center;
 	vertical-align: middle;
 	margin-right: 40px;
+	position:relative;
+}
+.date-event:after{
+	content: url(../images/material/right-box.png);
+	width:30px;
+	height:78px;
+	position:absolute;
+	right:-14px;
+	top:0;
+	
+	
 }
 .date-event .number{
 	font-size: 24px;
