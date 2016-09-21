@@ -3,7 +3,7 @@
 <!-- middle -->
 <div id="middle-content">
 
-	<section id="slider-home" class="-white edge--bottom">
+	<section id="slider-home" class="edge-pathBottom">
 		<ul id="homeSlider" class="slider"> 
             <li><img src="images/content/slide1.jpg" /></li>
   			<li><img src="images/content/slide2.jpg" /></li>
@@ -11,7 +11,7 @@
         <div class="findtire"></div>
 	</section>
 
-	<section id="product-home" class="-white edge--bottom edge--top--reverse">
+	<section id="product-home" class="edge-pathTopBottom">
 		<div class="product-section">
 			<div class="left-capt1">
 				<div class"caption1">
@@ -43,7 +43,7 @@
 			</div><!--end.left-caption-->
 		</div><!--end.product-section-->
 	</section>
-	<section id="news-home" class="-white edge--both--reverse">
+	<section id="news-home" class="edge-pathTopBottom-reserve">
 		<div class="news-section">
 			<div class="left-news1">
 				<div class="news-cap1">
@@ -77,7 +77,7 @@
 			</div><!--end.silder-news-->
 		</div><!--end.news-section-->
 	</section>
-	<section id="eventHome" class="-white edge--top">
+	<section id="eventHome" class="">
 	 	<div class="eventSection">
 	 		<div class="left-event1">
 	 			<h3 class="event-title"><span class="redFont">Events</span><br>Calendar</h3>
