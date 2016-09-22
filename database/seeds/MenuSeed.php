@@ -4,29 +4,7 @@ use Illuminate\Database\Seeder;
 
 
 class MenuSeed extends Seeder
-{
-    /* example add menu
-        \webarq::addMenu([ 
-                'parent_id'     => null,
-                'title'         => 'Management product',
-                'controller'    => '#',
-                'slug'          => 'product',
-                'order'         => 1,
-            ],[]);
-
-                \webarq::addMenu([ 
-                    'parent_id'     => 'product',
-                    'title'         => 'Category',
-                    'controller'    => 'CategoryController',
-                    'slug'          => 'category',
-                    'order'         => '1'
-                ],['index','create','update','delete']
-            ); 
-
-    */
-   
-
-         
+{        
     public function run()
     {
         \helper::addMenu([ 
@@ -68,8 +46,35 @@ class MenuSeed extends Seeder
                     'parent_id'     => 'news',
                     'title'         => 'Event',
                     'controller'    => 'News\EventController',
-                    'slug'          => 'event',
+                    'slug'          => 'news-event',
                     'order'         => '2'
+                ],['index','create','update','delete']
+        ); 
+		
+		\helper::addMenu([ 
+                    'parent_id'     => 'news',
+                    'title'         => 'Tips',
+                    'controller'    => 'News\TipsController',
+                    'slug'          => 'news-tips',
+                    'order'         => '3'
+                ],['index','create','update','delete']
+        ); 
+		
+		\helper::addMenu([ 
+                    'parent_id'     => 'news',
+                    'title'         => 'FDR News',
+                    'controller'    => 'News\FDRNewsController',
+                    'slug'          => 'news-fdrnews',
+                    'order'         => '4'
+                ],['index','create','update','delete']
+        ); 
+		
+		\helper::addMenu([ 
+                    'parent_id'     => 'news',
+                    'title'         => 'Media Highlights',
+                    'controller'    => 'News\MediaHighlightsController',
+                    'slug'          => 'news-highlights',
+                    'order'         => '5'
                 ],['index','create','update','delete']
         ); 
 

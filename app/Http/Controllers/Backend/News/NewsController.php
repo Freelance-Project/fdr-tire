@@ -28,7 +28,7 @@ class NewsController extends Controller
 
 	public function getData()
 	{
-		$model = $this->model->select('id' , 'title' , 'brief', 'image', 'status');
+		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('news');
 		return Table::of($model)
 			->addColumn('image',function($model){
 				return '<img src = "'.asset('contents/news/small/'.$model->image).'"/>';
@@ -54,12 +54,12 @@ class NewsController extends Controller
 		$values = [
 			'author_id' => \Auth::user()->id,
 			'title' => $request->title,
-			'brief' => $request->intro,
+			'brief' => $request->brief,
 			'description' => $request->description,
 			'created_at' => \Helper::dateToDb($request->date),
 			'slug' => str_slug($request->title),
 			'status' => $request->status,
-			'category' => $this->category,
+			'category' => 'news',
 		];
 		
 		$save = $this->model->create($values);
@@ -77,49 +77,37 @@ class NewsController extends Controller
             ]);
         }		
 			
-		
+		// dd($save);
         return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
 	}
 
 	public function getUpdate($id)
 	{
 		$model  = $this->model->find($id);
-		$data = $this->model->whereContentId($model->content_id)->get();
+		
 		$date = \Helper::dbToDate($model->created_at);
 		
-		return view('backend.page.news.form' , [
+		return view('backend.news.news.form' , [
 
 			'model' => $model,
 			'date' => $date,
-			'data' => $data,
 		]);
 	}
 
 
 	public function postUpdate(Request $request , $id)
 	{
-		$inputs = $request->all();
-		$validation = \Validator::make($inputs , $this->model->rules($id));
-		if($validation->fails()) return redirect()->back()->withInput()->withErrors($validation);
-		
-		$dataid = $this->model->whereId($id)->first();
-		$siblings = $this->model->whereContentId($dataid->content_id)->get();
-		if ($siblings) {
-			foreach ($siblings as $val) {
-				$idcoll[] = $val->id;
-			}
-		}
 					
 		$values = [
-			'title' => $request->title[$lang[$i]],
-			'brief' => $request->brief[$lang[$i]],
-			'description' => $request->description[$lang[$i]],
+			'title' => $request->title,
+			'brief' => $request->brief,
+			'description' => $request->description,
 			'created_at' => \Helper::dateToDb($request->date),
-			'slug' => str_slug($request->title[$lang[$i]]),
+			'slug' => str_slug($request->title),
 			'status' => $request->status
 		];
 
-		$update = $this->model->whereId($idcoll[$i-1])->update($values);
+		$update = $this->model->whereId($id)->update($values);
 		
 		
 		$image = str_replace("%20", " ", $request->image);
@@ -127,12 +115,11 @@ class NewsController extends Controller
         if(!empty($image))
         {
 
-            $imageName = "news-".$dataid->content_id;
+            $imageName = "news-".$id;
 			$uploadImage = \Helper::handleUpload($request, $imageName);
 			
-			$this->model->whereContentId($dataid->content_id)->update([
-            		'image' => $uploadImage['filename'],
-            		'thumbnail' => $uploadImage['filename'],            		
+			$this->model->whereId($id)->update([
+            		'image' => $uploadImage['filename']
             ]);
         }
 		return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
@@ -170,7 +157,7 @@ class NewsController extends Controller
 		
         if(!empty($getmodel->id))
         {
-			$model = $this->model->whereContentId($getmodel->content_id);
+			$model = $this->model->whereId($getmodel->id);
 			
             $path_image = public_path('contents/news');
             @unlink($path_image. '/large/'.$model->image);
