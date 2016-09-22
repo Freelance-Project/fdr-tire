@@ -3,15 +3,15 @@
 @section('content')
     <div id="middle-content">
 
-	<section id="slider-home" class="-white edge--bottom">
+	<section id="slider-home" class="edge-pathBottom">
 		<ul id="homeSlider" class="slider"> 
-            <li><img src="{{ asset(null) }}frontend/images/content/slide1.jpg" /></li>
-  			<li><img src="{{ asset(null) }}frontend/images/content/slide2.jpg" /></li>
+            <li><img src="{{asset(null)}}frontend/images/content/slide1.jpg" /></li>
+  			<li><img src="{{asset(null)}}frontend/images/content/slide2.jpg" /></li>
         </ul>
         <div class="findtire"></div>
 	</section>
 
-	<section id="product-home" class="-white edge--bottom edge--top--reverse">
+	<section id="product-home" class="edge-pathTopBottom">
 		<div class="product-section">
 			<div class="left-capt1">
 				<div class"caption1">
@@ -43,7 +43,7 @@
 			</div><!--end.left-caption-->
 		</div><!--end.product-section-->
 	</section>
-	<section id="news-home" class="-white edge--both--reverse">
+	<section id="news-home" class="edge-pathTopBottom-reserve">
 		<div class="news-section">
 			<div class="left-news1">
 				<div class="news-cap1">
@@ -55,7 +55,7 @@
 			</div><!--end.left-news1-->
 			<div class="slider-news">
 				<ul id="newsSlider" class="slider">
-					<li class="banner-news-home" style="background-image: url({{ asset(null) }}frontend/images/content/slide-news1.jpg)">
+					<li class="banner-news-home" style="background-image: url({{asset(null)}}frontend/images/content/slide-news1.jpg)">
 						<div class="slide-caption">
 							<div class="caption-small">
 								<h4>  Lorem ipsum<br><span class="redFont">dolor sit amet</span></h4>
@@ -64,7 +64,7 @@
 							</div><!--end.caption-small-->
 						</div><!--end.slide-caption-->
 					</li>
-					<li class="banner-news-home" style="background-image: url({{ asset(null) }}frontend/images/content/slide-news2.jpg)">
+					<li class="banner-news-home" style="background-image: url({{asset(null)}}frontend/images/content/slide-news2.jpg)">
 						<div class="slide-caption">
 							<div class="caption-small">
 								<h4>  Lorem ipsum<br><span class="redFont">dolor sit amet</span></h4>
@@ -77,7 +77,7 @@
 			</div><!--end.silder-news-->
 		</div><!--end.news-section-->
 	</section>
-	<section id="eventHome" class="-white edge--top">
+	<section id="eventHome" class="">
 	 	<div class="eventSection">
 	 		<div class="left-event1">
 	 			<h3 class="event-title"><span class="redFont">Events</span><br>Calendar</h3>
@@ -120,8 +120,8 @@
 	 		</div><!--end.left-event1-->
 	 		<div class="slider-event">
 	 			<ul id="eventSlider" class="slider"> 
-		            <li  style="background-image: url({{ asset(null) }}frontend/images/content/slide-event1.jpg)"></li>
-		            <li  style="background-image: url({{ asset(null) }}frontend/images/content/slide-event2.jpg)"></li>
+		            <li  style="background-image: url({{asset(null)}}frontend/images/content/slide-event1.jpg)"></li>
+		            <li  style="background-image: url({{asset(null)}}frontend/images/content/slide-event2.jpg)"></li>
 		        </ul>
 	 		</div>
 	 	</div><!--end.eventSection-->
