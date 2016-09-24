@@ -90,6 +90,7 @@ class Helper
 	{
 		if($this->right('publish') == 'true')
 		{
+			
 			$url = urlBackendAction('publish/'.$params);
 			$active =  '<a onclick = "return confirm(\'are you sure want to un publish this data ?\')" href = "'.$url.'" class = "btn btn-default btn-sm"><span class="glyphicon glyphicon-eye-open"></span></a>';
 			$notActive =  '<a onclick = "return confirm(\'are you sure want to  publish this data ?\')" href = "'.$url.'" class = "btn btn-default btn-sm"><span class="glyphicon glyphicon-eye-close"></span></a>';

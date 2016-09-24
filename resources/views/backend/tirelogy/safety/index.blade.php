@@ -1,7 +1,7 @@
 @extends('backend.layouts.layout')
 @section('content')
 
-@include('backend.common.flashes')
+@include('backend.common.sweet_flashes')
 <div class="inner" style="min-height: 700px;">
     <div class="row">
         <div class="col-lg-12">
