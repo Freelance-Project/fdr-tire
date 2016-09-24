@@ -185,6 +185,22 @@ class MenuSeed extends Seeder
         );
         \helper::addMenu([ 
                     'parent_id'     => 'product',
+                    'title'         => 'Tire Ratio',
+                    'controller'    => 'Product\TireRatioController',
+                    'slug'          => 'tire-ratio',
+                    'order'         => '4'
+                ],['index','create','update','delete']
+        );
+        \helper::addMenu([ 
+                    'parent_id'     => 'product',
+                    'title'         => 'Tire Rim',
+                    'controller'    => 'Product\TireRimController',
+                    'slug'          => 'tire-rim',
+                    'order'         => '4'
+                ],['index','create','update','delete']
+        );
+        \helper::addMenu([ 
+                    'parent_id'     => 'product',
                     'title'         => 'Motor Brand',
                     'controller'    => 'Product\MotorBrandController',
                     'slug'          => 'motor-brand',
