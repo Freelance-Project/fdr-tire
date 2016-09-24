@@ -38,7 +38,14 @@ class SafetyController extends Controller
 				return $words;
 			})
 			->addColumn('action' , function($model){
-			return \Helper::buttons($model->id);
+
+				if($model->status == 'y')
+	            {
+	                $status = true;
+	            }else{
+	                $status = false;
+	            }
+			return \Helper::buttons($model->id,[],$status);
 		})->make(true);
 	}
 
@@ -160,14 +167,11 @@ class SafetyController extends Controller
             {
                 $updateStatus = 'n';
                 $message = 'Data has been unpublished';
-                $words = 'Unpublished';
             }else{
                 $updateStatus = 'y';
                 $message = 'Data has been published';
-                $words = 'Published';
             }
 
-            Helper::history($words , '' , ['id' => $id]);
             $model->update(['status' => $updateStatus]);
             return redirect()->back()->withMessage($message);
         }else{

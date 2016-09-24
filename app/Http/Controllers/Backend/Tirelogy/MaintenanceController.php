@@ -29,7 +29,7 @@ class MaintenanceController extends Controller
 		$model = $this->model->whereParentId($data->id)->select('id' , 'name', 'created_at', 'status')->whereCategory('safety');
 		return Table::of($model)
 			->addColumn('published' , function($model){
-				 if($model->status == 'y')
+				if($model->status == 'y')
 	            {
 	                $words = '<span class="label label-success">Published</span>';
 	            }else{
@@ -38,7 +38,16 @@ class MaintenanceController extends Controller
 				return $words;
 			})
 			->addColumn('action' , function($model){
-			return \Helper::buttons($model->id);
+
+				if($model->status == 'y')
+	            {
+	                $status = true;
+	            }else{
+	                $status = false;
+	            }
+
+			return \Helper::buttons($model->id,[],$status);
+			
 		})->make(true);
 	}
 

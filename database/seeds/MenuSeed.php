@@ -247,7 +247,7 @@ class MenuSeed extends Seeder
                             'controller'    => 'Tirelogy\TechnologyController',
                             'slug'          => 'tire-technology',
                             'order'         => '1'
-                        ],['index','create','update','delete']
+                        ],['index','create','update','publish','delete']
                 ); 
 
                 \helper::addMenu([ 
@@ -256,7 +256,7 @@ class MenuSeed extends Seeder
                             'controller'    => 'Tirelogy\KnowledgeController',
                             'slug'          => 'tire-knowledge',
                             'order'         => '1'
-                        ],['index','create','update','delete']
+                        ],['index','create','update','publish','delete']
                 );                 
 
                 \helper::addMenu([ 
@@ -265,7 +265,7 @@ class MenuSeed extends Seeder
                             'controller'    => 'Tirelogy\SafetyController',
                             'slug'          => 'tire-safety',
                             'order'         => '1'
-                        ],['index','create','update','delete']
+                        ],['index','create','update','publish','delete']
                 );           
 
                 \helper::addMenu([ 
@@ -274,7 +274,7 @@ class MenuSeed extends Seeder
                             'controller'    => 'Tirelogy\MaintenanceController',
                             'slug'          => 'tire-maintenance',
                             'order'         => '1'
-                        ],['index','create','update','delete']
+                        ],['index','create','update','publish','delete']
                 ); 
 
         \helper::addMenu([
@@ -291,7 +291,7 @@ class MenuSeed extends Seeder
                             'controller'    => 'Community\RegisterController',
                             'slug'          => 'community-register',
                             'order'         => '1'
-                        ],['index','create','update','delete']
+                        ],['index','create','update','publish','delete']
                 ); 
 
                 \helper::addMenu([ 
@@ -300,7 +300,7 @@ class MenuSeed extends Seeder
                             'controller'    => 'Community\ClubController',
                             'slug'          => 'community-club',
                             'order'         => '1'
-                        ],['index','create','update','delete']
+                        ],['index','create','update','publish','delete']
                 ); 
 
                 \helper::addMenu([ 
@@ -309,7 +309,7 @@ class MenuSeed extends Seeder
                             'controller'    => 'Community\InstagramController',
                             'slug'          => 'community-instagram',
                             'order'         => '1'
-                        ],['index','create','update','delete']
+                        ],['index','create','update','publish','delete']
                 ); 
 
         \helper::addMenu([
@@ -326,7 +326,7 @@ class MenuSeed extends Seeder
                             'controller'    => 'Gallery\VideoController',
                             'slug'          => 'gallery-video',
                             'order'         => '1'
-                        ],['index','create','update','delete']
+                        ],['index','create','update','publish','delete']
                 ); 
 
                 \helper::addMenu([ 
@@ -335,7 +335,7 @@ class MenuSeed extends Seeder
                             'controller'    => 'Gallery\FotoController',
                             'slug'          => 'gallery-foto',
                             'order'         => '1'
-                        ],['index','create','update','delete']
+                        ],['index','create','update','publish','delete']
                 ); 
 
                 \helper::addMenu([ 
@@ -344,7 +344,7 @@ class MenuSeed extends Seeder
                             'controller'    => 'Gallery\EcardController',
                             'slug'          => 'gallery-ecard',
                             'order'         => '1'
-                        ],['index','create','update','delete']
+                        ],['index','create','update','publish','delete']
                 ); 
 
                 \helper::addMenu([ 
@@ -353,7 +353,7 @@ class MenuSeed extends Seeder
                             'controller'    => 'Gallery\DownloadController',
                             'slug'          => 'gallery-download',
                             'order'         => '1'
-                        ],['index','create','update','delete']
+                        ],['index','create','update','publish','delete']
                 ); 
 
         \helper::addMenu([
@@ -370,7 +370,7 @@ class MenuSeed extends Seeder
                             'controller'    => 'Career\ApplicationController',
                             'slug'          => 'career-application',
                             'order'         => '1'
-                        ],['index','create','update','delete']
+                        ],['index','create','update','publish','delete']
                 ); 
 
                 \helper::addMenu([ 
@@ -379,7 +379,7 @@ class MenuSeed extends Seeder
                             'controller'    => 'Career\JobfairController',
                             'slug'          => 'career-jobfair',
                             'order'         => '1'
-                        ],['index','create','update','delete']
+                        ],['index','create','update','publish','delete']
                 ); 
 
                 \helper::addMenu([ 
@@ -388,7 +388,7 @@ class MenuSeed extends Seeder
                             'controller'    => 'Career\FaqController',
                             'slug'          => 'career-faq',
                             'order'         => '1'
-                        ],['index','create','update','delete']
+                        ],['index','create','update','publish','delete']
                 ); 
 
         
