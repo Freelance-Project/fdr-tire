@@ -24,6 +24,15 @@ class MenuSeed extends Seeder
                 ],['index','create','update','delete']
         ); 
         
+        \helper::updateMenu([ 
+                    'parent_id'     => 'news',
+                    'title'         => 'News Update',
+                    'controller'    => 'Page\NewsController',
+                    'slug'          => 'news-update',
+                    'order'         => '1'
+                ],['index','create','update','delete','view']
+        ); 
+
         // news event
         \helper::updateMenu([
                     'parent_id'     => null,
@@ -132,6 +141,79 @@ class MenuSeed extends Seeder
                 ],['index','create','update','delete']
         ); 
 
-        
+        // product
+        \helper::addMenu([ 
+                'parent_id'     => null,
+                'title'         => 'Product',
+                'controller'    => '#',
+                'slug'          => 'product',
+                'order'         => 1,
+            ],[]);
+
+        \helper::addMenu([ 
+                    'parent_id'     => 'product',
+                    'title'         => 'Tire',
+                    'controller'    => 'Product\TireController',
+                    'slug'          => 'tire',
+                    'order'         => '1'
+                ],['index','create','update','delete']
+        ); 
+        \helper::addMenu([ 
+                    'parent_id'     => 'product',
+                    'title'         => 'Tire Category',
+                    'controller'    => 'Product\TireCategoryController',
+                    'slug'          => 'tire-category',
+                    'order'         => '2'
+                ],['index','create','update','delete']
+        );
+        \helper::addMenu([ 
+                    'parent_id'     => 'product',
+                    'title'         => 'Tire Type',
+                    'controller'    => 'Product\TireTypeController',
+                    'slug'          => 'tire-type',
+                    'order'         => '3'
+                ],['index','create','update','delete']
+        );
+        \helper::addMenu([ 
+                    'parent_id'     => 'product',
+                    'title'         => 'Tire Size',
+                    'controller'    => 'Product\TireSizeController',
+                    'slug'          => 'tire-size',
+                    'order'         => '4'
+                ],['index','create','update','delete']
+        );
+        \helper::addMenu([ 
+                    'parent_id'     => 'product',
+                    'title'         => 'Motor Brand',
+                    'controller'    => 'Product\MotorBrandController',
+                    'slug'          => 'motor-brand',
+                    'order'         => '5'
+                ],['index','create','update','delete']
+        );
+        \helper::addMenu([ 
+                    'parent_id'     => 'product',
+                    'title'         => 'Motor Model',
+                    'controller'    => 'Product\MotorModelController',
+                    'slug'          => 'motor-model',
+                    'order'         => '6'
+                ],['index','create','update','delete']
+        );
+        \helper::addMenu([ 
+                    'parent_id'     => 'product',
+                    'title'         => 'Motor Type',
+                    'controller'    => 'Product\MotorTypeController',
+                    'slug'          => 'motor-type',
+                    'order'         => '7'
+                ],['index','create','update','delete']
+        ); 
+        \helper::addMenu([ 
+                    'parent_id'     => 'product',
+                    'title'         => 'Motor Category',
+                    'controller'    => 'Product\MotorCategoryController',
+                    'slug'          => 'motor-type',
+                    'order'         => '8'
+                ],['index','create','update','delete']
+        ); 
+
     }
 }
