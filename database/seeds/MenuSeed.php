@@ -141,6 +141,7 @@ class MenuSeed extends Seeder
                 ],['index','create','update','delete']
         ); 
 
+
         // product
         \helper::addMenu([ 
                 'parent_id'     => null,
@@ -215,5 +216,165 @@ class MenuSeed extends Seeder
                 ],['index','create','update','delete']
         ); 
 
+
+         \helper::addMenu([
+                    'parent_id'     => null,
+                    'title'         => 'Tirelogy',
+                    'controller'    => '#',
+                    'slug'          => 'tirelogy',
+                    'order'         => 1,
+        ],[]);
+
+                \helper::addMenu([ 
+                            'parent_id'     => 'tirelogy',
+                            'title'         => 'Tire Technology',
+                            'controller'    => 'Tirelogy\TechnologyController',
+                            'slug'          => 'tire-technology',
+                            'order'         => '1'
+                        ],['index','create','update','delete']
+                ); 
+
+                \helper::addMenu([ 
+                            'parent_id'     => 'tirelogy',
+                            'title'         => 'Tire Knowledge',
+                            'controller'    => 'Tirelogy\KnowledgeController',
+                            'slug'          => 'tire-knowledge',
+                            'order'         => '1'
+                        ],['index','create','update','delete']
+                );                 
+
+                \helper::addMenu([ 
+                            'parent_id'     => 'tirelogy',
+                            'title'         => 'Tire Safety',
+                            'controller'    => 'Tirelogy\SafetyController',
+                            'slug'          => 'tire-safety',
+                            'order'         => '1'
+                        ],['index','create','update','delete']
+                );           
+
+                \helper::addMenu([ 
+                            'parent_id'     => 'tirelogy',
+                            'title'         => 'Tire Maintenance',
+                            'controller'    => 'Tirelogy\MaintenanceController',
+                            'slug'          => 'tire-maintenance',
+                            'order'         => '1'
+                        ],['index','create','update','delete']
+                ); 
+
+        \helper::addMenu([
+                    'parent_id'     => null,
+                    'title'         => 'Community',
+                    'controller'    => '#',
+                    'slug'          => 'community',
+                    'order'         => 1,
+        ],[]);
+
+                \helper::addMenu([ 
+                            'parent_id'     => 'community',
+                            'title'         => 'Register',
+                            'controller'    => 'Community\RegisterController',
+                            'slug'          => 'community-register',
+                            'order'         => '1'
+                        ],['index','create','update','delete']
+                ); 
+
+                \helper::addMenu([ 
+                            'parent_id'     => 'community',
+                            'title'         => 'Club Event',
+                            'controller'    => 'Community\ClubController',
+                            'slug'          => 'community-club',
+                            'order'         => '1'
+                        ],['index','create','update','delete']
+                ); 
+
+                \helper::addMenu([ 
+                            'parent_id'     => 'community',
+                            'title'         => 'Instagram Feed',
+                            'controller'    => 'Community\InstagramController',
+                            'slug'          => 'community-instagram',
+                            'order'         => '1'
+                        ],['index','create','update','delete']
+                ); 
+
+        \helper::addMenu([
+                    'parent_id'     => null,
+                    'title'         => 'Gallery',
+                    'controller'    => '#',
+                    'slug'          => 'gallery',
+                    'order'         => 1,
+        ],[]);
+
+                \helper::addMenu([ 
+                            'parent_id'     => 'gallery',
+                            'title'         => 'Video',
+                            'controller'    => 'Gallery\VideoController',
+                            'slug'          => 'gallery-video',
+                            'order'         => '1'
+                        ],['index','create','update','delete']
+                ); 
+
+                \helper::addMenu([ 
+                            'parent_id'     => 'gallery',
+                            'title'         => 'Foto',
+                            'controller'    => 'Gallery\FotoController',
+                            'slug'          => 'gallery-foto',
+                            'order'         => '1'
+                        ],['index','create','update','delete']
+                ); 
+
+                \helper::addMenu([ 
+                            'parent_id'     => 'gallery',
+                            'title'         => 'E-Card',
+                            'controller'    => 'Gallery\EcardController',
+                            'slug'          => 'gallery-ecard',
+                            'order'         => '1'
+                        ],['index','create','update','delete']
+                ); 
+
+                \helper::addMenu([ 
+                            'parent_id'     => 'gallery',
+                            'title'         => 'Download',
+                            'controller'    => 'Gallery\DownloadController',
+                            'slug'          => 'gallery-download',
+                            'order'         => '1'
+                        ],['index','create','update','delete']
+                ); 
+
+        \helper::addMenu([
+                    'parent_id'     => null,
+                    'title'         => 'Career',
+                    'controller'    => '#',
+                    'slug'          => 'career',
+                    'order'         => 1,
+        ],[]);
+
+                \helper::addMenu([ 
+                            'parent_id'     => 'career',
+                            'title'         => 'Application Form',
+                            'controller'    => 'Career\ApplicationController',
+                            'slug'          => 'career-application',
+                            'order'         => '1'
+                        ],['index','create','update','delete']
+                ); 
+
+                \helper::addMenu([ 
+                            'parent_id'     => 'career',
+                            'title'         => 'Job Fair Event',
+                            'controller'    => 'Career\JobfairController',
+                            'slug'          => 'career-jobfair',
+                            'order'         => '1'
+                        ],['index','create','update','delete']
+                ); 
+
+                \helper::addMenu([ 
+                            'parent_id'     => 'career',
+                            'title'         => 'FAQ',
+                            'controller'    => 'Career\FaqController',
+                            'slug'          => 'career-faq',
+                            'order'         => '1'
+                        ],['index','create','update','delete']
+                ); 
+
+        
     }
 }
