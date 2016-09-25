@@ -1,5 +1,6 @@
 <?php
-namespace App\Http\Controllers\Backend\News;
+
+namespace App\Http\Controllers\Backend\Product;
 
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ use Datatables;
 use Table;
 // use App\Models\Comment;
 
-class EventController extends Controller
+class TireSizeController extends Controller
 {
 	public function __construct()
 	{

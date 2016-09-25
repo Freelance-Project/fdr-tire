@@ -1,37 +1,38 @@
 <?php
-namespace App\Http\Controllers\Backend\News;
+
+namespace App\Http\Controllers\Backend\Product;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Helper;
-use App\Models\NewsContent;
+use App\Models\TireRatio;
 use Datatables;
 use Table;
 // use App\Models\Comment;
 
-class EventController extends Controller
+class TireRatioController extends Controller
 {
 	public function __construct()
 	{
-		$this->model = new NewsContent;
+		$this->model = new TireRatio;
 		$this->category = 1;
 	}
 
 
 	public function getIndex()
 	{
-		return view('backend.news.event.index');
+		return view('backend.product.tireratio.index');
 		
 	}
 
 	public function getData()
 	{
-		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('event');
+		$model = $this->model->select('id' , 'name');
 		return Table::of($model)
 			->addColumn('image',function($model){
-				return '<img src = "'.asset('contents/news/small/'.$model->image).'"/>';
+				return '<img src = "'.asset('contents/product/small/'.$model->image).'"/>';
 			})
 			->addColumn('action' , function($model){
 			return \Helper::buttons($model->id);
@@ -42,40 +43,20 @@ class EventController extends Controller
 	{
 		$model = $this->model;
 		$date = '';
-
-		return view('backend.news.event.form', ['model' => $model,'date' => $date]);
+		return view('backend.product.tireratio.form', ['model' => $model,'date' => $date]);
 	}
 
 
 	public function postCreate(Request $request)
 	{
 		$inputs = $request->all();
-		
+		// dd($inputs);
 		$values = [
-			'author_id' => \Auth::user()->id,
-			'title' => $request->title,
-			'brief' => $request->brief,
-			'description' => $request->description,
-			'created_at' => \Helper::dateToDb($request->date),
-			'slug' => str_slug($request->title),
-			'status' => $request->status,
-			'category' => 'event',
+			'name' => $request->name
 		];
 		
 		$save = $this->model->create($values);
 		
-		$image = str_replace("%20", " ", $request->image);
-
-        if(!empty($image))
-        {
-
-            $imageName = "event-".$save->id;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'news');
-			
-			$this->model->whereId($save->id)->update([
-            		'image' => $uploadImage['filename']          		
-            ]);
-        }		
 			
 		// dd($save);
         return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
@@ -87,7 +68,7 @@ class EventController extends Controller
 		
 		$date = \Helper::dbToDate($model->created_at);
 		
-		return view('backend.news.event.form' , [
+		return view('backend.product.tireratio.form' , [
 
 			'model' => $model,
 			'date' => $date,
@@ -99,29 +80,13 @@ class EventController extends Controller
 	{
 					
 		$values = [
-			'title' => $request->title,
-			'brief' => $request->brief,
-			'description' => $request->description,
-			'created_at' => \Helper::dateToDb($request->date),
-			'slug' => str_slug($request->title),
-			'status' => $request->status
+			'name' => $request->name,
+			'created_at' => \Helper::dateToDb($request->date)
 		];
 
 		$update = $this->model->whereId($id)->update($values);
 		
 		
-		$image = str_replace("%20", " ", $request->image);
-
-        if(!empty($image))
-        {
-
-            $imageName = "event-".$id;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'news');
-			
-			$this->model->whereId($id)->update([
-            		'image' => $uploadImage['filename']
-            ]);
-        }
 		return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
 	}
 

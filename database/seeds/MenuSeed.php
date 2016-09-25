@@ -188,7 +188,7 @@ class MenuSeed extends Seeder
                     'title'         => 'Tire Ratio',
                     'controller'    => 'Product\TireRatioController',
                     'slug'          => 'tire-ratio',
-                    'order'         => '4'
+                    'order'         => '5'
                 ],['index','create','update','delete']
         );
         \helper::addMenu([ 
@@ -196,7 +196,7 @@ class MenuSeed extends Seeder
                     'title'         => 'Tire Rim',
                     'controller'    => 'Product\TireRimController',
                     'slug'          => 'tire-rim',
-                    'order'         => '4'
+                    'order'         => '6'
                 ],['index','create','update','delete']
         );
         \helper::addMenu([ 
@@ -204,7 +204,7 @@ class MenuSeed extends Seeder
                     'title'         => 'Motor Brand',
                     'controller'    => 'Product\MotorBrandController',
                     'slug'          => 'motor-brand',
-                    'order'         => '5'
+                    'order'         => '7'
                 ],['index','create','update','delete']
         );
         \helper::addMenu([ 
@@ -212,7 +212,7 @@ class MenuSeed extends Seeder
                     'title'         => 'Motor Model',
                     'controller'    => 'Product\MotorModelController',
                     'slug'          => 'motor-model',
-                    'order'         => '6'
+                    'order'         => '8'
                 ],['index','create','update','delete']
         );
         \helper::addMenu([ 
@@ -220,7 +220,7 @@ class MenuSeed extends Seeder
                     'title'         => 'Motor Type',
                     'controller'    => 'Product\MotorTypeController',
                     'slug'          => 'motor-type',
-                    'order'         => '7'
+                    'order'         => '9'
                 ],['index','create','update','delete']
         ); 
         \helper::addMenu([ 
@@ -228,7 +228,7 @@ class MenuSeed extends Seeder
                     'title'         => 'Motor Category',
                     'controller'    => 'Product\MotorCategoryController',
                     'slug'          => 'motor-type',
-                    'order'         => '8'
+                    'order'         => '10'
                 ],['index','create','update','delete']
         ); 
 
