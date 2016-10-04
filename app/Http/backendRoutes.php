@@ -8,7 +8,7 @@
 			{	
 				$controllerFile = str_replace("\\", "/", $row->controller).'.php';
 				$path = app_path('Http/Controllers/Backend/'.$controllerFile);
-				echo $row->slug . '='.$path . '<br>';
+				
 				if(file_exists($path))
 				{
 					Route::controller($row->slug,'Backend\\'.$row->controller);

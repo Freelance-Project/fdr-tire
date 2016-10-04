@@ -199,6 +199,7 @@ class MenuSeed extends Seeder
                     'order'         => '4'
                 ],['index','create','update','delete']
         );
+        
         \helper::addMenu([ 
                     'parent_id'     => 'product',
                     'title'         => 'Motor Brand',
