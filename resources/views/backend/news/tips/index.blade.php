@@ -56,7 +56,7 @@
                 serverSide: true,
                 ajax: '{{ urlBackendAction("data") }}',
                 columns: [
-                    { data: 'title', name: 'title' },
+                    { data: 'title', name: 'title', render: function(data, type, full, meta){ return '<a href="update/'+full.id+'">'+data+'</a>';}},
                     { data: 'image', name: 'image' },
                     { data: 'created_at', name: 'created_at' },
                     { data: 'status', name: 'status' },

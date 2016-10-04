@@ -28,10 +28,7 @@
                     <thead>
                         <tr>
                             <th>Title</th>
-							<th></th>
-                            <th>Created</th>
-                            <th>Published</th>
-                            <th>Action</th>
+							<th>Action</th>
                         </tr>
                     </thead>
                     
@@ -56,10 +53,7 @@
                 serverSide: true,
                 ajax: '{{ urlBackendAction("data") }}',
                 columns: [
-                    { data: 'title', name: 'title', render: function(data, type, full, meta){ return '<a href="update/'+full.id+'">'+data+'</a>';}},
-                    { data: 'image', name: 'image' },
-                    { data: 'created_at', name: 'created_at' },
-                    { data: 'status', name: 'status' },
+					{ data: 'name', name: 'name', render: function(data, type, full, meta){ return '<a href="update/'+full.id+'">'+data+'</a>';}},
                     { data: 'action', name: 'action' , searchable: false, "orderable":false},
                     
                 ]
