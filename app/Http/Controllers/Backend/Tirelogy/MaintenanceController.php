@@ -117,7 +117,7 @@ class MaintenanceController extends Controller
 				'title' => $request->title,
 				'description' => $request->description,
 				'status' => $request->status,
-				'category' => 'safety',
+				'category' => 'tire-maintenance',
 			];
 			
 			$save = $this->model->create($values);
