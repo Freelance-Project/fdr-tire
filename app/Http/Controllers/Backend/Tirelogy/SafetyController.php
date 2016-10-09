@@ -23,9 +23,9 @@ class SafetyController extends Controller
 	public function getData()
 	{
 
-		$data = $this->model->whereParentId(null)->where('category','safety')->first();
+		$data = $this->model->whereParentId(null)->where('category','tire-safety')->first();
 
-		$model = $this->model->whereParentId($data->id)->select('id' , 'title', 'created_at', 'status')->whereCategory('safety');
+		$model = $this->model->whereParentId($data->id)->select('id' , 'title', 'created_at', 'status')->whereCategory('tire-safety');
 		return Table::of($model)
 			->addColumn('published' , function($model){
 				 if($model->status == 'y')
@@ -50,7 +50,7 @@ class SafetyController extends Controller
 
 	public function getIndex()
 	{	
-		$model = $this->model->whereParentId(null)->where('category','safety')->first();
+		$model = $this->model->whereParentId(null)->where('category','tire-safety')->first();
 
 		return view($this->resource_view.'index',compact('model'));
 		
@@ -63,7 +63,7 @@ class SafetyController extends Controller
 			'author_id' => \Auth::user()->id,
 			'description' => $request->description,
 			'status'=>'y',
-			'category' => 'safety',
+			'category' => 'tire-safety',
 		];
 
 		if(!empty($request->id)){
@@ -80,8 +80,8 @@ class SafetyController extends Controller
 
         if(!empty($image))
         {
-			$imageName = "safety-".$dataid;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'safety');
+			$imageName = "tire-safety-".$dataid;
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'tire-safety');
 			// dd($uploadImage);
 			
 			$this->model->whereId($dataid)->update([
@@ -103,7 +103,7 @@ class SafetyController extends Controller
 	public function postCreate(Request $request)
 	{
 		
-		$data = $this->model->whereParentId(null)->where('category','safety')->first();
+		$data = $this->model->whereParentId(null)->where('category','tire-safety')->first();
 
 		if(!empty($data->id)){
 			$inputs = $request->all();
@@ -114,7 +114,7 @@ class SafetyController extends Controller
 				'title' => $request->name,
 				'description' => $request->description,
 				'status' => $request->status,
-				'category' => 'safety',
+				'category' => 'tire-safety',
 			];
 			
 			$save = $this->model->create($values);
