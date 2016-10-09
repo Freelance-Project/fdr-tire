@@ -26,7 +26,7 @@ class MaintenanceController extends Controller
 
 		$data = $this->model->whereParentId(null)->where('category','tire-maintenance')->first();
 
-		$model = $this->model->whereParentId($data->id)->select('id' , 'title', 'created_at', 'status')->whereCategory('safety');
+		$model = $this->model->whereParentId($data->id)->select('id' , 'title', 'created_at', 'status')->whereCategory('tire-maintenance');
 		return Table::of($model)
 			->addColumn('published' , function($model){
 				if($model->status == 'y')
