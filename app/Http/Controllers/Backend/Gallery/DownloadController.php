@@ -50,14 +50,10 @@ class DownloadController extends Controller
 			})
 			->addColumn('action' , function($model){
 
-				if($model->status == 'y')
-	            {
-	                $status = true;
-	            }else{
-	                $status = false;
-	            }
+				
+	            $buttons = '<a href="'.urlBackendAction("download/".$model->id).'" class="btn btn-primary" > Download</a>';
 
-				return \Helper::buttons($model->id,[],$status);
+				return $buttons;
 	      
 		})->make(true);
 	}
@@ -90,6 +86,14 @@ class DownloadController extends Controller
             return redirect('404');
         }
     }
+    public function getDownload($id)
+   	{
+   		$model = $this->model->findOrFail($id);
+
+   		$path = public_path('contents/'.$model->category.'/thumbnail').'/'.$model->image;
+
+   		return response()->download($path);
+	}
 
     public function getView($id)
     {
