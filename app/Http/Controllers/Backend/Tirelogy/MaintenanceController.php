@@ -114,7 +114,7 @@ class MaintenanceController extends Controller
 			$values = [
 				'author_id' => \Auth::user()->id,
 				'parent_id' => $data->id,
-				'title' => $request->name,
+				'title' => $request->title,
 				'description' => $request->description,
 				'status' => $request->status,
 				'category' => 'safety',
@@ -150,7 +150,7 @@ class MaintenanceController extends Controller
 	{
 					
 		$values = [
-			'title' => $request->name,
+			'title' => $request->title,
 			'description' => $request->description,
 			'status' => $request->status
 		];
