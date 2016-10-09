@@ -35,7 +35,7 @@
                     </div>
                     <div id="image_tempel" style = 'margin-top:30px;'>
                         @if(!empty($model->image))
-                          <img src="{{ asset('contents/safety/thumbnail').'/'.$model->image }}" width="200" height="200" />
+                          <img src="{{ asset('contents/faq/thumbnail').'/'.$model->image }}" width="200" height="200" />
                         @endif
                     </div>
                       

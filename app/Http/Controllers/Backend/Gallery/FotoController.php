@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Tirelogy;
+namespace App\Http\Controllers\Backend\Gallery;
 
 use Illuminate\Http\Request;
 
@@ -12,24 +12,35 @@ use Datatables;
 use Table;
 // use App\Models\Comment;
 
-class MaintenanceController extends Controller
+class FotoController extends Controller
 {
 	public function __construct()
 	{
 		$this->model = new NewsContent;
-		$this->category = 1;
-		$this->resource_view = 'backend.tirelogy.maintenance.';
+		$this->resource_view = 'backend.gallery.foto.';
 	}
 
-	public function getData()
+	public function getData($id=false)
 	{
+		if($id==false){
+			$model = $this->model->whereParentId(null)->select('id' , 'title', 'image', 'created_at', 'status')->whereCategory('foto');
+		}else{
 
-		$data = $this->model->whereParentId(null)->where('category','maintenance')->first();
+			$model = $this->model->whereParentId($id)->select('id' , 'title', 'parent_id', 'image', 'created_at', 'status')->whereCategory('foto');
+		}
 
-		$model = $this->model->whereParentId($data->id)->select('id' , 'title', 'created_at', 'status')->whereCategory('safety');
 		return Table::of($model)
+			->addColumn('images' , function($model){
+				if(!empty($model->image)){
+
+					$images ='<img src="'.asset('contents/foto/thumbnail').'/'.$model->image.'" width="200" height="200" />';
+                }else{
+					$images ='<img src="'.asset('contents/no-images.jpg').'" width="200" height="200" />';                	
+                }
+				return $images;
+			})
 			->addColumn('published' , function($model){
-				if($model->status == 'y')
+				 if($model->status == 'y')
 	            {
 	                $words = '<span class="label label-success">Published</span>';
 	            }else{
@@ -45,56 +56,21 @@ class MaintenanceController extends Controller
 	            }else{
 	                $status = false;
 	            }
-
-			return \Helper::buttons($model->id,[],$status);
-			
+	        if($model->parent_id==NULL){
+				return \Helper::buttons($model->id,[],$status);
+	        }else{
+				return \Helper::buttons($model->id.'/'.$model->parent_id,[],$status);
+	        }
 		})->make(true);
 	}
 
 	public function getIndex()
 	{	
-		$model = $this->model->whereParentId(null)->where('category','maintenance')->first();
 
-		return view($this->resource_view.'index',compact('model'));
+		return view($this->resource_view.'index');
 		
 	}
-	public function postIndex(Request $request)
-	{
-		$inputs = $request->all();
-		
-		$values = [
-			'author_id' => \Auth::user()->id,
-			'description' => $request->description,
-			'status'=>'y',
-			'category' => 'maintenance',
-		];
-
-		if(!empty($request->id)){
-
-			$save = $this->model->whereId($request->id)->update($values);
-			$dataid=$save;
-		}else{
-
-			$save = $this->model->create($values);
-			$dataid=$save->id;
-		}
-		
-		$image = str_replace("%20", " ", $request->image);
-
-        if(!empty($image))
-        {
-			$imageName = "maintenance-".$dataid;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'maintenance');
-			// dd($uploadImage);
-			
-			$this->model->whereId($dataid)->update([
-            		'image' => $uploadImage['filename']          		
-            ]);
-        }
-
-        return redirect(urlBackendAction('index'))->withSuccess('data has been saved');		
-	}
-
+	
 	public function getCreate()
 	{
 		$model = $this->model;
@@ -103,36 +79,66 @@ class MaintenanceController extends Controller
 	}
 
 
-	public function postCreate(Request $request)
+	public function postCreate(Request $request,$id = false)
 	{
 		
-		$data = $this->model->whereParentId(null)->where('category','maintenance')->first();
-
-		if(!empty($data->id)){
 			$inputs = $request->all();
-		
-			$values = [
+			
+			if($id==false){
+				$values = [
 				'author_id' => \Auth::user()->id,
-				'parent_id' => $data->id,
-				'title' => $request->name,
+				'title' => $request->title,
 				'description' => $request->description,
 				'status' => $request->status,
-				'category' => 'safety',
-			];
-			
-			$save = $this->model->create($values);
+				'category' => 'foto',
+				];
+				
+				$save = $this->model->create($values);
 
-        return redirect(urlBackendAction('index'))->withSuccess('data has been saved');		
-			
-		}else{
+				$image = str_replace("%20", " ", $request->image);
 
-        return redirect()->back()->withMessage('Sory Data Parent Not Found!');
+		        if(!empty($image))
+		        {
+					$imageName = "foto-".$save->id;
+					$uploadImage = \Helper::handleUpload($request, $imageName, 'foto');
+					// dd($uploadImage);
+					
+					$this->model->whereId($save->id)->update([
+		            		'image' => $uploadImage['filename']          		
+		            ]);
+		        }
+	       		return redirect(urlBackendAction('index'))->withSuccess('data has been saved');		
+			}else{
+				$values = [
+				'author_id' => \Auth::user()->id,
+				'parent_id' => $id,
+				'title' => $request->title,
+				'description' => $request->description,
+				'status' => $request->status,
+				'category' => 'foto',
+				];
+				
+				$save = $this->model->create($values);
 
-		}
+				$image = str_replace("%20", " ", $request->image);
+
+		        if(!empty($image))
+		        {
+					$imageName = "foto-".$save->id;
+					$uploadImage = \Helper::handleUpload($request, $imageName, 'foto');
+					// dd($uploadImage);
+					
+					$this->model->whereId($save->id)->update([
+		            		'image' => $uploadImage['filename']          		
+		            ]);
+		        }
+	       		return redirect(urlBackendAction('update/'.$id))->withSuccess('data has been saved');					
+
+			}	
 		
 	}
 
-	public function getUpdate($id)
+	public function getUpdate($id,$parent_id=false)
 	{
 		$model  = $this->model->find($id);
 		
@@ -142,22 +148,27 @@ class MaintenanceController extends Controller
 
 			'model' => $model,
 			'date' => $date,
+			'parent_id' => $parent_id,
 		]);
 	}
 
 
-	public function postUpdate(Request $request , $id)
+	public function postUpdate(Request $request , $id,$parent_id=false)
 	{
 					
 		$values = [
-			'title' => $request->name,
+			'title' => $request->title,
 			'description' => $request->description,
 			'status' => $request->status
 		];
 
 		$update = $this->model->whereId($id)->update($values);
-		
-		return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
+		if($parent_id==false){
+			$url = "index";
+		}else{
+			$url = "update/".$parent_id;
+		}
+		return redirect(urlBackendAction($url))->withSuccess('Data has been saved');
 	}
 
 	public function getPublish($id)
@@ -169,14 +180,11 @@ class MaintenanceController extends Controller
             {
                 $updateStatus = 'n';
                 $message = 'Data has been unpublished';
-                $words = 'Unpublished';
             }else{
                 $updateStatus = 'y';
                 $message = 'Data has been published';
-                $words = 'Published';
             }
 
-            Helper::history($words , '' , ['id' => $id]);
             $model->update(['status' => $updateStatus]);
             return redirect()->back()->withMessage($message);
         }else{

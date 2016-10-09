@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Tirelogy;
+namespace App\Http\Controllers\Backend\Career;
 
 use Illuminate\Http\Request;
 
@@ -12,24 +12,23 @@ use Datatables;
 use Table;
 // use App\Models\Comment;
 
-class MaintenanceController extends Controller
+class FaqController extends Controller
 {
 	public function __construct()
 	{
 		$this->model = new NewsContent;
-		$this->category = 1;
-		$this->resource_view = 'backend.tirelogy.maintenance.';
+		$this->resource_view = 'backend.career.faq.';
 	}
 
 	public function getData()
 	{
 
-		$data = $this->model->whereParentId(null)->where('category','maintenance')->first();
+		$data = $this->model->whereParentId(null)->where('category','faq')->first();
 
-		$model = $this->model->whereParentId($data->id)->select('id' , 'title', 'created_at', 'status')->whereCategory('safety');
+		$model = $this->model->whereParentId($data->id)->select('id' , 'title', 'created_at', 'status')->whereCategory('faq');
 		return Table::of($model)
 			->addColumn('published' , function($model){
-				if($model->status == 'y')
+				 if($model->status == 'y')
 	            {
 	                $words = '<span class="label label-success">Published</span>';
 	            }else{
@@ -45,15 +44,13 @@ class MaintenanceController extends Controller
 	            }else{
 	                $status = false;
 	            }
-
 			return \Helper::buttons($model->id,[],$status);
-			
 		})->make(true);
 	}
 
 	public function getIndex()
 	{	
-		$model = $this->model->whereParentId(null)->where('category','maintenance')->first();
+		$model = $this->model->whereParentId(null)->where('category','faq')->first();
 
 		return view($this->resource_view.'index',compact('model'));
 		
@@ -66,7 +63,7 @@ class MaintenanceController extends Controller
 			'author_id' => \Auth::user()->id,
 			'description' => $request->description,
 			'status'=>'y',
-			'category' => 'maintenance',
+			'category' => 'faq',
 		];
 
 		if(!empty($request->id)){
@@ -83,8 +80,8 @@ class MaintenanceController extends Controller
 
         if(!empty($image))
         {
-			$imageName = "maintenance-".$dataid;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'maintenance');
+			$imageName = "faq-".$dataid;
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'faq');
 			// dd($uploadImage);
 			
 			$this->model->whereId($dataid)->update([
@@ -106,7 +103,7 @@ class MaintenanceController extends Controller
 	public function postCreate(Request $request)
 	{
 		
-		$data = $this->model->whereParentId(null)->where('category','maintenance')->first();
+		$data = $this->model->whereParentId(null)->where('category','faq')->first();
 
 		if(!empty($data->id)){
 			$inputs = $request->all();
@@ -114,10 +111,10 @@ class MaintenanceController extends Controller
 			$values = [
 				'author_id' => \Auth::user()->id,
 				'parent_id' => $data->id,
-				'title' => $request->name,
+				'title' => $request->title,
 				'description' => $request->description,
 				'status' => $request->status,
-				'category' => 'safety',
+				'category' => 'faq',
 			];
 			
 			$save = $this->model->create($values);
@@ -169,14 +166,11 @@ class MaintenanceController extends Controller
             {
                 $updateStatus = 'n';
                 $message = 'Data has been unpublished';
-                $words = 'Unpublished';
             }else{
                 $updateStatus = 'y';
                 $message = 'Data has been published';
-                $words = 'Published';
             }
 
-            Helper::history($words , '' , ['id' => $id]);
             $model->update(['status' => $updateStatus]);
             return redirect()->back()->withMessage($message);
         }else{

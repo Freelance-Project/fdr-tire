@@ -10,6 +10,7 @@ use Helper;
 use App\Models\NewsContent;
 use Datatables;
 use Table;
+
 // use App\Models\Comment;
 
 class NewsController extends Controller

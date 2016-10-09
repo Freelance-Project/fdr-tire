@@ -23,7 +23,7 @@
 
                       <div class="form-group">
                         <label>Question</label>
-                        {!! Form::text('name' , null ,['class' => 'form-control']) !!}
+                        {!! Form::text('title' , null ,['class' => 'form-control']) !!}
                       </div>
                       
 					  
