@@ -35,7 +35,7 @@
                     </div>
                     <div id="image_tempel" style = 'margin-top:30px;'>
                         @if(!empty($model->image))
-                          <img src="{{ asset('contents/safety/thumbnail').'/'.$model->image }}" width="200" height="200" />
+                          <img src="{{ asset('contents/tire-safety/thumbnail').'/'.$model->image }}" width="200" height="200" />
                         @endif
                     </div>
                       
@@ -100,7 +100,7 @@
                 serverSide: true,
                 ajax: '{{ urlBackendAction("data") }}',
                 columns: [
-                    { data: 'name', name: 'name' },
+                    { data: 'title', name: 'title' },
                     { data: 'created_at', name: 'created_at' },
                     { data: 'published', name: 'published' },
                     { data: 'action', name: 'action' , searchable: false, "orderable":false},

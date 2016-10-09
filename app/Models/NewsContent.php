@@ -39,4 +39,8 @@ class NewsContent extends Model
     }
 	
 	
+    public function childs()
+    {
+        return $this->hasMany(NewsContent::class,'parent_id','id');
+    }
 }
