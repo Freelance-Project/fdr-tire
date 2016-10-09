@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Helper;
 use App\Models\MotorType;
+use App\Models\MotorBrand;
 use Datatables;
 use Table;
 // use App\Models\Comment;
@@ -17,7 +18,7 @@ class MotorTypeController extends Controller
 	public function __construct()
 	{
 		$this->model = new MotorType;
-		$this->category = 1;
+		$this->editableFields = ['name','motor_brand_id'];
 	}
 
 
@@ -29,7 +30,8 @@ class MotorTypeController extends Controller
 
 	public function getData()
 	{
-		$model = $this->model->select('id' , 'name');
+		$model = $this->model->join('motor_brands as mb','motor_types.motor_brand_id','=','mb.id')
+						->select('motor_types.id' , 'motor_types.name','mb.name as brand');
 		return Table::of($model)
 			->addColumn('image',function($model){
 				return '<img src = "'.asset('contents/product/small/'.$model->image).'"/>';
@@ -41,22 +43,24 @@ class MotorTypeController extends Controller
 
 	public function getCreate()
 	{
-		// $model = $this->model;
+		$model = $this->model;
 		$date = '';
-		return view('backend.product.motortype.form', ['model' => $model,'date' => $date]);
+		$brand = MotorBrand::lists('name','id')->toArray();
+		return view('backend.product.motortype.form', ['model' => $model,'date' => $date, 'brand'=>$brand]);
 	}
 
 
 	public function postCreate(Request $request)
 	{
-		$inputs = $request->all();
-		// dd($inputs);
-		$values = [
-			'name' => $request->name
-		];
-		
-		$save = $this->model->create($values);
-		
+		$query = $this->model;
+
+		foreach ($this->editableFields as $value) {
+            $query->{$value} = $request->{$value};
+        }
+
+        if (!$query->save()) {
+            return redirect()->back()->withErrors('Ouch! Add country failed.');
+        }
 			
 		// dd($save);
         return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
@@ -67,26 +71,30 @@ class MotorTypeController extends Controller
 		$model  = $this->model->find($id);
 		
 		$date = \Helper::dbToDate($model->created_at);
-		
+		$brand = MotorBrand::lists('name','id')->toArray();
+
 		return view('backend.product.motortype.form' , [
 
 			'model' => $model,
 			'date' => $date,
+			'brand' => $brand,
 		]);
 	}
 
 
 	public function postUpdate(Request $request , $id)
 	{
-					
-		$values = [
-			'name' => $request->name,
-			'created_at' => \Helper::dateToDb($request->date)
-		];
+		
+		$query = $this->model->findOrFail($id);
 
-		$update = $this->model->whereId($id)->update($values);
-		
-		
+		foreach ($this->editableFields as $value) {
+            $query->{$value} = $request->{$value};
+        }
+
+        if (!$query->save()) {
+            return redirect()->back()->withErrors('Ouch! Add country failed.');
+        }
+
 		return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
 	}
 
