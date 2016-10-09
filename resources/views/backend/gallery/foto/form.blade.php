@@ -59,7 +59,7 @@
                       </div>
                     
                     {!! Form::close() !!}
-                    @if($parent_id==FALSE)
+                    @if(empty($parent_id))
                         @if(!empty($model->id))
 
                             {!! helper::buttonCreate($model->id) !!}

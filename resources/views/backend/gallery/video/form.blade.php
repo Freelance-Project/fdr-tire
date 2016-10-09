@@ -39,7 +39,7 @@
                       </div>
                     @else
 
-                        @if($parent_id==FALSE)
+                    @if(empty($parent_id))
                         <div class="form-group">
                             <label>Thumbnail Image</label>
                             <div>
@@ -77,7 +77,7 @@
                     
                     {!! Form::close() !!}
 
-                    @if($parent_id==FALSE)
+                    @if(empty($parent_id))
                         @if(!empty($model->id))
 
                             {!! helper::buttonCreate($model->id) !!}
