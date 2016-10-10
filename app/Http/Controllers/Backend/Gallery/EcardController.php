@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Tirelogy;
+namespace App\Http\Controllers\Backend\Gallery;
 
 use Illuminate\Http\Request;
 
@@ -12,21 +12,33 @@ use Datatables;
 use Table;
 // use App\Models\Comment;
 
-class SafetyController extends Controller
+class EcardController extends Controller
 {
 	public function __construct()
 	{
 		$this->model = new NewsContent;
-		$this->resource_view = 'backend.tirelogy.safety.';
+		$this->resource_view = 'backend.gallery.ecard.';
 	}
 
-	public function getData()
+	public function getData($id=false)
 	{
+		if($id==false){
+			$model = $this->model->whereParentId(null)->select('id' , 'title', 'image', 'created_at', 'status')->whereCategory('ecard');
+		}else{
 
-		$data = $this->model->whereParentId(null)->where('category','tire-safety')->first();
+			$model = $this->model->whereParentId($id)->select('id' , 'title', 'parent_id', 'image', 'created_at', 'status')->whereCategory('ecard');
+		}
 
-		$model = $this->model->whereParentId($data->id)->select('id' , 'title', 'created_at', 'status')->whereCategory('tire-safety');
 		return Table::of($model)
+			->addColumn('images' , function($model){
+				if(!empty($model->image)){
+
+					$images ='<img src="'.asset('contents/ecard/thumbnail').'/'.$model->image.'" width="200" height="200" />';
+                }else{
+					$images ='<img src="'.asset('contents/no-images.jpg').'" width="200" height="200" />';                	
+                }
+				return $images;
+			})
 			->addColumn('published' , function($model){
 				 if($model->status == 'y')
 	            {
@@ -44,54 +56,21 @@ class SafetyController extends Controller
 	            }else{
 	                $status = false;
 	            }
-			return \Helper::buttons($model->id,[],$status);
+	        if($model->parent_id==NULL){
+				return \Helper::buttons($model->id,[],$status);
+	        }else{
+				return \Helper::buttons($model->id.'/'.$model->parent_id,[],$status);
+	        }
 		})->make(true);
 	}
 
 	public function getIndex()
 	{	
-		$model = $this->model->whereParentId(null)->where('category','tire-safety')->first();
 
-		return view($this->resource_view.'index',compact('model'));
+		return view($this->resource_view.'index');
 		
 	}
-	public function postIndex(Request $request)
-	{
-		$inputs = $request->all();
-		
-		$values = [
-			'author_id' => \Auth::user()->id,
-			'description' => $request->description,
-			'status'=>'y',
-			'category' => 'tire-safety',
-		];
-
-		if(!empty($request->id)){
-
-			$save = $this->model->whereId($request->id)->update($values);
-			$dataid=$save;
-		}else{
-
-			$save = $this->model->create($values);
-			$dataid=$save->id;
-		}
-		
-		$image = str_replace("%20", " ", $request->image);
-
-        if(!empty($image))
-        {
-			$imageName = "tire-safety-".$dataid;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'tire-safety');
-			// dd($uploadImage);
-			
-			$this->model->whereId($dataid)->update([
-            		'image' => $uploadImage['filename']          		
-            ]);
-        }
-
-        return redirect(urlBackendAction('index'))->withSuccess('data has been saved');		
-	}
-
+	
 	public function getCreate()
 	{
 		$model = $this->model;
@@ -100,36 +79,64 @@ class SafetyController extends Controller
 	}
 
 
-	public function postCreate(Request $request)
+	public function postCreate(Request $request,$id = false)
 	{
 		
-		$data = $this->model->whereParentId(null)->where('category','tire-safety')->first();
-
-		if(!empty($data->id)){
 			$inputs = $request->all();
-		
-			$values = [
+			
+			if($id==false){
+				$values = [
 				'author_id' => \Auth::user()->id,
-				'parent_id' => $data->id,
 				'title' => $request->title,
-				'description' => $request->description,
 				'status' => $request->status,
-				'category' => 'tire-safety',
-			];
-			
-			$save = $this->model->create($values);
+				'category' => 'ecard',
+				];
+				
+				$save = $this->model->create($values);
 
-        return redirect(urlBackendAction('index'))->withSuccess('data has been saved');		
-			
-		}else{
+				$image = str_replace("%20", " ", $request->image);
 
-        return redirect()->back()->withMessage('Sory Data Parent Not Found!');
+		        if(!empty($image))
+		        {
+					$imageName = "ecard-".$save->id;
+					$uploadImage = \Helper::handleUpload($request, $imageName, 'ecard');
+					// dd($uploadImage);
+					
+					$this->model->whereId($save->id)->update([
+		            		'image' => $uploadImage['filename']          		
+		            ]);
+		        }
+	       		return redirect(urlBackendAction('index'))->withSuccess('data has been saved');		
+			}else{
+				$values = [
+				'author_id' => \Auth::user()->id,
+				'parent_id' => $id,
+				'title' => $request->title,
+				'status' => $request->status,
+				'category' => 'ecard',
+				];
+				
+				$save = $this->model->create($values);
 
-		}
+				$image = str_replace("%20", " ", $request->image);
+
+		        if(!empty($image))
+		        {
+					$imageName = "ecard-".$save->id;
+					$uploadImage = \Helper::handleUpload($request, $imageName, 'ecard');
+					// dd($uploadImage);
+					
+					$this->model->whereId($save->id)->update([
+		            		'image' => $uploadImage['filename']          		
+		            ]);
+		        }
+	       		return redirect(urlBackendAction('update/'.$id))->withSuccess('data has been saved');					
+
+			}	
 		
 	}
 
-	public function getUpdate($id)
+	public function getUpdate($id,$parent_id=false)
 	{
 		$model  = $this->model->find($id);
 		
@@ -139,22 +146,26 @@ class SafetyController extends Controller
 
 			'model' => $model,
 			'date' => $date,
+			'parent_id' => $parent_id,
 		]);
 	}
 
 
-	public function postUpdate(Request $request , $id)
+	public function postUpdate(Request $request , $id,$parent_id=false)
 	{
 					
 		$values = [
 			'title' => $request->title,
-			'description' => $request->description,
 			'status' => $request->status
 		];
 
 		$update = $this->model->whereId($id)->update($values);
-		
-		return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
+		if($parent_id==false){
+			$url = "index";
+		}else{
+			$url = "update/".$parent_id;
+		}
+		return redirect(urlBackendAction($url))->withSuccess('Data has been saved');
 	}
 
 	public function getPublish($id)

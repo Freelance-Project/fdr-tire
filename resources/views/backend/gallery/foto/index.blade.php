@@ -14,45 +14,9 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                   Data Tire Safety
+                   Data Album Foto
                 </div>
-                <div class="panel-body">
-
-                    @include('backend.common.errors')
-
-                     {!! Form::model($model,['files' => true]) !!} 
-
-                    {!! Form::hidden('id' , null ,['class' => 'form-control']) !!}
-                           
-                    <div class="form-group">
-                        <label>File</label>
-                        <div>
-                          <a class="Wbutton" onclick = "return browseElfinder('image'  , 'image_tempel' , 'elfinder_browse1' , 'cancelBrowse')" >Browse</a>
-                          Suggestion Image Size (726,449)
-                        </div>
-                        <input type = 'hidden' name = 'image' id = 'image' />
-                        
-                    </div>
-                    <div id="image_tempel" style = 'margin-top:30px;'>
-                        @if(!empty($model->image))
-                          <img src="{{ asset('contents/tire-safety/thumbnail').'/'.$model->image }}" width="200" height="200" />
-                        @endif
-                    </div>
-                      
-                      <div class="form-group">
-                        <label>Description</label>
-                        {!! Form::textarea('description' , null ,['class' => 'form-control','id'=>'description']) !!}
-                      </div>                                                        
-
-                      <div class="form-group">
-
-                        <label>&nbsp;</label>
-                          <button type="submit" class="btn btn-primary">{{ !empty($model->id) ? 'Update' : 'Create' }}</button>
-                      </div>
-                    
-                    {!! Form::close() !!}
-                </div>
-                @if(!empty($model->id))
+               
                 <div class="panel-body">
                 
                         {!! helper::buttonCreate() !!}
@@ -64,6 +28,7 @@
                 <table class = 'table' id = 'table'>
                     <thead>
                         <tr>
+                            <th>Thumbnail Image</th>
                             <th>Title</th>
                             <th>Created</th>
                             <th>Published</th>
@@ -74,7 +39,7 @@
                 </table>
 
                 </div>
-                @endif
+
             </div>
         </div>
     </div>
@@ -100,6 +65,7 @@
                 serverSide: true,
                 ajax: '{{ urlBackendAction("data") }}',
                 columns: [
+                    { data: 'images', name: 'images' , searchable: false, "orderable":false},
                     { data: 'title', name: 'title' },
                     { data: 'created_at', name: 'created_at' },
                     { data: 'published', name: 'published' },

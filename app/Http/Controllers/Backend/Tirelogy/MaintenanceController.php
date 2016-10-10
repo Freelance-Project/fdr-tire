@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Helper;
-use App\Models\Tire;
+use App\Models\NewsContent;
 use Datatables;
 use Table;
 // use App\Models\Comment;
@@ -16,7 +16,7 @@ class MaintenanceController extends Controller
 {
 	public function __construct()
 	{
-		$this->model = new Tire;
+		$this->model = new NewsContent;
 		$this->category = 1;
 		$this->resource_view = 'backend.tirelogy.maintenance.';
 	}
@@ -24,9 +24,9 @@ class MaintenanceController extends Controller
 	public function getData()
 	{
 
-		$data = $this->model->whereParentId(null)->where('category','maintenance')->first();
+		$data = $this->model->whereParentId(null)->where('category','tire-maintenance')->first();
 
-		$model = $this->model->whereParentId($data->id)->select('id' , 'name', 'created_at', 'status')->whereCategory('safety');
+		$model = $this->model->whereParentId($data->id)->select('id' , 'title', 'created_at', 'status')->whereCategory('tire-maintenance');
 		return Table::of($model)
 			->addColumn('published' , function($model){
 				if($model->status == 'y')
@@ -53,7 +53,7 @@ class MaintenanceController extends Controller
 
 	public function getIndex()
 	{	
-		$model = $this->model->whereParentId(null)->where('category','maintenance')->first();
+		$model = $this->model->whereParentId(null)->where('category','tire-maintenance')->first();
 
 		return view($this->resource_view.'index',compact('model'));
 		
@@ -66,7 +66,7 @@ class MaintenanceController extends Controller
 			'author_id' => \Auth::user()->id,
 			'description' => $request->description,
 			'status'=>'y',
-			'category' => 'maintenance',
+			'category' => 'tire-maintenance',
 		];
 
 		if(!empty($request->id)){
@@ -83,8 +83,8 @@ class MaintenanceController extends Controller
 
         if(!empty($image))
         {
-			$imageName = "maintenance-".$dataid;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'maintenance');
+			$imageName = "tire-maintenance-".$dataid;
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'tire-maintenance');
 			// dd($uploadImage);
 			
 			$this->model->whereId($dataid)->update([
@@ -106,7 +106,7 @@ class MaintenanceController extends Controller
 	public function postCreate(Request $request)
 	{
 		
-		$data = $this->model->whereParentId(null)->where('category','maintenance')->first();
+		$data = $this->model->whereParentId(null)->where('category','tire-maintenance')->first();
 
 		if(!empty($data->id)){
 			$inputs = $request->all();
@@ -114,10 +114,10 @@ class MaintenanceController extends Controller
 			$values = [
 				'author_id' => \Auth::user()->id,
 				'parent_id' => $data->id,
-				'name' => $request->name,
+				'title' => $request->title,
 				'description' => $request->description,
 				'status' => $request->status,
-				'category' => 'safety',
+				'category' => 'tire-maintenance',
 			];
 			
 			$save = $this->model->create($values);
@@ -150,7 +150,7 @@ class MaintenanceController extends Controller
 	{
 					
 		$values = [
-			'name' => $request->name,
+			'title' => $request->title,
 			'description' => $request->description,
 			'status' => $request->status
 		];

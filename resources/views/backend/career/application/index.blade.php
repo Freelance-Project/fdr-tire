@@ -1,7 +1,7 @@
 @extends('backend.layouts.layout')
 @section('content')
 
-@include('backend.common.flashes')
+@include('backend.common.sweet_flashes')
 <div class="inner" style="min-height: 700px;">
     <div class="row">
         <div class="col-lg-12">
@@ -14,22 +14,29 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    DataTables Advanced Tables
+                   Data Tire Safety
                 </div>
+                <div class="panel-body">
+
+                    @include('backend.common.errors')
+
+                <a href="{{ urlBackendAction('export/xls') }}">Export Excel</a> &nbsp;&nbsp; <a href="{{ urlBackendAction('export/csv') }}">Export CSV</a>
+                
                 <div class="panel-body">
                 
                         {!! helper::buttonCreate() !!}
                 
-                
-                <p>&nbsp;</p>
                 <p>&nbsp;</p>
 
                 <table class = 'table' id = 'table'>
                     <thead>
                         <tr>
-                            <th>Title</th>
-							<th>Brand</th>
-                            <th>Created</th>
+                            <th>Id Number</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Religion</th>
+                            <th>Phone</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -41,6 +48,7 @@
         </div>
     </div>
 </div>
+    @include('backend.popElfinder');
 
 @endsection
 
@@ -49,15 +57,21 @@
     <script type="text/javascript">
         
         $(document).ready(function(){
+            $("#export-excel").click(function(){
+
+            });
             $.fn.dataTable.ext.errMode = 'none';
             $('#table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: '{{ urlBackendAction("data") }}',
                 columns: [
-					{ data: 'name', name: 'name', render: function(data, type, full, meta){ return '<a href="update/'+full.id+'">'+data+'</a>';}},
-                    { data: 'brand', name: 'motor_brand_id' },
-                    { data: 'created_at', name: 'created_at' },
+                    { data: 'id_number', name: 'id_number' },
+                    { data: 'fullname', name: 'fullname' },
+                    { data: 'email', name: 'email' },
+                    { data: 'address', name: 'address' },
+                    { data: 'religion', name: 'religion' },
+                    { data: 'phone', name: 'phone' },
                     { data: 'action', name: 'action' , searchable: false, "orderable":false},
                     
                 ]

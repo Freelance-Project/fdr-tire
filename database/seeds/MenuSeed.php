@@ -199,6 +199,7 @@ class MenuSeed extends Seeder
                     'order'         => '6'
                 ],['index','create','update','delete']
         );
+        
         \helper::addMenu([ 
                     'parent_id'     => 'product',
                     'title'         => 'Motor Brand',
@@ -241,23 +242,23 @@ class MenuSeed extends Seeder
                     'order'         => 1,
         ],[]);
 
-                \helper::addMenu([ 
-                            'parent_id'     => 'tirelogy',
-                            'title'         => 'Tire Technology',
-                            'controller'    => 'Tirelogy\TechnologyController',
-                            'slug'          => 'tire-technology',
-                            'order'         => '1'
-                        ],['index','create','update','publish','delete']
-                ); 
+                // \helper::addMenu([ 
+                //             'parent_id'     => 'tirelogy',
+                //             'title'         => 'Tire Technology',
+                //             'controller'    => 'Tirelogy\TechnologyController',
+                //             'slug'          => 'tire-technology',
+                //             'order'         => '1'
+                //         ],['index','create','update','publish','delete']
+                // ); 
 
-                \helper::addMenu([ 
-                            'parent_id'     => 'tirelogy',
-                            'title'         => 'Tire Knowledge',
-                            'controller'    => 'Tirelogy\KnowledgeController',
-                            'slug'          => 'tire-knowledge',
-                            'order'         => '1'
-                        ],['index','create','update','publish','delete']
-                );                 
+                // \helper::addMenu([ 
+                //             'parent_id'     => 'tirelogy',
+                //             'title'         => 'Tire Knowledge',
+                //             'controller'    => 'Tirelogy\KnowledgeController',
+                //             'slug'          => 'tire-knowledge',
+                //             'order'         => '1'
+                //         ],['index','create','update','publish','delete']
+                // );                 
 
                 \helper::addMenu([ 
                             'parent_id'     => 'tirelogy',
