@@ -1394,6 +1394,8 @@ tbody tr:nth-child(odd) {
     padding: 20px;
     border-radius:10px;
     background: #fff;
+    margin-top: 3px;
+    border: 1px solid #999;
 }
 
 /*----------------------------------------------------------------*/
