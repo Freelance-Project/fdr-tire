@@ -57,3 +57,17 @@ function animCaption(type) {
         });
     }
 };
+$.fn.accordion_custom = function () {
+    $(".page").click(function (e) {
+        if (!$(this).is('.active')) {
+            $(".page,.content").removeClass('active');
+            $(".page").siblings('.content:visible').slideUp("slow");
+            $(this).addClass('active');
+            $(this).siblings('.content').slideDown("slow");
+            $(this).siblings('.content').addClass("active");
+        } else {
+            $(this).removeClass('active');
+            $(this).siblings('.content').slideUp("slow");
+        }
+    });
+}

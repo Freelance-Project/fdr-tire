@@ -56,7 +56,7 @@
             	<li><a href="news.php">News & Events</a></li>
             	<li><a href="#">Tirelogy</a></li>
             	<li><a href="#">Gallery</a></li>
-            	<li><a href="#">Career</a></li>
+            	<li><a href="career.php">Career</a></li>
             	<li><a href="#">Contact Us</a></li>
             </ul>
         </div><!--end.main-menu-->
