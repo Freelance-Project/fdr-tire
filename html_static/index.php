@@ -9,15 +9,84 @@
 	            <li><img src="images/content/slide1.jpg" /></li>
 	  			<li><img src="images/content/slide2.jpg" /></li>
 	        </ul>
-	        <a href="" class="findtire"></a>
+	        <a href="#" class="findtire"></a>
     	</div>
 	</section>
-
+	<section id="search-home" class="">
+		<div class="triangle-search"><img src="images/material/triangle-search.png" /></div>
+		<div class="not-edge">
+			<div class="search-section">
+				<div class="tab-search">
+					<div class="tab-menu">
+						<a href="#" class="skew-tab-menu  right-triangle active" data-tabId="motor-search">By Motorcycle</a><a href="#" class="skew-tab-menu left-triangle" data-tabId="tire-search">By Tire Size</a>
+					</div>
+					<div id="motor-search" class="content-tab">
+						<h3>What is your Motorcycle Size</h3>
+						<div class="select-item">
+							<div class="select-form">
+								<select>
+								  <option value="">Manufacture</option>
+								  <option value="1">Honda</option>
+								  <option value="2">Yamaha</option>
+								  <option value="3">Suzuki</option>
+								</select>
+							</div>
+							<div class="select-form">
+								<select>
+								  <option value="">Model</option>
+								  <option value="1">Bebek</option>
+								  <option value="2">Matic</option>
+								  <option value="3">Kopling</option>
+								</select>
+							</div>
+							<div class="select-form">
+								<select>
+								  <option value="">Tire Category</option>
+								  <option value="1">category 1</option>
+								  <option value="2">category 2</option>
+								  <option value="3">category 3</option>
+								</select>
+							</div>
+							<div class="select-form">
+								<select>
+								  <option value="">Tire Size</option>
+								  <option value="1">100 mm</option>
+								  <option value="2">200 mm</option>
+								  <option value="3">300 mm</option>
+								</select>
+							</div>
+						</div><!--end.select-item-->
+					</div><!--end.motor-search-->
+					<div id="tire-search" class="content-tab hide">
+						<h3>What is your Tire Size</h3>
+						<div class="select-item">
+							<div class="select-form">
+								<select>
+								  <option value="">Rim Diameter</option>
+								  <option value="1">100 mm</option>
+								  <option value="2">200 mm</option>
+								  <option value="3">300 mm</option>
+								</select>
+							</div>
+							<div class="select-form">
+								<select>
+								  <option value="">Tire Ratio</option>
+								  <option value="1">10 mm</option>
+								  <option value="2">20 mm</option>
+								  <option value="3">20 mm</option>
+								</select>
+							</div>
+						</div><!--end.select-item-->
+					</div><!--end.tire-search-->
+				</div><!--end.tab-search-->
+			</div>
+		</div>
+	</section>
 	<section id="product-home" class="edge-left">
 		<div class="edge-left-content">
 			<div class="product-section">
 				<div class="left-capt1">
-					<div class"caption1">
+					<div class="caption1">
 						<div class="title-cap">
 							<h3>Product</h3>
 							<h3 class="whiteFont">Line UP</h3>
@@ -125,6 +194,13 @@
 		 				<a href="#" class="viewAll">View All</a>
 		 			</div>
 		 		</div><!--end.left-event1-->
+		 		<div class="left-event-page1-reserve">
+					<div class="news-cap1">
+						<div class="title-cap">
+							<h3><span class="whiteFont">EVENT</span></h3>
+						</div>
+					</div>
+				</div>
 		 		<div class="slider-event">
 		 			<ul id="eventSlider" class="slider"> 
 			            <li  style="background-image: url(images/content/slide-event1.jpg)"></li>
