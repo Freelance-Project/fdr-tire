@@ -20,6 +20,7 @@ class TireArea
 		$inputs['slug'] = str_slug($data['name']);
 		$inputs['description'] = $data['description'];
 		$inputs['rating'] = $data['rating'];
+		$inputs['author_id'] = \Auth::user()->id;
 
 		if (!$model) {
 			$save = Tire::create($inputs);
