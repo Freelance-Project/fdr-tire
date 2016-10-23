@@ -44,7 +44,7 @@
 <![endif]--> 
 
 <!-- header -->
-<header id="mainheader">
+<header id="mainheader" class="fixedNav">
 	<div class="bottom">
     	<div class="line-fake"></div>
         <div class="logo">

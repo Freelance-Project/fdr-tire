@@ -26,3 +26,17 @@ $(document).ready(function () {
 		 $('#search-home').slideToggle();
 	});
 });
+$(window).scroll(function(){
+	//console.log($(window).scrollTop());
+
+	if($(window).scrollTop()>=10){
+
+		$('#mainheader').addClass('fixedNav');
+
+	}else{
+
+		$('#mainheader').removeClass('fixedNav');
+
+	}
+
+});
