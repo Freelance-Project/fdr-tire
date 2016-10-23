@@ -38,6 +38,76 @@
 	        <a href="" class="findtire"></a>
     	</div>
 	</section>
+	<section id="search-home" class="">
+		<div class="triangle-search"><img src="images/material/triangle-search.png" /></div>
+		<div class="not-edge">
+			<div class="search-section">
+				<div class="tab-search">
+					<div class="tab-menu">
+						<a href="#" class="skew-tab-menu  right-triangle active" data-tabId="motor-search">By Motorcycle</a><a href="#" class="skew-tab-menu left-triangle" data-tabId="tire-search">By Tire Size</a>
+					</div>
+					<div id="motor-search" class="content-tab">
+						<h3>What is your Motorcycle Size</h3>
+						<div class="select-item">
+							<div class="select-form">
+								<select>
+								  <option value="">Manufacture</option>
+								  <option value="1">Honda</option>
+								  <option value="2">Yamaha</option>
+								  <option value="3">Suzuki</option>
+								</select>
+							</div>
+							<div class="select-form">
+								<select>
+								  <option value="">Model</option>
+								  <option value="1">Bebek</option>
+								  <option value="2">Matic</option>
+								  <option value="3">Kopling</option>
+								</select>
+							</div>
+							<div class="select-form">
+								<select>
+								  <option value="">Tire Category</option>
+								  <option value="1">category 1</option>
+								  <option value="2">category 2</option>
+								  <option value="3">category 3</option>
+								</select>
+							</div>
+							<div class="select-form">
+								<select>
+								  <option value="">Tire Size</option>
+								  <option value="1">100 mm</option>
+								  <option value="2">200 mm</option>
+								  <option value="3">300 mm</option>
+								</select>
+							</div>
+						</div><!--end.select-item-->
+					</div><!--end.motor-search-->
+					<div id="tire-search" class="content-tab hide">
+						<h3>What is your Tire Size</h3>
+						<div class="select-item">
+							<div class="select-form">
+								<select>
+								  <option value="">Rim Diameter</option>
+								  <option value="1">100 mm</option>
+								  <option value="2">200 mm</option>
+								  <option value="3">300 mm</option>
+								</select>
+							</div>
+							<div class="select-form">
+								<select>
+								  <option value="">Tire Ratio</option>
+								  <option value="1">10 mm</option>
+								  <option value="2">20 mm</option>
+								  <option value="3">20 mm</option>
+								</select>
+							</div>
+						</div><!--end.select-item-->
+					</div><!--end.tire-search-->
+				</div><!--end.tab-search-->
+			</div>
+		</div>
+	</section>
 	<section id="carousel-ban" class="edge-left">
 		<div class="edge-left-content">
 			<div class="content-carousel">
