@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading"> 
                     DataTables Advanced Tables
                 </div>
                 <div class="panel-body">
@@ -22,51 +22,107 @@
                      {!! Form::model($model,['files' => true]) !!} 
 
                       <div class="form-group">
-                        <label>Title</label>
-                        {!! Form::text('title' , null ,['class' => 'form-control']) !!}
+                        <label>Name</label>
+                        {!! Form::text('name' , null ,['class' => 'form-control']) !!}
                       </div>
                       
-					  <div class="form-group">
-                        <label>Intro Text</label>
-                        {!! Form::textarea('brief' , null ,['class' => 'form-control','id'=>'brief']) !!}
+					            <div class="form-group">
+                        <label>Overview</label>
+                        {!! Form::textarea('overview' , null ,['class' => 'form-control','id'=>'brief']) !!}
                       </div>
 					  
                       <div class="form-group">
                         <label>Description</label>
                         {!! Form::textarea('description' , null ,['class' => 'form-control','id'=>'description']) !!}
                       </div>
-
-                      <div class="form-group">
-                        <label>File</label>
-                        <div>
-                          <a class="Wbutton" onclick = "return browseElfinder('image'  , 'image_tempel' , 'elfinder_browse1' , 'cancelBrowse')" >Browse</a>
-                          Suggestion Image Size (726,449)
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Rating</label>
+                            {!! Form::text('rating' , null ,['class' => 'form-control']) !!}
+                          </div>
                         </div>
-                        <input type = 'hidden' name = 'image' id = 'image' />
                         
                       </div>
-                      <div id="image_tempel" style = 'margin-top:30px;'>
-                        @if(!empty($model->image))
-                          <img src="{{ asset('contents/news/thumbnail').'/'.$model->image }}" width="200" height="200" />
-                        @endif
-                      </div>
-					  <div class="row">
-						<div class="col-md-6">
-							
-						  <div class="form-group">
-							<label>Date</label>
-							{!!  Form::text('date', $date , ['id' => 'datepicker', 'class'=>'form-control']) !!}
-						  </div>
-						</div>
-						
-						<div class="col-md-6">							
+                      <div class="form-group">
+                        <label>Motor Brand : </label><br>
+                        @foreach($motor as $val)
+                          <br>
+                          <label>{{$val->name}}</label>
+                          @foreach ($val->type as $value)
+                            <br>
+                            <?php
+                            $motorTypeCheck = false;
+                            if (isset($tireSelected)) {
+                              
+                              if (in_array($value->id, $tireSelected)) {
+                                $motorTypeCheck = true;
+                              }
+                            }
+                            ?>
+                            {!! Form::checkbox("motor_type[]", $value->id, $motorTypeCheck) !!} {{$value->name}}
+                            </br>
+                            
+                            @foreach($size as $s)
+                              <?php
+                              $sizeCheck = false;
+                              $tireCat = false;
+                              if (isset($model->motorTire)) {
+                                foreach ($model->motorTire as $data) {
+                                  if (($value->id == $data->motor_type_id) and ($s->id == $data->tire_size_id)) {
+                                    $sizeCheck = true;
+                                    $tireCat = $data->tire_category_id;
+                                  }
+                                }
+                              }
+                              ?>
+                              <span style="margin-left:5em">{!! Form::checkbox("size[$value->id][]" , $s->id, $sizeCheck) !!} {{$s->size}}</span>
+                              
+                              <span style="margin-left:5em">{!! Form::select("category[$value->id][$s->id]", $category, isset($tireCat) ? $tireCat : null) !!}</span>
+                              </br>
+                            @endforeach
+                            
+                            
+                          @endforeach
 
-						  <div class="form-group">
-							<label>Status</label>
-							{!! Form::select('status' , ['publish' => 'Published' , 'unpublish' => 'Unpublished'] , null ,['class' => 'form-control']) !!}
-						  </div>
-						</div>
-					  </div>
+                        @endforeach
+                        
+                      </div>
+                      <div class="form-group">
+                        <label>Tire Tipe : </label><br>
+                        @foreach($tire_type as $val)
+                          <?php
+                          $typeCheck = false;
+                          if (isset($model->motorTire)) {
+                            foreach ($model->motorTire as $motorTire) {
+                              if ($val->id == $motorTire->tire_type_id) {
+                                $typeCheck = true;
+                              }
+                            }
+                          }
+                          ?>
+                          {!! Form::checkbox('tire_type[]', $val->id, $typeCheck) !!} <label>{{$val->name}}</label> 
+                        @endforeach
+                        
+                      </div>
+
+                      <div class="row">
+          						<div class="col-md-6">
+          							
+          						  <div class="form-group">
+          							<label>Date</label>
+          							{!!  Form::text('date', $date , ['id' => 'datepicker', 'class'=>'form-control']) !!}
+          						  </div>
+          						</div>
+          						
+          						<div class="col-md-6">							
+
+          						  <div class="form-group">
+          							<label>Status</label>
+          							{!! Form::select('status' , ['publish' => 'Published' , 'unpublish' => 'Unpublished'] , null ,['class' => 'form-control']) !!}
+          						  </div>
+          						</div>
+          					  </div>
 
                       <button type="submit" class="btn btn-primary">{{ !empty($model->id) ? 'Update' : 'Save' }}</button>
                     
