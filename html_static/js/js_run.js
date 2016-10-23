@@ -29,7 +29,7 @@ $(document).ready(function () {
 $(window).scroll(function(){
 	//console.log($(window).scrollTop());
 
-	if($(window).scrollTop()>=10){
+	if($(window).scrollTop()>=20){
 
 		$('#mainheader').addClass('fixedNav');
 

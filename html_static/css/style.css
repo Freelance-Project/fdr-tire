@@ -143,6 +143,7 @@ section {
 
 header{
 	position:relative;
+	transition: all 0.3s ease-in-out 0s;
 }
 #mainheader.fixedNav{
 	position: fixed;
@@ -150,6 +151,7 @@ header{
 	top: 0;
 	z-index: 11;
 	width: 100%;
+	transition: all 0.3s ease-in-out 0s;
 }
 header .bottom {
     background-color: #383839;
@@ -980,7 +982,9 @@ a.viewAll {
 }
 
 #carousel-ban{
-	padding: 100px 0;
+	margin-top: -60px;
+	padding: 160px 0 100px 0;
+	z-index: 2;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+39,6b6969+100 */
 	background: #ffffff; /* Old browsers */
 	background: -moz-radial-gradient(center, ellipse cover, #ffffff 39%, #6b6969 100%); /* FF3.6-15 */
@@ -1338,9 +1342,15 @@ tbody tr:nth-child(odd) {
 	color: #231f20;
 }
 #career-news{
-    z-index: 1;
+	background: #fff;
+    z-index: 2;
     overflow: hidden;
     margin-top: -105px;
+    padding-top: 60px;
+    border-top:5px solid #fff;
+}
+#career-news .edge-left-content{
+	margin-top: -60px;
 }
 .career-news-section{
 	position: relative;
