@@ -26,29 +26,64 @@
                         {!! Form::text('name' , null ,['class' => 'form-control']) !!}
                       </div>
                       <div class="form-group">
-                      <label>Brand</label>
-                      {!! Form::select('motor_brand_id' , $brand , null ,['class' => 'form-control']) !!}
+                        <label>Brand</label>
+                        {!! Form::select('motor_brand_id' , $brand , isset($model->motor_brand_id) ? $model->motor_brand_id : null, ['class' => 'form-control']) !!}
                       </div>
-					   
-                      {{--
-          					  <div class="row">
-          						<div class="col-md-6">
-          							
-          						  <div class="form-group">
-          							<label>Date</label>
-          							{!!  Form::text('date', $date , ['id' => 'datepicker', 'class'=>'form-control']) !!}
-          						  </div>
-          						</div>
-          						
-          						<div class="col-md-6">							
+                      
+                      <div class="form-group">
+                        <label>Tire : </label><br>
+                        @foreach($tire as $val)
+                          <?php 
+                          $check = false;
+                          if (isset($tireSelected)) {
+                            if (in_array($val->id, $tireSelected)) {
+                              $check = true;
+                            }
+                          }
+                          
+                          ?>
+                          <label>{{$val->name}}</label> {!! Form::checkbox('tire[]', $val->id, $check) !!}
+                            <br>
+                            @foreach($size as $s)
+                              <?php
+                              $sizeCheck = false;
+                              $category = false;
+                              foreach ($model->motorTire as $motorTire) {
+                                if (($motorTire->tire_id == $val->id) and ($motorTire->tire_size_id == $s->id)) {
+                                  $sizeCheck = true;
+                                  $category = $motorTire->tire_category_id;
+                                }
 
-          						  <div class="form-group">
-          							<label>Status</label>
-          							{!! Form::select('status' , ['publish' => 'Published' , 'unpublish' => 'Unpublished'] , null ,['class' => 'form-control']) !!}
-          						  </div>
-          						</div>
-          					  </div>
-                      --}} 
+                              }
+                              ?>
+                              {!! Form::checkbox("size[$val->id][]", $s->id, $sizeCheck) !!}{{$s->size}}
+                              {!! Form::select("tire_category[$val->id][$s->id]", $tire_category, isset($category) ? $category : null) !!}
+                            </br>
+                            @endforeach
+                            
+                          </br>
+                        @endforeach
+                        
+                      </div>
+                      
+                      <div class="row">
+                      <div class="col-md-6">
+                        
+                        <div class="form-group">
+                        <label>Date</label>
+                        {!!  Form::text('date', $date , ['id' => 'datepicker', 'class'=>'form-control']) !!}
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-6">              
+
+                        <div class="form-group">
+                        <label>Status</label>
+                        {!! Form::select('status' , ['publish' => 'Published' , 'unpublish' => 'Unpublished'] , null ,['class' => 'form-control']) !!}
+                        </div>
+                      </div>
+                      </div>
+
                       <button type="submit" class="btn btn-primary">{{ !empty($model->id) ? 'Update' : 'Save' }}</button>
                     
                     {!! Form::close() !!}
@@ -67,4 +102,4 @@
       filebrowserBrowseUrl: '{{ urlBackend("image/lib")}}'});
   }
 </script>
-@endsection
+@endsection 

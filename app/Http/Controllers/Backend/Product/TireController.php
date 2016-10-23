@@ -7,33 +7,36 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Helper;
-use App\Models\NewsContent;
+use App\Models\Tire;
+use App\Models\TireSize;
+use App\Models\MotorBrand;
+use App\Models\TireCategory;
+use App\Models\TireTipe;
+use App\Repositories\TireArea;
 use Datatables;
 use Table;
 // use App\Models\Comment;
 
 class TireController extends Controller
 {
-	public function __construct()
+	public function __construct(TireArea $tire)
 	{
-		$this->model = new NewsContent;
+		$this->model = new Tire;
 		$this->category = 1;
+		$this->tire = $tire;
 	}
 
 
 	public function getIndex()
 	{
-		return view('backend.news.event.index');
+		return view('backend.product.tire.index');
 		
 	}
 
 	public function getData()
 	{
-		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('event');
+		$model = $this->model->select('id' , 'name' , 'category');
 		return Table::of($model)
-			->addColumn('image',function($model){
-				return '<img src = "'.asset('contents/news/small/'.$model->image).'"/>';
-			})
 			->addColumn('action' , function($model){
 			return \Helper::buttons($model->id);
 		})->make(true);
@@ -43,8 +46,15 @@ class TireController extends Controller
 	{
 		$model = $this->model;
 		$date = '';
-
-		return view('backend.news.event.form', ['model' => $model,'date' => $date]);
+		
+		return view('backend.product.tire.form', [
+			'model' => $model,
+			'date' => $date,
+			'size' => TireSize::get(),
+			'motor' => MotorBrand::get(),
+			'category' => TireCategory::lists('name','id'),
+			'tire_type' => TireTipe::get(),
+		]);
 	}
 
 
@@ -52,33 +62,39 @@ class TireController extends Controller
 	{
 		$inputs = $request->all();
 		
-		$values = [
-			'author_id' => \Auth::user()->id,
-			'title' => $request->title,
-			'brief' => $request->brief,
-			'description' => $request->description,
-			'created_at' => \Helper::dateToDb($request->date),
-			'slug' => str_slug($request->title),
-			'status' => $request->status,
-			'category' => 'event',
-		];
-		
-		$save = $this->model->create($values);
-		
-		$image = str_replace("%20", " ", $request->image);
+		// dd($inputs);
+		// insert ke tire
+		$saveTire = $this->tire->saveTire($inputs);
+		// $saveTire = 1;
+		if ($saveTire) {
 
-        if(!empty($image))
-        {
+			// insert select motor_tipe
+			foreach ($inputs['motor_type'] as $motor) {
 
-            $imageName = "event-".$save->id;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'news');
+				foreach ($inputs['size'][$motor] as $size) {
+
+					$tireCategory = $inputs['category'][$motor][$size];
+
+					$saveMotorCat = $this->tire->motorTireCat($motor, $tireCategory);
+					
+					foreach($inputs['tire_type'] as $type) {
+						
+						$motorTire['tire_id'] = $saveTire;
+						$motorTire['motor_type_id'] = $motor;
+						$motorTire['tire_category_id'] = $tireCategory;
+						$motorTire['tire_size_id'] = $size;
+						$motorTire['tire_type_id'] = $type;
+						
+						$saveMotorTire = $this->tire->motorTire($motorTire);
+					}
+					
+				}
+				
+			}
 			
-			$this->model->whereId($save->id)->update([
-            		'image' => $uploadImage['filename']          		
-            ]);
-        }		
 			
-		// dd($save);
+		}
+		
         return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
 	}
 
@@ -88,41 +104,73 @@ class TireController extends Controller
 		
 		$date = \Helper::dbToDate($model->created_at);
 		
-		return view('backend.news.event.form' , [
+		foreach ($model->motorTire as $value) {
+			$tireid[$value->motor_type_id] = $value->motor_type_id;
+		}
 
+		return view('backend.product.tire.form', [
 			'model' => $model,
 			'date' => $date,
+			'size' => TireSize::get(),
+			'motor' => MotorBrand::get(),
+			'category' => TireCategory::lists('name','id'),
+			'tire_type' => TireTipe::get(),
+			'tireSelected' => $tireid,
 		]);
 	}
 
 
 	public function postUpdate(Request $request , $id)
 	{
+		
+		$model = $this->model->find($id);		
+		$inputs = $request->all();
+		
+		$motorTireId = [];
+		foreach ($model->motorTire as $value) {
+			$motorTireId[] = $value->id;
+		}
+		
+		$saveTire = $this->tire->saveTire($inputs, $model);
+		
+		if ($model->id) {
+
+			foreach ($inputs['motor_type'] as $motor) {
+
+				foreach ($inputs['size'][$motor] as $size) {
+
+					$tireCategory = $inputs['category'][$motor][$size];
+
+					$saveMotorCat = $this->tire->motorTireCat($motor, $tireCategory);
 					
-		$values = [
-			'title' => $request->title,
-			'brief' => $request->brief,
-			'description' => $request->description,
-			'created_at' => \Helper::dateToDb($request->date),
-			'slug' => str_slug($request->title),
-			'status' => $request->status
-		];
-
-		$update = $this->model->whereId($id)->update($values);
-		
-		
-		$image = str_replace("%20", " ", $request->image);
-
-        if(!empty($image))
-        {
-
-            $imageName = "event-".$id;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'news');
+					foreach($inputs['tire_type'] as $type) {
+						
+						$motorTire['tire_id'] = $model->id;
+						$motorTire['motor_type_id'] = $motor;
+						$motorTire['tire_category_id'] = $tireCategory;
+						$motorTire['tire_size_id'] = $size;
+						$motorTire['tire_type_id'] = $type;
+						
+						$saveMotorTire = $this->tire->motorTire($motorTire);
+						// dd($motorTire);
+						$existId[] = $this->tire->isExistMotorTire($model->id, $motor, $tireCategory, $size, $type);
+					}
+					
+				}
+				
+			}
 			
-			$this->model->whereId($id)->update([
-            		'image' => $uploadImage['filename']
-            ]);
-        }
+		}
+
+		$outer = array_diff($motorTireId, $existId);
+		
+		
+		if ($outer) {
+			foreach ($outer as $value) {
+				$dropMotorTire = $this->tire->dropMotorTireById($value);
+			}
+		}
+		
 		return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
 	}
 

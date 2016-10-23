@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\MotorTire;
 use Illuminate\Database\Eloquent\Model;
 
 class Tire extends Model
@@ -11,9 +12,9 @@ class Tire extends Model
     public $guarded = [];
 
 
-    public function childs()
+    public function motorTire()
     {
-        return $this->hasMany(Tire::class,'parent_id','id');
+        return $this->hasMany(MotorTire::class);
     }
 
     public function user()
