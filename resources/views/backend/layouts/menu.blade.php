@@ -24,7 +24,7 @@
        <div id="left" >
             <div class="media user-media well-small">
                 <a class="user-link" href="#">
-                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="{{ asset(null) }}backend/assets/img/user.gif" />
+                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="{{ asset(null) }}backend/assets/img/user.png" width="90%"/>
                 </a>
                 <br />
                 <div class="media-body">
