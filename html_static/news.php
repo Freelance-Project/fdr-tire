@@ -11,7 +11,7 @@
 						<div class="news-page-caption">
 							<h1>Lorem ipsum<br><span class="whiteFont">dolor sit amet</span></h1>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dictum urna, quis feugiat tellus. Aenean </p>
-							<a href="#" class="learnMoreGrey">More Details</a>
+							<a href="news-list.php" class="learnMoreGrey">More Details</a>
 						</div><!--news-page-caption-->
 					</div><!--end.caption1-->
 				</div><!--end.left-capt1-->
@@ -25,7 +25,7 @@
 					<div class="news-cap1">
 						<div class="title-cap">
 							<h3><span class="whiteFont">News</span></h3>
-							<a href="#" class="buttonskew"><div class="reserve-skew">View All</div></a>
+							<a href="news-list.php" class="buttonskew"><div class="reserve-skew">View All</div></a>
 						</div>
 					</div>
 				</div><!--end.left-news1-->
@@ -81,7 +81,7 @@
 					<div class="news-cap1">
 						<div class="title-cap red-cap">
 							<h3><span class="whiteFont">TIPS</span></h3>
-							<a href="#" class="buttonskew-red"><div class="reserve-skew">View All</div></a>
+							<a href="news-list.php" class="buttonskew-red"><div class="reserve-skew">View All</div></a>
 						</div>
 					</div>
 				</div><!--end.left-news1-->
@@ -94,7 +94,7 @@
 							<div class="details-news">
 								<h4 class="detail-title">Lorem ipsum<br><span class="whiteFont">dolor sit amet</span></h4>
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dictum urna, quis feugiat tellus.</p>
-								<a href="#" class="learnMore">More Details</a>
+								<a href="" class="learnMore">More Details</a>
 							</div><!--end.details-news-->
 						</div><!--.edge-reserve-news-list-->
 					</div><!--.news-items-list-->
@@ -136,7 +136,7 @@
 						<div class="title-cap">
 							<h3><span class="whiteFont">Media</span></h3>
 							<h3 class="whiteFont">Highlights</h3>
-							<a href="#" class="buttonskew"><div class="reserve-skew">View All</div></a>
+							<a href="news-list.php" class="buttonskew"><div class="reserve-skew">View All</div></a>
 						</div>
 					</div>
 				</div><!--end.left-news1-->
@@ -193,7 +193,7 @@
 						<div class="title-cap red-cap">
 							<h3 style="margin-bottom:0;"><span class="whiteFont">FDR</span></h3>
 							<h3 class="whiteFont">NEWS</h3>
-							<a href="#" class="buttonskew-red"><div class="reserve-skew">View All</div></a>
+							<a href="news-list.php" class="buttonskew-red"><div class="reserve-skew">View All</div></a>
 						</div>
 					</div>
 				</div><!--end.left-news1-->
