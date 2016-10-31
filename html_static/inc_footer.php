@@ -72,7 +72,7 @@
                     <ul>
                       <li><a href="#">Career</a></li>
                       <li><a href="#">Contact Us</a></li>
-                      <li><a href="#">About Us</a></li>
+                      <li><a href="aboutus.php">About Us</a></li>
                     </ul>
                 </div><!--end.col5-->
             </div><!--end.row-menu-->

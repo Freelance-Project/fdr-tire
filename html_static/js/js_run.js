@@ -11,6 +11,7 @@ $(document).ready(function () {
 	  auto: true
 	});
    newsSlider();
+   galleryDetail();
 
    $('.skew-tab-menu').click(function(event){
 		 event.preventDefault()

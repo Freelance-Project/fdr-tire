@@ -44,7 +44,7 @@
 <![endif]--> 
 
 <!-- header -->
-<header id="mainheader" class="fixedNav">
+<header id="mainheader">
 	<div class="bottom">
     	<div class="line-fake"></div>
         <div class="logo">
@@ -54,10 +54,10 @@
         	<ul>
             	<li><a href="product.php">Products</a></li>
             	<li><a href="news.php">News & Events</a></li>
-            	<li><a href="#">Tirelogy</a></li>
-            	<li><a href="#">Gallery</a></li>
+            	<li><a href="tirelogy.php">Tirelogy</a></li>
+            	<li><a href="gallery-photo.php">Gallery</a></li>
             	<li><a href="career.php">Career</a></li>
-            	<li><a href="#">Contact Us</a></li>
+            	<li><a href="contact.php">Contact Us</a></li>
             </ul>
         </div><!--end.main-menu-->
         <div class="sub-menu">

@@ -71,3 +71,30 @@ $.fn.accordion_custom = function () {
         }
     });
 }
+function galleryDetail() {
+    var b = $(".slidegal").bxSlider({
+        mode: "horizontal",
+        captions: true,
+        auto: false,
+        controls: false,
+        pager: true,
+        pagerCustom: ".pager-album",
+        speed: 1100,
+        infiniteLoop: false
+    });
+    var a = $(".pager-album").bxSlider({
+        minSlides: 1,
+        maxSlides: 6,
+        slideWidth: 150,
+        slideMargin: 10,
+        moveSlides: 1,
+        auto: false,
+        pager: false,
+        infiniteLoop: false
+    });
+    $(".pager-album li").on("click", "a", function(c) {
+        c.preventDefault();
+        b.stopAuto();
+        b.goToSlide($(this).attr("data-slideIndex"))
+    })
+}

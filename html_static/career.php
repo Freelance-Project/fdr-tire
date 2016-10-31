@@ -20,7 +20,7 @@
 
 						Mari bergabung bersama kami! 
 						</p>
-						<a href="#" class="learnMore">Lihat Lowongan</a>
+						<a href="career-event.php" class="learnMore">Lihat Lowongan</a>
 					</div>
 				</div>
 			</div><!--end.product-section-->
