@@ -55,7 +55,7 @@
             	<li><a href="product.php">Products</a></li>
             	<li><a href="news.php">News & Events</a></li>
             	<li><a href="tirelogy.php">Tirelogy</a></li>
-            	<li><a href="gallery-photo.php">Gallery</a></li>
+            	<li><a href="gallery.php">Gallery</a></li>
             	<li><a href="career.php">Career</a></li>
             	<li><a href="contact.php">Contact Us</a></li>
             </ul>
