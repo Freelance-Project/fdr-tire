@@ -1,4 +1,25 @@
 <!--Footer -->
+  
+  <section id="top-footer" class="">
+    <div class="left-top-footer">
+      <div class="maskot"></div>
+      <h1>FOLLOW<br><span class="redFont">& Like US</span></h1>
+    </div>
+    <div class="right-top-footer">
+      <div class="socmed">
+        <label>Join Our Community</label>
+          <ul>
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+          </ul>
+      </div><!--end.socmed-->
+      <div class="subscribe">
+        <input type="text" placeholder="email address" />
+      </div>
+    </div>
+  </section>
 <footer class="footer">
   <div class="top-foot">
         <div class="foot-menu">
@@ -51,7 +72,7 @@
                     <ul>
                       <li><a href="#">Career</a></li>
                       <li><a href="#">Contact Us</a></li>
-                      <li><a href="#">About Us</a></li>
+                      <li><a href="aboutus.php">About Us</a></li>
                     </ul>
                 </div><!--end.col5-->
             </div><!--end.row-menu-->

@@ -51,11 +51,11 @@
         </div>
         <div class="main-menu">
           <ul>
-              <li><a href="#">Products</a></li>
-              <li><a href="#">News & Events</a></li>
+              <li><a href="{{url('/product')}}">Products</a></li>
+              <li><a href="{{url('/news')}}">News & Events</a></li>
               <li><a href="#">Tirelogy</a></li>
-              <li><a href="#">Gallery</a></li>
-              <li><a href="#">Career</a></li>
+              <li><a href="{{url('/gallery')}}">Gallery</a></li>
+              <li><a href="{{url('/career')}}">Career</a></li>
               <li><a href="#">Contact Us</a></li>
             </ul>
         </div><!--end.main-menu-->
