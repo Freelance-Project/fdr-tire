@@ -16,6 +16,12 @@ Route::controller('profile','ProfileController');
 Route::controller('request','RequestController');
 Route::controller('search','SearchController');
 
+Route::controller('product','ProductController');
+Route::controller('news','NewsController');
+Route::controller('about-us','AboutController');
+Route::controller('gallery','GalleryController');
+Route::controller('career','CareerController');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
