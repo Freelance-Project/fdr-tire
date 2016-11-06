@@ -98,3 +98,27 @@ function galleryDetail() {
         b.goToSlide($(this).attr("data-slideIndex"))
     })
 }
+
+function productHome(){    
+    $('.capSub').click(function(e){
+         e.preventDefault()
+        var recentId = $(this).attr('data-kanalId');
+        var imageUrl = $(this).attr('data-imageUrl');
+        console.log(recentId);
+        $('#productBgnya').css('background-image', 'url(' + imageUrl + ')');
+        $('.left-capProduct').addClass('hide');
+        $('#'+recentId).removeClass('hide');
+
+    });
+}
+
+function productDetail(){    
+    $('.tableClick').click(function(e){
+         e.preventDefault()
+        var recenttableId = $(this).attr('data-tableID');
+        console.log(recenttableId);
+        $('.table-data').addClass('hide');
+        $('#'+recenttableId).removeClass('hide');
+
+    });
+}

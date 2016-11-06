@@ -20,11 +20,10 @@
 
 						Mari bergabung bersama kami! 
 						</p>
-						<a href="career-event.php" class="learnMore">Lihat Lowongan</a>
+						<a href="career-event.php" class="learnMore">Daftar</a>
 					</div>
 				</div>
 			</div><!--end.product-section-->
-	        <a href="" class="findtire"></a>
     	</div>
 	</section>
 	<section id="search-home" class="">

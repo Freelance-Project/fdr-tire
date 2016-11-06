@@ -12,6 +12,8 @@ $(document).ready(function () {
 	});
    newsSlider();
    galleryDetail();
+   productHome();
+   productDetail();
 
    $('.skew-tab-menu').click(function(event){
 		 event.preventDefault()

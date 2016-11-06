@@ -3,7 +3,7 @@
 <!-- middle -->
 <div id="middle-content">
 
-	<section id="news-page" class="edge-left" style="margin-bottom:200px;">
+	<section id="news-page" class="edge-left fix-height">
 		<div class="edge-left-content">
 			<div class="photo-page-section">
 				<div class="left-capt1">

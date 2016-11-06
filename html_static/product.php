@@ -5,38 +5,60 @@
 
 	<section id="product-page" class="edge-left">
 		<div class="edge-left-content">
-			<div class="product-section">
+			<div id="productBgnya" class="product-section" style="background: url(images/content/bg-product.jpg) no-repeat;">
 				<div class="left-capt1">
-					<div class"caption1">
+					<div class="caption1">
 						<div class="title-cap">
 							<h3>Product</h3>
 							<h3 class="whiteFont">Line UP</h3>
 						</div>
 						<div class="sub-cap">
 							<div class="side-triangle">
-								<p>On Road</p>
+								<a href="#" class="capSub" data-kanalId="onRoad" data-imageUrl="images/content/bg-product.jpg">On Road</a>
 							</div><br>
 							<div class="side-triangle white-triangle">
-								<p>On/Off Road</p>
+								<a href="#" class="capSub" data-kanalId="onOffRoad" data-imageUrl="images/content/bg-product2.jpg">On/Off Road</a>
 							</div>
 							<div class="side-triangle">
-								<p>Racing</p>
+								<a href="#" class="capSub" data-kanalId="racing" data-imageUrl="images/content/bg-product.jpg">Racing</a>
 							</div><br>
 							<div class="side-triangle">
-								<p>Tube</p>
+								<a href="#" class="capSub" data-kanalId="tube" data-imageUrl="images/content/bg-product2.jpg">Tube</a>
 							</div>
 						</div><!--end.sub-cap-->
 					</div><!--end.caption1-->
-				</div><!--end.left-caption--><div class="left-capt2">
+				</div><!--end.left-caption-->
+				<div class="left-capt2 left-capProduct" id="onRoad">
+					<div class="caption-small">
+						<h4>On Road</h4>
+						<p>The perfect tire for asphalt, concrete, soil and gravel surfaces</p>
+						<a href="#" class="learnMore">Learn More</a>
+					</div><!--end.caption-small-->
+				</div><!--end.left-caption-->
+				<div class="left-capt2 left-capProduct hide" id="onOffRoad">
 					<div class="caption-small">
 						<h4>On/off road</h4>
 						<p>The perfect tire for asphalt, concrete, soil and gravel surfaces</p>
 						<a href="#" class="learnMore">Learn More</a>
 					</div><!--end.caption-small-->
 				</div><!--end.left-caption-->
+				<div class="left-capt2 left-capProduct hide" id="racing">
+					<div class="caption-small">
+						<h4>Racing</h4>
+						<p>The perfect tire for asphalt, concrete, soil and gravel surfaces</p>
+						<a href="#" class="learnMore">Learn More</a>
+					</div><!--end.caption-small-->
+				</div><!--end.left-caption-->
+				<div class="left-capt2 left-capProduct hide" id="tube">
+					<div class="caption-small">
+						<h4>Tube</h4>
+						<p>The perfect tire for asphalt, concrete, soil and gravel surfaces</p>
+						<a href="#" class="learnMore">Learn More</a>
+					</div><!--end.caption-small-->
+				</div><!--end.left-caption-->
 			</div><!--end.product-section-->
-	        <a href="" class="findtire"></a>
-    	</div>
+		</div>
+		<a href="#" class="findtire"></a>
 	</section>
 	<section id="search-home" class="">
 		<div class="triangle-search"><img src="images/material/triangle-search.png" /></div>

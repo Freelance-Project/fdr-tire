@@ -1,4 +1,4 @@
-<?php $page = ""; ?>
+	<?php $page = ""; ?>
 <?php include('inc_header.php');?>
 <!-- middle -->
 <div id="middle-content">
@@ -85,7 +85,7 @@
 						</div>
 					</div>
 				</div><!--end.left-news1-->
-				<div class="news-jer">
+				<div id="tips-news" class="news-jer">
 					<div class="news-items-list edge-news-list">
 						<div class="edge-reserve-news-list">
 							<div class="image-news">

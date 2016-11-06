@@ -40,11 +40,11 @@
 						<h3>PERFORMANCE RATING :</h3>
 						<div class="rowperform">
 							<a href="icons"><img src="images/material/perform1.png"></a>
+							<a href="icons"><img src="images/material/perform5.png"></a>
 							<a href="icons"><img src="images/material/perform2.png"></a>
+							<a href="icons"><img src="images/material/perform6.png"></a>
 							<a href="icons"><img src="images/material/perform3.png"></a>
 							<a href="icons"><img src="images/material/perform4.png"></a>
-							<a href="icons"><img src="images/material/perform5.png"></a>
-							<a href="icons"><img src="images/material/perform6.png"></a>
 						</div>
 						<div class="rowperform">
 							<a href="icons"><img src="images/material/time1.png"></a>
@@ -57,117 +57,431 @@
 						<p class="terms">Penilaian diperoleh dari tes-tes yang dilakukan oleh Departmen Kualitas PT. SRI<br>
    						<span class="greys">Ratings are based on tests conducted by PT. SRI Quality Department</span></p>
    						<div class="rowbutton">
-   							<a href="#" class="buttonskew"><div class="reserve-skew">Size & Rim</div></a>
-   							<a href="#" class="buttonskew"><div class="reserve-skew">Tirelogy</div></a>
-   							<a href="#" class="buttonskew"><div class="reserve-skew">Road</div></a>
-   							<a href="#" class="buttonskew"><div class="reserve-skew">Overview</div></a>
+   							<a href="#" class="buttonskew tableClick" data-tableID="size"><div class="reserve-skew">Size & Rim</div></a>
+   							<a href="#" class="buttonskew tableClick" data-tableID="tirelogy"><div class="reserve-skew">Tirelogy</div></a>
+   							<a href="#" class="buttonskew tableClick" data-tableID="road"><div class="reserve-skew">Road</div></a>
+   							<a href="#" class="buttonskew tableClick" data-tableID="overview"><div class="reserve-skew">Overview</div></a>
    						</div>
 					</div><!--end.bottomdesc-->
 				</div><!--end.main-desc-->
 			</div><!--product-inner-->
 		</section>
 		<section id="table-section" class="section-row">
-			<div class="inner-wrapper">
-				<div class="title-edge">
-					<h3>Size & RIM</h3>
-				</div>
-				<div class="table-detail">
-					<table>
-						<thead>
-							<tr>
-								<th><div class="skew-th"><div class="reserve-skew-th">Size</div></div></th>
-								<th><div class="skew-th"><div class="reserve-skew-th">Type</div></div></th>
-								<th><div class="skew-th"><div class="reserve-skew-th">Load Index</div></div></th>
-								<th><div class="skew-th"><div class="reserve-skew-th">Max Load (kg)</div></div></th>
-								<th><div class="skew-th"><div class="reserve-skew-th">Speed Symbol</div></div></th>
-								<th><div class="skew-th"><div class="reserve-skew-th">Max Speed (km/jam) </div></div></th>
-								<th><div class="skew-th"><div class="reserve-skew-th">Rim Width (inch)*</div></div></th>
-								<th><div class="skew-th"><div class="reserve-skew-th"> Overall Width (mm)  </div></div></th>
-								<th><div class="skew-th"><div class="reserve-skew-th">Overall Diameter (mm)</div></div></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>70/90-14</td>
-								<td>TT</td>
-								<td>34</td>
-								<td>118</td>
-								<td>P</td>
-								<td>150</td>
-								<td>1,40 ; 1,60 ; 1,85</td>
-								<td>69</td>
-								<td>484</td>
-							</tr>
-							<tr>
-								<td>70/90-14</td>
-								<td>TT</td>
-								<td>34</td>
-								<td>118</td>
-								<td>P</td>
-								<td>150</td>
-								<td>1,40 ; 1,60 ; 1,85</td>
-								<td>69</td>
-								<td>484</td>
-							</tr>
-							<tr>
-								<td>70/90-14</td>
-								<td>TT</td>
-								<td>34</td>
-								<td>118</td>
-								<td>P</td>
-								<td>150</td>
-								<td>1,40 ; 1,60 ; 1,85</td>
-								<td>69</td>
-								<td>484</td>
-							</tr>
-							<tr>
-								<td>70/90-14</td>
-								<td>TT</td>
-								<td>34</td>
-								<td>118</td>
-								<td>P</td>
-								<td>150</td>
-								<td>1,40 ; 1,60 ; 1,85</td>
-								<td>69</td>
-								<td>484</td>
-							</tr>
-							<tr>
-								<td>70/90-14</td>
-								<td>TT</td>
-								<td>34</td>
-								<td>118</td>
-								<td>P</td>
-								<td>150</td>
-								<td>1,40 ; 1,60 ; 1,85</td>
-								<td>69</td>
-								<td>484</td>
-							</tr>
-							<tr>
-								<td>70/90-14</td>
-								<td>TT</td>
-								<td>34</td>
-								<td>118</td>
-								<td>P</td>
-								<td>150</td>
-								<td>1,40 ; 1,60 ; 1,85</td>
-								<td>69</td>
-								<td>484</td>
-							</tr>
-							<tr>
-								<td>70/90-14</td>
-								<td>TT</td>
-								<td>34</td>
-								<td>118</td>
-								<td>P</td>
-								<td>150</td>
-								<td>1,40 ; 1,60 ; 1,85</td>
-								<td>69</td>
-								<td>484</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div><!--end.inner-wrapper-->
+			<div class="table-data" id="size">
+				<div class="inner-wrapper">
+					<div class="title-edge">
+						<h3>Size & RIM</h3>
+					</div>
+					<div class="table-detail">
+						<table>
+							<thead>
+								<tr>
+									<th><div class="skew-th"><div class="reserve-skew-th">Size</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Type</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Load Index</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Max Load (kg)</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Speed Symbol</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Max Speed (km/jam) </div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Rim Width (inch)*</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th"> Overall Width (mm)  </div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Overall Diameter (mm)</div></div></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div><!--end.inner-wrapper-->
+			</div><!--end.table-data-->
+
+			<div class="table-data hide" id="tirelogy">
+				<div class="inner-wrapper">
+					<div class="title-edge">
+						<h3>Tirelogy</h3>
+					</div>
+					<div class="table-detail">
+						<table>
+							<thead>
+								<tr>
+									<th><div class="skew-th"><div class="reserve-skew-th">Size</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Type</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Load Index</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Max Load (kg)</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Speed Symbol</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Max Speed (km/jam) </div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Rim Width (inch)*</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th"> Overall Width (mm)  </div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Overall Diameter (mm)</div></div></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div><!--end.inner-wrapper-->
+			</div><!--end.table-data-->
+
+			<div class="table-data hide" id="road">
+				<div class="inner-wrapper">
+					<div class="title-edge">
+						<h3>Road</h3>
+					</div>
+					<div class="table-detail">
+						<table>
+							<thead>
+								<tr>
+									<th><div class="skew-th"><div class="reserve-skew-th">Size</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Type</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Load Index</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Max Load (kg)</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Speed Symbol</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Max Speed (km/jam) </div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Rim Width (inch)*</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th"> Overall Width (mm)  </div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Overall Diameter (mm)</div></div></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div><!--end.inner-wrapper-->
+			</div><!--end.table-data-->
+
+			<div class="table-data hide" id="overview">
+				<div class="inner-wrapper">
+					<div class="title-edge">
+						<h3>Overview</h3>
+					</div>
+					<div class="table-detail">
+						<table>
+							<thead>
+								<tr>
+									<th><div class="skew-th"><div class="reserve-skew-th">Size</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Type</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Load Index</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Max Load (kg)</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Speed Symbol</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Max Speed (km/jam) </div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Rim Width (inch)*</div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th"> Overall Width (mm)  </div></div></th>
+									<th><div class="skew-th"><div class="reserve-skew-th">Overall Diameter (mm)</div></div></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+								<tr>
+									<td>70/90-14</td>
+									<td>TT</td>
+									<td>34</td>
+									<td>118</td>
+									<td>P</td>
+									<td>150</td>
+									<td>1,40 ; 1,60 ; 1,85</td>
+									<td>69</td>
+									<td>484</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div><!--end.inner-wrapper-->
+			</div><!--end.table-data-->
 		</section>
 		<section id="tirelogy-section" class="section-row">
 			<div class="inner-wrapper">

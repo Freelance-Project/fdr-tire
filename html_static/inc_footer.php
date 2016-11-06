@@ -80,7 +80,18 @@
         <div class="sponsor">
             <div class="spon-list">
                 <label>Partners:</label>
-                <img src="images/material/sponsor.png">
+                <div class="sponsorList">
+                  <img src="images/content/sponsor1.png">
+                </div>
+                <div class="sponsorList">
+                  <img src="images/content/sponsor2.png">
+                </div>
+                <div class="sponsorList">
+                  <img src="images/content/sponsor3.png">
+                </div>
+                <div class="sponsorList">
+                  <img src="images/content/sponsor4.png">
+                </div>
             </div>
         </div>
     </div><!--end.top-foot-->
