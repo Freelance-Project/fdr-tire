@@ -19,7 +19,7 @@ class GalleryController extends Controller
     public function getIndex()
     {
 		
-		return view('frontend.gallery.index');
+		// return view('frontend.gallery.index');
     }
 
     public function getPhoto($slug=false){
