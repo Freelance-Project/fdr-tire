@@ -43,18 +43,18 @@
                         </ul>
                         <div class="custom-pager">
                             <ul class="pager-album">
-                              <li><a data-slideIndex="0" href=""><img src="{{ asset(null) }}frontend/images/content/photo-detail1.jpg" /></a></li>
-                              <li><a data-slideIndex="1" href=""><img src="{{ asset(null) }}frontend/images/content/photo-detail2.jpg" /></a></li>
-                              <li><a data-slideIndex="2" href=""><img src="{{ asset(null) }}frontend/images/content/photo-detail1.jpg" /></a></li>
-                              <li><a data-slideIndex="3" href=""><img src="{{ asset(null) }}frontend/images/content/photo-detail2.jpg" /></a></li>
-                              <li><a data-slideIndex="4" href=""><img src="{{ asset(null) }}frontend/images/content/photo-detail1.jpg" /></a></li>
-                              <li><a data-slideIndex="5" href=""><img src="{{ asset(null) }}frontend/images/content/photo-detail2.jpg" /></a></li>
-                              <li><a data-slideIndex="6" href=""><img src="{{ asset(null) }}frontend/images/content/photo-detail1.jpg" /></a></li>
-                              <li><a data-slideIndex="7" href=""><img src="{{ asset(null) }}frontend/images/content/photo-detail2.jpg" /></a></li>
-                              <li><a data-slideIndex="8" href=""><img src="{{ asset(null) }}frontend/images/content/photo-detail1.jpg" /></a></li>
-                              <li><a data-slideIndex="9" href=""><img src="{{ asset(null) }}frontend/images/content/photo-detail2.jpg" /></a></li>
-                              <li><a data-slideIndex="10" href=""><img src="{{ asset(null) }}frontend/mages/content/photo-detail1.jpg" /></a></li>
-                              <li><a data-slideIndex="11" href=""><img src="{{ asset(null) }}frontend/images/content/photo-detail2.jpg" /></a></li>
+                              <li><a data-slideIndex="0" href=""><img src="images/content/photo-detail1.jpg" /></a></li>
+                              <li><a data-slideIndex="1" href=""><img src="images/content/photo-detail2.jpg" /></a></li>
+                              <li><a data-slideIndex="2" href=""><img src="images/content/photo-detail1.jpg" /></a></li>
+                              <li><a data-slideIndex="3" href=""><img src="images/content/photo-detail2.jpg" /></a></li>
+                              <li><a data-slideIndex="4" href=""><img src="images/content/photo-detail1.jpg" /></a></li>
+                              <li><a data-slideIndex="5" href=""><img src="images/content/photo-detail2.jpg" /></a></li>
+                              <li><a data-slideIndex="6" href=""><img src="images/content/photo-detail1.jpg" /></a></li>
+                              <li><a data-slideIndex="7" href=""><img src="images/content/photo-detail2.jpg" /></a></li>
+                              <li><a data-slideIndex="8" href=""><img src="images/content/photo-detail1.jpg" /></a></li>
+                              <li><a data-slideIndex="9" href=""><img src="images/content/photo-detail2.jpg" /></a></li>
+                              <li><a data-slideIndex="10" href=""><img src="images/content/photo-detail1.jpg" /></a></li>
+                              <li><a data-slideIndex="11" href=""><img src="images/content/photo-detail2.jpg" /></a></li>
                         </div><!--end.custom-pager-->
                 	</div><!--end.detail-slider-->
 				</div><!--end.slide-photo-->

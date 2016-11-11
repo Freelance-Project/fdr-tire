@@ -14,6 +14,7 @@ $(document).ready(function () {
    galleryDetail();
    productHome();
    productDetail();
+   tabSearch();
 
    $('.skew-tab-menu').click(function(event){
 		 event.preventDefault()

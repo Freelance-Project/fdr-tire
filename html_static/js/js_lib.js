@@ -122,3 +122,14 @@ function productDetail(){
 
     });
 }
+function tabSearch(){ 
+    $('.tabsSearch').click(function(event){
+         event.preventDefault()
+        var recentId = $(this).attr('data-tabId');
+        console.log(recentId);
+        $('.tabsSearch').removeClass('active');
+        $(this).addClass('active');
+        $('.content-tab').addClass('hide');
+        $('#'+recentId).removeClass('hide');
+    });
+}
