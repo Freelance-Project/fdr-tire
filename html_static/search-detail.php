@@ -22,7 +22,7 @@
 			<div class="content-search">
 				<div class="menu-tab">
 					<a href="#" class="tabsSearch active" data-tabId="motor-search">By Motorcycle</a>
-					<a href="#" class="tabsSearch" data-tabId="tire-search">By Tire Size</a>
+					<a href="#" class="" data-tabId="tire-search">By Tire Size</a>
 				</div><!--end.menu-tab-->
 				<div class="box-search">
 					<div id="motor-search" class="content-tab">
@@ -94,7 +94,8 @@ Please check the list of recommended rim sizes that can replace those originally
 				</div><!--end.box-search-->
 			</div><!--end.box-serach-->
 		</section>
-		<section id="product-list">
+	</div><!--end.wrapper-->
+	<section id="product-list">
 		<div class="wrapper">
 			<div class="top-menu-product">
 			</div><!--end.top--menu-->
@@ -266,8 +267,6 @@ Please check the list of recommended rim sizes that can replace those originally
 
 	</section>
 
-		
-	</div><!--end.wrapper-->
 </div>
 
 <?php include('inc_footer.php');?>
