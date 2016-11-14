@@ -19,163 +19,140 @@
 		</div>
 	</section>
 	<section id="list-news-page">
-		<div class="wrapper">
+		<div class="wrap-community">
 			<div class="left-content">
 				<div class="top-menu-product">
-					<div class="left">
-						<div class="title-edge">
-							<h3>FDR NEWS</h3>
-						</div>
-					</div>
 					<div class="right">
 						<div class="breadcum-product">
 							<ol class="breadcrumb">
 				              <li><a href="#">Home</a></li>
-				              <li><a href="#">News & Event</a></li>
-				              <li class="active">FDR News</li>
+				              <li class="active">Community</li>
 				            </ol>
 						</div>
 					</div><!--end.right-->
 				</div><!--end.top-menu-->
-				<div class="list-news">
-					<div class="row-news">
-						<a href="#">
-							<div class="imageframe">
-								<div class="imageThumb"><img src="images/content/news-row1.jpg" /></div>
-								<div class="frameThumb"><img src="images/material/frame-white.png" /></div>
-							</div>
-						</a>
-						<div class="caption-list-news">
-							<a href="#"><h3 class="title-list-news">FDR raih MotorPlus Reader Choice Award 3 kali berturut-turut</h3></a>
-							<span class="date">24 Oktober 2016</span>
-							<p>Tabloid Motor Plus kembali menggelar Motor Plus Reader Choice Award 2016 dan ban FDR keluar sebagai juara untuk kategori ban.</p>
-							<a class="readMore" href="#">Read More</a>
+				<div class="text-community">
+					<h3 class="titel-com">Ayo Gabung Bersama Komunitas FDR !</h3><br>
+					<p>Halaman ini merupakan wadah untuk para bikers memperkenalkan klub motor mereka dan mengenal klub motor lainnya. 
+					Anda bisa menambah komunitas, memperluas jaringan, mempromosikan acara klub dan memberitakan kegiatan positif 
+					yang dilakukan oleh klub motor.</p>
+					<p>
+					Yuk, daftarkan klub motor anda !
+					</p>
+				</div><!--end.text-community-->
+				<div class="list-club">
+					<div class="title-edge">
+						<h3>Clubs</h3>
+					</div>
+					<div class="line-club">
+						<div class="club-item">
+							<img src="images/content/club-dummy.jpg" />
 						</div>
-					</div><!--end.row-news-->
-					<div class="row-news">
-						<a href="#">
-							<div class="imageframe">
-								<div class="imageThumb"><img src="images/content/news-row2.jpg" /></div>
-								<div class="frameThumb"><img src="images/material/frame-white.png" /></div>
-							</div>
-						</a>
-						<div class="caption-list-news">
-							<a href="#"><h3 class="title-list-news">FDR raih MotorPlus Reader Choice Award 3 kali berturut-turut</h3></a>
-							<span class="date">24 Oktober 2016</span>
-							<p>Tabloid Motor Plus kembali menggelar Motor Plus Reader Choice Award 2016 dan ban FDR keluar sebagai juara untuk kategori ban.</p>
-							<a class="readMore" href="#">Read More</a>
+						<div class="club-item">
+							<img src="images/content/club-dummy.jpg" />
 						</div>
-					</div><!--end.row-news-->
-					<div class="row-news">
-						<a href="#">
-							<div class="imageframe">
-								<div class="imageThumb"><img src="images/content/news-row3.jpg" /></div>
-								<div class="frameThumb"><img src="images/material/frame-white.png" /></div>
-							</div>
-						</a>
-						<div class="caption-list-news">
-							<a href="#"><h3 class="title-list-news">FDR raih MotorPlus Reader Choice Award 3 kali berturut-turut</h3></a>
-							<span class="date">24 Oktober 2016</span>
-							<p>Tabloid Motor Plus kembali menggelar Motor Plus Reader Choice Award 2016 dan ban FDR keluar sebagai juara untuk kategori ban.</p>
-							<a class="readMore" href="#">Read More</a>
+						<div class="club-item">
+							<img src="images/content/club-dummy.jpg" />
 						</div>
-					</div><!--end.row-news-->
-
-					<div class="row-news">
-						<a href="#">
-							<div class="imageframe">
-								<div class="imageThumb"><img src="images/content/news-row1.jpg" /></div>
-								<div class="frameThumb"><img src="images/material/frame-white.png" /></div>
-							</div>
-						</a>
-						<div class="caption-list-news">
-							<a href="#"><h3 class="title-list-news">FDR raih MotorPlus Reader Choice Award 3 kali berturut-turut</h3></a>
-							<span class="date">24 Oktober 2016</span>
-							<p>Tabloid Motor Plus kembali menggelar Motor Plus Reader Choice Award 2016 dan ban FDR keluar sebagai juara untuk kategori ban.</p>
-							<a class="readMore" href="#">Read More</a>
+						<div class="club-item">
+							<img src="images/content/club-dummy.jpg" />
 						</div>
-					</div><!--end.row-news-->
-					<div class="row-news">
-						<a href="#">
-							<div class="imageframe">
-								<div class="imageThumb"><img src="images/content/news-row2.jpg" /></div>
-								<div class="frameThumb"><img src="images/material/frame-white.png" /></div>
-							</div>
-						</a>
-						<div class="caption-list-news">
-							<a href="#"><h3 class="title-list-news">FDR raih MotorPlus Reader Choice Award 3 kali berturut-turut</h3></a>
-							<span class="date">24 Oktober 2016</span>
-							<p>Tabloid Motor Plus kembali menggelar Motor Plus Reader Choice Award 2016 dan ban FDR keluar sebagai juara untuk kategori ban.</p>
-							<a class="readMore" href="#">Read More</a>
+						<div class="club-item">
+							<img src="images/content/club-dummy.jpg" />
 						</div>
-					</div><!--end.row-news-->
-					<div class="row-news">
-						<a href="#">
-							<div class="imageframe">
-								<div class="imageThumb"><img src="images/content/news-row3.jpg" /></div>
-								<div class="frameThumb"><img src="images/material/frame-white.png" /></div>
-							</div>
-						</a>
-						<div class="caption-list-news">
-							<a href="#"><h3 class="title-list-news">FDR raih MotorPlus Reader Choice Award 3 kali berturut-turut</h3></a>
-							<span class="date">24 Oktober 2016</span>
-							<p>Tabloid Motor Plus kembali menggelar Motor Plus Reader Choice Award 2016 dan ban FDR keluar sebagai juara untuk kategori ban.</p>
-							<a class="readMore" href="#">Read More</a>
+						<div class="club-item">
+							<img src="images/content/club-dummy.jpg" />
 						</div>
-					</div><!--end.row-news-->
-				</div><!--end.list-news-->
+						<div class="club-item">
+							<img src="images/content/club-dummy.jpg" />
+						</div>
+						<div class="club-item">
+							<img src="images/content/club-dummy.jpg" />
+						</div>
+					</div><!--end.line-club-->
+					<div class="row-bt">
+						<a href="#" class="viewAll-new right">View All</a>
+					</div>
+				</div><!--end.list-club-->
 			</div><!--end.left-content-->
 			<div class="right-content">
 				<div class="right-row">
-					<img src="images/content/fdr-right.png" />
+					<div class="login-row">
+						<h3><span class="redFont">join now!</span><br>daftarkan club anda hubungi kami sekarang!</h3>
+						<form class="login-right">
+							<div class="rows">
+								<input type="text" class="radius-input" placeholder="Email">
+							</div>
+							<div class="rows">
+								<input type="password" class="radius-input" placeholder="Password">
+							</div>
+							<div class="rows bt-submit text-right">
+								<a href="#" class="bt-find2">Sign Up</a>
+								<a href="#" class="bt-find">Login</a>
+							</div>
+						</form>
+					</div>
 				</div>
 				<div class="right-row">
 					<div class="top-menu-product">
 						<div class="left">
 							<div class="title-edge" style="margin-bottom:0;">
-								<h3>Trending</h3>
+								<h3>Club Events</h3>
 							</div>
 						</div>
 					</div><!--end.top-menu-->
-					<div class="row-trending">
+					<div class="row-event">
 						<div class="caption-list-news">
-							<a href="#"><h3 class="title-list-news">FDR Ban Pilihan PON XIX</h3></a>
 							<span class="date">24 Oktober 2016</span>
+							<a href="#"><h3 class="title-list-news">JBL Explore TMC United Jatim 2016</h3></a>
 						</div>
-						<a href="#">
-							<div class="imageframe">
-								<div class="imageThumb"><img src="images/content/news-row3.jpg" /></div>
-								<div class="frameThumb"><img src="images/material/frame-grey.png" /></div>
-							</div>
-						</a>
 					</div><!--end.row-trending-->
-
-					<div class="row-trending">
+					<div class="row-event">
 						<div class="caption-list-news">
-							<a href="#"><h3 class="title-list-news">FDR Ban Pilihan PON XIX</h3></a>
 							<span class="date">24 Oktober 2016</span>
+							<a href="#"><h3 class="title-list-news">JBL Explore TMC United Jatim 2016</h3></a>
 						</div>
-						<a href="#">
-							<div class="imageframe">
-								<div class="imageThumb"><img src="images/content/news-row2.jpg" /></div>
-								<div class="frameThumb"><img src="images/material/frame-grey.png" /></div>
-							</div>
-						</a>
 					</div><!--end.row-trending-->
-
-					<div class="row-trending">
+					<div class="row-event">
 						<div class="caption-list-news">
-							<a href="#"><h3 class="title-list-news">FDR Ban Pilihan PON XIX</h3></a>
 							<span class="date">24 Oktober 2016</span>
+							<a href="#"><h3 class="title-list-news">JBL Explore TMC United Jatim 2016</h3></a>
 						</div>
-						<a href="#">
-							<div class="imageframe">
-								<div class="imageThumb"><img src="images/content/news-row1.jpg" /></div>
-								<div class="frameThumb"><img src="images/material/frame-grey.png" /></div>
-							</div>
-						</a>
 					</div><!--end.row-trending-->
-				</div>
+					<div class="rows">
+						<a href="#" class="viewAll-new2 right">View All</a>
+					</div>
+				</div><!--end.right-row-->
+				<div class="right-row">
+					<div class="top-menu-product">
+						<div class="left">
+							<div class="title-edge" style="margin-bottom:0;">
+								<h3>Club News</h3>
+							</div>
+						</div>
+					</div><!--end.top-menu-->
+					<div class="row-event">
+						<div class="caption-list-news">
+							<span class="date">24 Oktober 2016</span>
+							<a href="#"><h3 class="title-list-news">JBL Explore TMC United Jatim 2016</h3></a>
+						</div>
+					</div><!--end.row-trending-->
+					<div class="row-event">
+						<div class="caption-list-news">
+							<span class="date">24 Oktober 2016</span>
+							<a href="#"><h3 class="title-list-news">JBL Explore TMC United Jatim 2016</h3></a>
+						</div>
+					</div><!--end.row-trending-->
+					<div class="row-event">
+						<div class="caption-list-news">
+							<span class="date">24 Oktober 2016</span>
+							<a href="#"><h3 class="title-list-news">JBL Explore TMC United Jatim 2016</h3></a>
+						</div>
+					</div><!--end.row-trending-->
+					<div class="rows">
+						<a href="#" class="viewAll-new2 right">View All</a>
+					</div>
+				</div><!--end-right-row-->
 			</div><!--end.right-content-->
 		</div>
 	</section>
