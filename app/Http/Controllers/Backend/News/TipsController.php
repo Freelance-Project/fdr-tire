@@ -29,7 +29,7 @@ class TipsController extends Controller
 
 	public function getData()
 	{
-		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('tips');
+		$model = $this->model->select('id' , 'title' , 'image', 'type','created_at', 'status')->whereCategory('tips');
 		return Table::of($model)
 			->addColumn('image',function($model){
 				return '<img src = "'.asset('contents/news/small/'.$model->image).'"/>';
@@ -60,7 +60,8 @@ class TipsController extends Controller
 			'created_at' => \Helper::dateToDb($request->date),
 			'slug' => str_slug($request->title),
 			'status' => $request->status,
-			'category' => 'tips',
+			'type' => $request->type,
+			'category' => 'tips'
 		];
 		
 		$save = $this->model->create($values);
@@ -105,7 +106,8 @@ class TipsController extends Controller
 			'description' => $request->description,
 			'created_at' => \Helper::dateToDb($request->date),
 			'slug' => str_slug($request->title),
-			'status' => $request->status
+			'status' => $request->status,
+			'type' => $request->type
 		];
 
 		$update = $this->model->whereId($id)->update($values);

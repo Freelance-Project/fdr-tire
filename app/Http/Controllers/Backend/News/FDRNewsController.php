@@ -29,7 +29,7 @@ class FDRNewsController extends Controller
 
 	public function getData()
 	{
-		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('fdrnews');
+		$model = $this->model->select('id' , 'title' , 'image', 'type','created_at', 'status')->whereCategory('fdrnews');
 		return Table::of($model)
 			->addColumn('image',function($model){
 				return '<img src = "'.asset('contents/news/small/'.$model->image).'"/>';
@@ -60,7 +60,8 @@ class FDRNewsController extends Controller
 			'created_at' => \Helper::dateToDb($request->date),
 			'slug' => str_slug($request->title),
 			'status' => $request->status,
-			'category' => 'fdrnews',
+			'type' => $request->type,
+			'category' => 'fdrnews'
 		];
 		
 		$save = $this->model->create($values);
@@ -105,7 +106,8 @@ class FDRNewsController extends Controller
 			'description' => $request->description,
 			'created_at' => \Helper::dateToDb($request->date),
 			'slug' => str_slug($request->title),
-			'status' => $request->status
+			'status' => $request->status,
+			'type' => $request->type
 		];
 
 		$update = $this->model->whereId($id)->update($values);

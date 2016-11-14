@@ -5,21 +5,39 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Models\NewsContent;
 
 class NewsController extends Controller
 {
-    public function __construct()
+    public function __construct(NewsContent $news)
 	{
 		
-		// $this->model = $news;
+		$this->model = $news;
 		// view()->share('static',$this->getStatic());
-		
+		$this->paging = 5;
 	}
 	
     public function getIndex()
     {
+		$getBanner = $this->model->whereIn('category',['news','tips','mediahighlights','fdrnews','event'])->whereStatus('publish')->where('type','=',4)->orderBy('type','asc')->get();
+		$data['resultBanner'] = $getBanner;
 		
-		return view('frontend.news.index');
+		$getNews = $this->model->whereCategory('news')->whereStatus('publish')->where('type','>',0)->orderBy('type','asc')->take(3)->get();
+		$data['resultNews'] = $getNews;
+		
+		$getTips = $this->model->whereCategory('tips')->whereStatus('publish')->where('type','>',0)->orderBy('type','asc')->take(3)->get();
+		$data['resultTips'] = $getTips;
+		
+		$getMediahighlights = $this->model->whereCategory('mediahighlights')->whereStatus('publish')->where('type','>',0)->orderBy('type','asc')->take(3)->get();
+		$data['resultMediahighlights'] = $getMediahighlights;
+		
+		$getFdrnews = $this->model->whereCategory('fdrnews')->whereStatus('publish')->where('type','>',0)->orderBy('type','asc')->take(3)->get();
+		$data['resultFdrnews'] = $getFdrnews;
+		
+		$getEvent = $this->model->whereCategory('event')->whereStatus('publish')->where('type','>',0)->orderBy('type','asc')->take(3)->get();
+		$data['resultEvent'] = $getEvent;
+		
+		return view('frontend.news.index', $data);
     }
 
     public function getList()

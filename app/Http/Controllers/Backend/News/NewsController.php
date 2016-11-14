@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Backend\News;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Helper;
@@ -29,7 +28,7 @@ class NewsController extends Controller
 
 	public function getData()
 	{
-		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('news');
+		$model = $this->model->select('id' , 'title' , 'image', 'type','created_at', 'status')->whereCategory('news');
 		return Table::of($model)
 			->addColumn('image',function($model){
 				return '<img src = "'.asset('contents/news/small/'.$model->image).'"/>';
@@ -61,6 +60,7 @@ class NewsController extends Controller
 			'slug' => str_slug($request->title),
 			'status' => $request->status,
 			'category' => 'news',
+			'type' => $request->type
 		];
 		
 		$save = $this->model->create($values);
@@ -105,7 +105,9 @@ class NewsController extends Controller
 			'description' => $request->description,
 			'created_at' => \Helper::dateToDb($request->date),
 			'slug' => str_slug($request->title),
-			'status' => $request->status
+			'status' => $request->status,
+			'type' => $request->type
+			
 		];
 
 		$update = $this->model->whereId($id)->update($values);

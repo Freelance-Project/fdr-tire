@@ -28,7 +28,7 @@ class EventController extends Controller
 
 	public function getData()
 	{
-		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('event');
+		$model = $this->model->select('id' , 'title' , 'image', 'type', 'created_at', 'status')->whereCategory('event');
 		return Table::of($model)
 			->addColumn('image',function($model){
 				return '<img src = "'.asset('contents/news/small/'.$model->image).'"/>';
@@ -41,9 +41,10 @@ class EventController extends Controller
 	public function getCreate()
 	{
 		$model = $this->model;
-		$date = '';
-
-		return view('backend.news.event.form', ['model' => $model,'date' => $date]);
+		$start_date = '';
+		$end_date = '';
+		
+		return view('backend.news.event.form', ['model' => $model,'start_date' => $start_date,'end_date' => $end_date]);
 	}
 
 
@@ -56,10 +57,13 @@ class EventController extends Controller
 			'title' => $request->title,
 			'brief' => $request->brief,
 			'description' => $request->description,
-			'created_at' => \Helper::dateToDb($request->date),
+			'start_date' => \Helper::dateToDb($request->start_date),
+			'end_date' => \Helper::dateToDb($request->end_date),
 			'slug' => str_slug($request->title),
 			'status' => $request->status,
-			'category' => 'event',
+			'type' => $request->type,
+			'source' => $request->source,
+			'category' => 'event'
 		];
 		
 		$save = $this->model->create($values);
@@ -85,12 +89,14 @@ class EventController extends Controller
 	{
 		$model  = $this->model->find($id);
 		
-		$date = \Helper::dbToDate($model->created_at);
+		$start_date = \Helper::dbToDate($model->start_date);
+		$end_date = \Helper::dbToDate($model->end_date);
 		
 		return view('backend.news.event.form' , [
 
 			'model' => $model,
-			'date' => $date,
+			'start_date' => $start_date,
+			'end_date' => $end_date
 		]);
 	}
 
@@ -102,9 +108,12 @@ class EventController extends Controller
 			'title' => $request->title,
 			'brief' => $request->brief,
 			'description' => $request->description,
-			'created_at' => \Helper::dateToDb($request->date),
+			'start_date' => \Helper::dateToDb($request->start_date),
+			'end_date' => \Helper::dateToDb($request->end_date),
 			'slug' => str_slug($request->title),
-			'status' => $request->status
+			'status' => $request->status,
+			'source' => $request->source,
+			'type' => $request->type
 		];
 
 		$update = $this->model->whereId($id)->update($values);

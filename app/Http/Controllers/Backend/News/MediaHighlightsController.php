@@ -29,7 +29,7 @@ class MediaHighlightsController extends Controller
 
 	public function getData()
 	{
-		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('mediahighlights');
+		$model = $this->model->select('id' , 'title' , 'image', 'type','created_at', 'status')->whereCategory('mediahighlights');
 		return Table::of($model)
 			->addColumn('image',function($model){
 				return '<img src = "'.asset('contents/news/small/'.$model->image).'"/>';
@@ -60,6 +60,8 @@ class MediaHighlightsController extends Controller
 			'created_at' => \Helper::dateToDb($request->date),
 			'slug' => str_slug($request->title),
 			'status' => $request->status,
+			'type' => $request->type,
+			'source' => $request->source,
 			'category' => 'mediahighlights',
 		];
 		
@@ -105,7 +107,10 @@ class MediaHighlightsController extends Controller
 			'description' => $request->description,
 			'created_at' => \Helper::dateToDb($request->date),
 			'slug' => str_slug($request->title),
-			'status' => $request->status
+			'status' => $request->status,
+			'type' => $request->type,
+			'source' => $request->source
+			
 		];
 
 		$update = $this->model->whereId($id)->update($values);

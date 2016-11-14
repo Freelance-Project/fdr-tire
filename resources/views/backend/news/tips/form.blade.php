@@ -35,7 +35,7 @@
                         <label>Description</label>
                         {!! Form::textarea('description' , null ,['class' => 'form-control','id'=>'description']) !!}
                       </div>
-
+					  
                       <div class="form-group">
                         <label>File</label>
                         <div>
@@ -51,16 +51,22 @@
                         @endif
                       </div>
 					  <div class="row">
-						<div class="col-md-6">
-							
+					  
+						<div class="col-md-4">
 						  <div class="form-group">
 							<label>Date</label>
 							{!!  Form::text('date', $date , ['id' => 'datepicker', 'class'=>'form-control']) !!}
 						  </div>
 						</div>
 						
-						<div class="col-md-6">							
-
+						<div class="col-md-4">	
+						  <div class="form-group">
+							<label>Flag Picture</label>
+							{!! Form::select('type' , ['0' => 'none', '1' => '1' , '2' => '2', '3' => '3', '4' => 'banner'] , null ,['class' => 'form-control']) !!}
+						  </div>
+						</div>
+						
+						<div class="col-md-4">	
 						  <div class="form-group">
 							<label>Status</label>
 							{!! Form::select('status' , ['publish' => 'Published' , 'unpublish' => 'Unpublished'] , null ,['class' => 'form-control']) !!}

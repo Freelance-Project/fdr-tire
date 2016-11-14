@@ -9,11 +9,15 @@
 			<div class="news-page-section">
 				<div class="left-capt1">
 					<div class="caption1">
+						@if($resultBanner)
+						@foreach ($resultBanner as $val)
 						<div class="news-page-caption">
-							<h1>Lorem ipsum<br><span class="whiteFont">dolor sit amet</span></h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dictum urna, quis feugiat tellus. Aenean </p>
+							<h1>{{$val->title}}<br></h1>
+							<p>{{$val->brief}}</p>
 							<a href="news-list.php" class="learnMoreGrey">More Details</a>
 						</div><!--news-page-caption-->
+						@endforeach
+						@endif
 					</div><!--end.caption1-->
 				</div><!--end.left-capt1-->
 			</div><!--end.product-section-->
@@ -31,19 +35,23 @@
 					</div>
 				</div><!--end.left-news1-->
 				<div class="news-jer">
+					@if($resultNews)
+					@foreach ($resultNews as $val)
 					<div class="news-items-list edge-news-list">
 						<div class="edge-reserve-news-list">
 							<div class="image-news">
-								<img src="{{ asset(null) }}frontend/images/content/news-image.jpg">
+								<img src="{{ asset(null) }}contents/news/large/{{$val->image}}">
 							</div><!--end.images-news-->
 							<div class="details-news">
-								<h4 class="detail-title">Lorem ipsum<br><span class="whiteFont">dolor sit amet</span></h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dictum urna, quis feugiat tellus.</p>
+								<h4 class="detail-title"><span class="whiteFont">{{$val->title}}</span></h4>
+								<p>{{$val->brief}}</p>
 								<a href="#" class="learnMore">More Details</a>
 							</div><!--end.details-news-->
 						</div><!--.edge-reserve-news-list-->
 					</div><!--.news-items-list-->
-
+					@endforeach
+					@endif
+					{{--
 					<div class="news-items-list edge-news-list">
 						<div class="edge-reserve-news-list">
 							<div class="image-news">
@@ -70,7 +78,7 @@
 						</div><!--.edge-reserve-news-list-->
 					</div><!--.news-items-list-->
 
-
+					--}}
 				</div><!--end.news-jer-->
 			</div><!--end.news-section-->
 		</div>
@@ -87,19 +95,24 @@
 					</div>
 				</div><!--end.left-news1-->
 				<div class="news-jer">
+					@if($resultTips)
+					@foreach ($resultTips as $val)
 					<div class="news-items-list edge-news-list">
 						<div class="edge-reserve-news-list">
 							<div class="image-news">
-								<img src="{{ asset(null) }}frontend/images/content/news-tips1.jpg">
+								<img src="{{ asset(null) }}contents/news/large/{{$val->image}}">
 							</div><!--end.images-news-->
 							<div class="details-news">
-								<h4 class="detail-title">Lorem ipsum<br><span class="whiteFont">dolor sit amet</span></h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dictum urna, quis feugiat tellus.</p>
+								<h4 class="detail-title"><span class="whiteFont">{{$val->title}}</span></h4>
+								<p>{{$val->brief}}</p>
 								<a href="" class="learnMore">More Details</a>
 							</div><!--end.details-news-->
 						</div><!--.edge-reserve-news-list-->
 					</div><!--.news-items-list-->
-
+					@endforeach
+					@endif
+					
+					{{--
 					<div class="news-items-list edge-news-list">
 						<div class="edge-reserve-news-list">
 							<div class="image-news">
@@ -125,6 +138,8 @@
 							</div><!--end.details-news-->
 						</div><!--.edge-reserve-news-list-->
 					</div><!--.news-items-list-->
+					--}}
+					
 				</div><!--end.news-jer-->
 			</div><!--end.news-section-->
 		</div>
@@ -142,19 +157,24 @@
 					</div>
 				</div><!--end.left-news1-->
 				<div class="news-jer-reserve">
+					@if($resultMediahighlights)
+					@foreach ($resultMediahighlights as $val)
 					<div class="news-items-list edge-news-list">
 						<div class="edge-reserve-news-list">
 							<div class="image-news">
-								<img src="{{ asset(null) }}frontend/images/content/hightlights-image.jpg">
+								<img src="{{ asset(null) }}contents/news/large/{{$val->image}}">
 							</div><!--end.images-news-->
 							<div class="details-news">
-								<h4 class="detail-title">Lorem ipsum<br><span class="whiteFont">dolor sit amet</span></h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dictum urna, quis feugiat tellus.</p>
+								<h4 class="detail-title"><span class="whiteFont">{{$val->title}}</span></h4>
+								<p>{{$val->brief}}</p>
 								<a href="#" class="learnMore">More Details</a>
 							</div><!--end.details-news-->
 						</div><!--.edge-reserve-news-list-->
 					</div><!--.news-items-list-->
+					@endforeach
+					@endif
 
+					{{--
 					<div class="news-items-list edge-news-list">
 						<div class="edge-reserve-news-list">
 							<div class="image-news">
@@ -180,7 +200,7 @@
 							</div><!--end.details-news-->
 						</div><!--.edge-reserve-news-list-->
 					</div><!--.news-items-list-->
-
+					--}}
 
 				</div><!--end.news-jer-->
 			</div><!--end.news-section-->
@@ -199,19 +219,24 @@
 					</div>
 				</div><!--end.left-news1-->
 				<div class="news-jer">
+					@if($resultFdrnews)
+					@foreach ($resultFdrnews as $val)
 					<div class="news-items-list edge-news-list">
 						<div class="edge-reserve-news-list">
 							<div class="image-news">
-								<img src="{{ asset(null) }}frontend/images/content/fdr-image.jpg">
+								<img src="{{ asset(null) }}contents/news/large/{{$val->image}}">
 							</div><!--end.images-news-->
 							<div class="details-news">
-								<h4 class="detail-title">Lorem ipsum<br><span class="whiteFont">dolor sit amet</span></h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dictum urna, quis feugiat tellus.</p>
+								<h4 class="detail-title"><span class="whiteFont">{{$val->title}}</span></h4>
+								<p>{{$val->brief}}</p>
 								<a href="#" class="learnMore">More Details</a>
 							</div><!--end.details-news-->
 						</div><!--.edge-reserve-news-list-->
 					</div><!--.news-items-list-->
+					@endforeach
+					@endif
 
+					{{--
 					<div class="news-items-list edge-news-list">
 						<div class="edge-reserve-news-list">
 							<div class="image-news">
@@ -237,6 +262,8 @@
 							</div><!--end.details-news-->
 						</div><!--.edge-reserve-news-list-->
 					</div><!--.news-items-list-->
+					--}}
+					
 				</div><!--end.news-jer-->
 			</div><!--end.news-section-->
 		</div>
@@ -245,18 +272,24 @@
 		<div class="not-edge">
 		 	<div class="eventSection">
 		 		<div class="left-event1">
-		 			<h3 class="event-title"><span class="redFont">Events</span><br>Calendar</h3>
+					<h3 class="event-title"><span class="redFont">Events</span><br>Calendar</h3>
+					
+					@if($resultEvent)
+					@foreach ($resultEvent as $val)
 		 			<div class="event-row">
 		 				<div class="date-event">
 		 					<span class="number">1-2</span>
 		 					<span class="month">SEP</span>	
 		 				</div>
 		 				<div class="detail-event">
-		 					<h4>MotorPrix</h4>
-		 					<p><strong>REGION 1</strong></p>
-		 					<p>tetur, egestas ligula ac, aliquam dolor. Morbi </p>
+		 					<h4>{{$val->title}}</h4>
+		 					<p><strong>{{$val->source}}</strong></p>
 		 				</div>
 		 			</div><!--end.row-->
+					@endforeach
+					@endif
+					
+					{{--
 		 			<div class="event-row">
 		 				<div class="date-event">
 		 					<span class="number">6-7</span>
@@ -279,6 +312,8 @@
 		 					<p>tetur, egestas ligula ac, aliquam dolor. Morbi </p>
 		 				</div>
 		 			</div><!--end.row-->
+					--}}
+					
 		 			<div class="event-row">
 		 				<a href="#" class="viewAll">View All</a>
 		 			</div>
