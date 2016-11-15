@@ -22,4 +22,21 @@ class AboutController extends Controller
 		return view('frontend.about.index');
     }
 
+    public function getCsr()
+    {
+		
+		return view('frontend.about.csr');
+    }
+
+    public function getVision()
+    {
+		
+		return view('frontend.about.vision');
+    }
+
+    public function getRacingExperience()
+    {
+		
+		return view('frontend.about.racing-experience');
+    }
 }
