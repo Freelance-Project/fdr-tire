@@ -2065,11 +2065,15 @@ table.rounded tr td{
 	text-transform: uppercase;
 }
 .right-content{
-	width: 30%;
+	width: 28%;
 	float: right;
 	padding: 20px 10px;
 	background: #d0d2d3;
+	
 }
+ .community-page #list-news-page .right-content{
+ 	min-height: 1400px;
+ }
 .right-row{
 	padding:30px 0;
 }
@@ -2486,6 +2490,100 @@ table.rounded tr td{
 }
 .community-page #list-news-page .left-content,.community-page #list-news-page .right-content{
 	padding-top: 150px;
+}
+.table-daftar table{
+	width: 100%;
+}
+.table-daftar table tbody tr:nth-child(odd){
+	background: #fff;
+}
+.table-daftar table tr td{
+	padding:10px;
+	border: 1px solid #ccc;
+}
+.table-daftar table tr td:first-child{
+	text-align: right;
+	color: #fff;
+	background: #f3f2ef;
+	font-size: 14px;
+	font-family: 'Panton Black';
+	color: #000;
+}
+.table-daftar table input[type=text],.table-daftar table input[type=email],.table-daftar table input[type=password]{
+	border: none;
+	width: 100%;
+}
+.edt-inf{
+	font-size: 16px;
+	color: #231f20;
+	text-decoration: none;
+	margin-bottom: 15px;
+	display: block;
+}
+.menu-right{
+	padding: 0 20px;
+}
+.greeting{
+	font-size: 16px;
+	color: #231f20;
+}
+.menu-rounded{
+	display: block;
+	padding: 10px;
+	color: #414042;
+	font-size: 12px;
+	background: #fff;
+	border-radius: 10px;
+	margin-bottom: 5px;
+}
+.menu-rounded:hover{
+	background: #ed1c24;
+	color: #fff;
+}
+.rounded-grey{
+	display: block;
+	padding: 10px;
+	color: #414042;
+	font-size: 16px;
+	background: #e6e7e8;
+	border-radius: 10px;
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.rounded-grey a{
+	color: #414042;
+}
+.select-community{
+	float: left;
+}
+.select-style {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #e6e7e8;
+    width: 160px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #e6e7e8;
+    background: #e6e7e8 url(../images/material/select-arrow2.png) no-repeat 90% 50%;
+}
+.select-style select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    color: #414042;
+    font-size: 14px;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.no-data{
+	display: block;
+	clear: both;
+	width: 100%;
+	padding: 20px 0;
 }
 /*----------------------------------------------------------------*/
 /*--------footer-----------*/
