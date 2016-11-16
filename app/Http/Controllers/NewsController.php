@@ -49,4 +49,8 @@ class NewsController extends Controller
 		return view('frontend.news.list', $data);
     }
 
+    public function getDetail()
+    {
+    	return view('frontend.news.detail');
+    }
 }
