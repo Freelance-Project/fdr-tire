@@ -9,10 +9,10 @@ use App\Models\NewsContent;
 
 class DefaultController extends Controller
 {
-    public function __construct()
+    public function __construct(NewsContent $news)
 	{
 		
-		// $this->model = $news;
+		$this->model = $news;
 		// view()->share('static',$this->getStatic());
 		
 	}

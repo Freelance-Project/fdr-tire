@@ -48,7 +48,7 @@
 
                 <li class="panel {{ $search($row->id,'active') }}">
 
-                    <a href="{{ ($row->controller != '#' ? urlBackend($row->slug.'/index') : '#') }}" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav{{$row->id}}">
+                    <a href="{{ ($row->controller != '#' ? urlBackend($row->slug.'/index') : 'javascript:void(0)') }}" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav{{$row->id}}">
                         <i class="icon-folder-{{ $search($row->id,'open','close') }}-alt" aria-hidden="true"></i> {{ $row->title }}
        
                        @if(!empty($row->childs->first()->id))

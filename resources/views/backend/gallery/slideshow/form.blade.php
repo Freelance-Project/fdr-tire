@@ -13,7 +13,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Form FDR Racing Experience
+                    Form Album Foto
                 </div>
                 <div class="panel-body">
 

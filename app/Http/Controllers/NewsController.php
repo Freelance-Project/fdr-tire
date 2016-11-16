@@ -14,7 +14,7 @@ class NewsController extends Controller
 		
 		$this->model = $news;
 		// view()->share('static',$this->getStatic());
-		$this->paging = 5;
+		$this->paging = 25;
 	}
 	
     public function getIndex()
@@ -23,6 +23,7 @@ class NewsController extends Controller
 		$data['resultBanner'] = $getBanner;
 		
 		$getNews = $this->model->whereCategory('news')->whereStatus('publish')->where('type','>',0)->orderBy('type','asc')->take(3)->get();
+		
 		$data['resultNews'] = $getNews;
 		
 		$getTips = $this->model->whereCategory('tips')->whereStatus('publish')->where('type','>',0)->orderBy('type','asc')->take(3)->get();
@@ -37,17 +38,25 @@ class NewsController extends Controller
 		$getEvent = $this->model->whereCategory('event')->whereStatus('publish')->where('type','>',0)->orderBy('type','asc')->take(3)->get();
 		$data['resultEvent'] = $getEvent;
 		
+		// dd($data);
 		return view('frontend.news.index', $data);
     }
 
     public function getList()
     {
 		
-		return view('frontend.news.list');
+		$getNews = $this->model->whereCategory('news')->whereStatus('publish')->orderBy('created_at','desc')->paginate($this->paging);
+		$data['resultNews'] = $getNews;
+		
+		return view('frontend.news.list', $data);
     }
 
-    public function getDetail()
+    public function getDetail($slug)
     {
-    	return view('frontend.news.detail');
+
+    	$getNews = $this->model->whereStatus('publish')->whereSlug($slug)->first();
+		$data['resultNews'] = $getNews;
+
+    	return view('frontend.news.detail', $data);
     }
 }

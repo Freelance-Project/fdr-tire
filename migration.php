@@ -1,7 +1,13 @@
 <?php
 
-// $param = $argv[1];
-$param = 'tire';
+
+
+$param = $argv[1];
+// $param = 'tire';
+$newDB = 'fdr_test';
+$oldDB = 'fdr_ori';
+$pass = '';
+
 
 switch ($param) {
 	case 'news':
@@ -38,9 +44,12 @@ switch ($param) {
 
 function migrateContent($id, $cat='news')
 {
+	global $newDB;
+	global $oldDB;
+	
 	wigo();
 	$dataArr = [];
-	$sql = "select * from wigo_fdr.content where cl_id = {$id}";
+	$sql = "select * from {$oldDB}.content where cl_id = {$id}";
 	$res = mysql_query($sql);
 	while($data = mysql_fetch_assoc($res)) {
 		$dataArr[] = $data;
@@ -76,13 +85,15 @@ function migrateContent($id, $cat='news')
 			$tmpF = implode(',', $fields);
 			$tmpV = implode(',', $values);
 			
-			$ins = "insert into tire.news_contents ({$tmpF}) values ({$tmpV})";
+
+			$ins = "insert into {$newDB}.news_contents ({$tmpF}) values ({$tmpV})";
+
 			$res = mysql_query($ins);
 			$lastId = mysql_insert_id();
 			// exit;
 			
 			if ($id == 9) {
-				$getImage = "select * from wigo_fdr.content_gallery where c_id = ".$value['c_id'];
+				$getImage = "select * from {$oldDB}.content_gallery where c_id = ".$value['c_id'];
 				$resImage = mysql_query($getImage);
 				if ($resImage) {
 					while($image = mysql_fetch_assoc($resImage)) {
@@ -95,7 +106,7 @@ function migrateContent($id, $cat='news')
 						if ($image['cg_status'] == 'Active') $status = "'publish'";
 						$author = 7;
 						$created_at = "'".$image['cg_entry']."'";
-						$insImage = "insert into tire.news_content_repos (news_content_id, title, file, sort, status, author_id, created_at) values ({$contentid}, {$title}, {$file}, {$sort}, {$status}, {$author}, {$created_at})";
+						$insImage = "insert into {$newDB}.news_content_repos (news_content_id, title, file, sort, status, author_id, created_at) values ({$contentid}, {$title}, {$file}, {$sort}, {$status}, {$author}, {$created_at})";
 						
 						$resIns = mysql_query($insImage);
 					}
@@ -117,10 +128,13 @@ function migrateContent($id, $cat='news')
 
 function migrateClub()
 {
+	global $newDB;
+	global $oldDB;
+
 	wigo();
 	$dataArr = [];
 
-	$sql = "select * from wigo_fdr.club";
+	$sql = "select * from {$oldDB}.club";
 	$res = mysql_query($sql);
 
 	$fields = ['name','email','logo','password','admin_name','image_cover','intro','description','address','contact','website','fb','twitter','other_socmed','status','created_at'];
@@ -151,7 +165,7 @@ function migrateClub()
 		$value[] = "'".$data['club_entry']."'";
 
 		$qValue = implode(',', $value);
-		$insClub = "insert into tire.clubs ({$qField}) values ({$qValue})";
+		$insClub = "insert into {$newDB}.clubs ({$qField}) values ({$qValue})";
 		$resIns = mysql_query($insClub);
 
 		echo "record -".$i; 
@@ -167,11 +181,14 @@ function migrateClub()
 
 function migrateMotor()
 {
+	global $newDB;
+	global $oldDB;
+
 	// insert brand
 	$newData = [];
-	$sql = "select mm.*, mb.mb_name as brand, mt.mt_name as type from wigo_fdr.motor_model as mm 
-			left join wigo_fdr.motor_brand as mb on mm.mb_id = mb.mb_id 
-			left join wigo_fdr.motor_type as mt on mm.mt_id = mt.mt_id ";
+	$sql = "select mm.*, mb.mb_name as brand, mt.mt_name as type from {$oldDB}.motor_model as mm 
+			left join {$oldDB}.motor_brand as mb on mm.mb_id = mb.mb_id 
+			left join {$oldDB}.motor_type as mt on mm.mt_id = mt.mt_id ";
 	$res = fetch($sql);
 	if ($res) {
 		foreach ($res as $key => $value) {
@@ -183,7 +200,7 @@ function migrateMotor()
 		$typeid = [];
 		if ($motorType) {
 			foreach ($motorType as $key => $value) {
-				$insT = "insert into tire.motor_types (name) values ('".$key."')";
+				$insT = "insert into {$newDB}.motor_types (name) values ('".$key."')";
 				$resT = mysql_query($insT);
 				$typeid[$key] = mysql_insert_id();
 			}
@@ -192,7 +209,7 @@ function migrateMotor()
 		$brandid = [];
 		if ($motorBrand) {
 			foreach ($motorBrand as $key => $value) {
-				$insB = "insert into tire.motor_brands (name) values ('".$key."')";
+				$insB = "insert into {$newDB}.motor_brands (name) values ('".$key."')";
 				$resB = mysql_query($insB);
 				$brandid[$key] = mysql_insert_id();
 			}
@@ -204,7 +221,7 @@ function migrateMotor()
 			if ($value['mm_status'] == 'Active') $status = 'publish';
 			else $status = 'unpublish';
 
-			$insM = "insert into tire.motor_models (name, motor_brand_id, motor_type_id, created_at, status) 
+			$insM = "insert into {$newDB}.motor_models (name, motor_brand_id, motor_type_id, created_at, status) 
 					values ('".$value['mm_name']."', ".$brandid[$value['brand']].", ".$typeid[$value['type']].", '".$value['mm_entry']."', '{$status}')";
 			// echo $insM;
 			$resM = mysql_query($insM);
@@ -225,7 +242,11 @@ function migrateMotor()
 
 function migrateTire()
 {
-	$sql = "select * from wigo_fdr.tire";
+
+	global $newDB;
+	global $oldDB;
+	
+	$sql = "select * from {$oldDB}.tire";
 	$res = fetch($sql);
 	if ($res) {
 
@@ -251,7 +272,7 @@ function migrateTire()
 			$data[] = 7;
 
 			$values = implode(',', $data);
-			$ins = "insert into tire.tires ({$field}) values ({$values}) ";	
+			$ins = "insert into {$newDB}.tires ({$field}) values ({$values}) ";	
 			// echo $ins;
 			$result = mysql_query($ins);
 
@@ -268,7 +289,8 @@ function migrateTire()
 
 function wigo()
 {
-	$link = mysql_connect('localhost', 'root','');
+	global $pass;
+	$link = mysql_connect('localhost', 'root',$pass);
 }
 
 function local()

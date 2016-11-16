@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\about;
+namespace App\Http\Controllers\Backend\Gallery;
 
 use Illuminate\Http\Request;
 
@@ -12,29 +12,28 @@ use Datatables;
 use Table;
 // use App\Models\Comment;
 
-class RacingController extends Controller
+class SlideshowController extends Controller
 {
 	public function __construct()
 	{
 		$this->model = new NewsContent;
-		$this->resource_view = 'backend.about.racing.';
+		$this->resource_view = 'backend.gallery.slideshow.';
 	}
-
 
 	public function getData($id=false)
 	{
 		if($id==false){
-			$model = $this->model->whereParentId(null)->select('id' , 'title', 'status')->whereCategory('racing');
+			$model = $this->model->whereParentId(null)->select('id' , 'title', 'image', 'created_at', 'status')->whereCategory('foto');
 		}else{
 
-			$model = $this->model->whereParentId($id)->select('id' , 'title', 'parent_id', 'image', 'created_at', 'status')->whereCategory('racing');
+			$model = $this->model->whereParentId($id)->select('id' , 'title', 'parent_id', 'image', 'created_at', 'status')->whereCategory('foto');
 		}
 
 		return Table::of($model)
 			->addColumn('images' , function($model){
 				if(!empty($model->image)){
 
-					$images ='<img src="'.asset('contents/racing/thumbnail').'/'.$model->image.'" width="200" height="200" />';
+					$images ='<img src="'.asset('contents/foto/thumbnail').'/'.$model->image.'" width="200" height="200" />';
                 }else{
 					$images ='<img src="'.asset('contents/no-images.jpg').'" width="200" height="200" />';                	
                 }
@@ -91,7 +90,8 @@ class RacingController extends Controller
 				'title' => $request->title,
 				'description' => $request->description,
 				'status' => $request->status,
-				'category' => 'racing',
+				'category' => 'foto',
+				'type' => '1',
 				];
 				
 				$save = $this->model->create($values);
@@ -100,8 +100,8 @@ class RacingController extends Controller
 
 		        if(!empty($image))
 		        {
-					$imageName = "racing-".$save->id;
-					$uploadImage = \Helper::handleUpload($request, $imageName, 'racing');
+					$imageName = "foto-".$save->id;
+					$uploadImage = \Helper::handleUpload($request, $imageName, 'foto');
 					// dd($uploadImage);
 					
 					$this->model->whereId($save->id)->update([
@@ -116,7 +116,7 @@ class RacingController extends Controller
 				'title' => $request->title,
 				'description' => $request->description,
 				'status' => $request->status,
-				'category' => 'racing',
+				'category' => 'foto',
 				];
 				
 				$save = $this->model->create($values);
@@ -125,8 +125,8 @@ class RacingController extends Controller
 
 		        if(!empty($image))
 		        {
-					$imageName = "racing-".$save->id;
-					$uploadImage = \Helper::handleUpload($request, $imageName, 'racing');
+					$imageName = "foto-".$save->id;
+					$uploadImage = \Helper::handleUpload($request, $imageName, 'foto');
 					// dd($uploadImage);
 					
 					$this->model->whereId($save->id)->update([

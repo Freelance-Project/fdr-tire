@@ -14,7 +14,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                   Data Award
+                   Data Album Foto
                 </div>
                
                 <div class="panel-body">
@@ -28,7 +28,9 @@
                 <table class = 'table' id = 'table'>
                     <thead>
                         <tr>
-                            <th>Year</th>	
+                            <th>Thumbnail Image</th>
+                            <th>Title</th>
+                            <th>Created</th>
                             <th>Published</th>
                             <th>Action</th>
                         </tr>
@@ -63,7 +65,9 @@
                 serverSide: true,
                 ajax: '{{ urlBackendAction("data") }}',
                 columns: [
+                    { data: 'images', name: 'images' , searchable: false, "orderable":false},
                     { data: 'title', name: 'title' },
+                    { data: 'created_at', name: 'created_at' },
                     { data: 'published', name: 'published' },
                     { data: 'action', name: 'action' , searchable: false, "orderable":false},
                     
