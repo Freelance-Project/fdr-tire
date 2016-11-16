@@ -96,6 +96,9 @@
   {
       CKEDITOR.replace( 'description',{
       filebrowserBrowseUrl: '{{ urlBackend("image/lib")}}'});
+
+      CKEDITOR.replace( 'brief',{
+      filebrowserBrowseUrl: '{{ urlBackend("image/lib")}}'});
   }
 </script>
 @endsection

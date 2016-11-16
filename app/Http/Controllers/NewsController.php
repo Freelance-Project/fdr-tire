@@ -23,6 +23,7 @@ class NewsController extends Controller
 		$data['resultBanner'] = $getBanner;
 		
 		$getNews = $this->model->whereCategory('news')->whereStatus('publish')->where('type','>',0)->orderBy('type','asc')->take(3)->get();
+		
 		$data['resultNews'] = $getNews;
 		
 		$getTips = $this->model->whereCategory('tips')->whereStatus('publish')->where('type','>',0)->orderBy('type','asc')->take(3)->get();
@@ -37,6 +38,7 @@ class NewsController extends Controller
 		$getEvent = $this->model->whereCategory('event')->whereStatus('publish')->where('type','>',0)->orderBy('type','asc')->take(3)->get();
 		$data['resultEvent'] = $getEvent;
 		
+		// dd($data);
 		return view('frontend.news.index', $data);
     }
 
