@@ -81,18 +81,21 @@
 					</div>
 				</div><!--end.left-news1-->
 				<div class="news-jer">
+				@if(!empty($photo))
+					@foreach($photo as $valPhoto)
 					<div class="news-items-list edge-news-list">
 						<div class="edge-reserve-news-list">
 							<div class="image-news">
-								<img src="{{ asset(null) }}frontend/images/content/news-tips1.jpg">
+								<img src="{{ asset(null) }}contents/foto/medium/{{$valPhoto->image}}">
 							</div><!--end.images-news-->
 							<div class="details-news photo-news">
-								<h4 class="detail-title">Lorem ipsum<br><span class="whiteFont">dolor sit amet</span></h4>
-								<a href="" class="learnMore">More Details</a>
+								<h4 class="detail-title"><span class="whiteFont">{{$valPhoto->title}}</span></h4>
+								<a href="{{url('/gallery/photo/'.$valPhoto->slug)}}" class="learnMore">More Details</a>
 							</div><!--end.details-news-->
 						</div><!--.edge-reserve-news-list-->
 					</div><!--.news-items-list-->
-
+					@endforeach
+					{{--
 					<div class="news-items-list edge-news-list">
 						<div class="edge-reserve-news-list">
 							<div class="image-news">
@@ -116,6 +119,8 @@
 							</div><!--end.details-news-->
 						</div><!--.edge-reserve-news-list-->
 					</div><!--.news-items-list-->
+					--}}
+				@endif
 				</div><!--end.news-jer-->
 			</div><!--end.news-section-->
 		</div>

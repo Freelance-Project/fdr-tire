@@ -64,6 +64,7 @@
                       <li><a href="#">News &amp; Events</a></li>
                       <li><a href="#">Tireology</a></li>
                       <li><a href="#">Gallery</a></li>
+                      <li><a href="#">Community</a></li>
                     </ul>
                 </div><!--end.col5-->
                 

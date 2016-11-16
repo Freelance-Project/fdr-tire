@@ -25,6 +25,12 @@
                         <label>Title</label>
                         {!! Form::text('title' , null ,['class' => 'form-control']) !!}
                       </div>
+
+                      
+                      <div class="form-group">
+                        <label>Type ALbum</label>
+                        {!! Form::select('type' , ['1' => 'Racing','2' => 'Event'] , null ,['class' => 'form-control']) !!}
+                      </div>
                       
 					  
                       <div class="form-group">
@@ -47,10 +53,10 @@
                         @endif
                     </div>     					           					
 
-        						  <div class="form-group">
-        							<label>Status</label>
-        							{!! Form::select('status' , ['n' => 'Unpublished','y' => 'Published'] , null ,['class' => 'form-control']) !!}
-        						  </div>
+				  <div class="form-group">
+					<label>Status</label>
+					{!! Form::select('status' , ['unpublish' => 'Unpublished','publish' => 'Published'] , null ,['class' => 'form-control']) !!}
+				  </div>
 
                       <div class="form-group">
 

@@ -40,7 +40,7 @@ class FotoController extends Controller
 				return $images;
 			})
 			->addColumn('published' , function($model){
-				 if($model->status == 'y')
+				 if($model->status == 'publish')
 	            {
 	                $words = '<span class="label label-success">Published</span>';
 	            }else{
@@ -50,7 +50,7 @@ class FotoController extends Controller
 			})
 			->addColumn('action' , function($model){
 
-				if($model->status == 'y')
+				if($model->status == 'publish')
 	            {
 	                $status = true;
 	            }else{
@@ -87,8 +87,10 @@ class FotoController extends Controller
 			if($id==false){
 				$values = [
 				'author_id' => \Auth::user()->id,
+        		'slug'      => $this->generateUniqueSlug(NewsContent::all(),$request->title,'slug'),
 				'title' => $request->title,
 				'description' => $request->description,
+				'type' => $request->type,
 				'status' => $request->status,
 				'category' => 'foto',
 				];
@@ -114,6 +116,7 @@ class FotoController extends Controller
 				'parent_id' => $id,
 				'title' => $request->title,
 				'description' => $request->description,
+				'type' => $request->type,
 				'status' => $request->status,
 				'category' => 'foto',
 				];
@@ -159,10 +162,24 @@ class FotoController extends Controller
 		$values = [
 			'title' => $request->title,
 			'description' => $request->description,
+			'type' => $request->type,
 			'status' => $request->status
 		];
 
 		$update = $this->model->whereId($id)->update($values);
+
+		$image = str_replace("%20", " ", $request->image);
+
+        if(!empty($image))
+        {
+			$imageName = "foto-".$id;
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'foto');
+			// dd($uploadImage);
+			
+			$this->model->whereId($id)->update([
+            		'image' => $uploadImage['filename']          		
+            ]);
+        }
 		if($parent_id==false){
 			$url = "index";
 		}else{
@@ -176,12 +193,12 @@ class FotoController extends Controller
         $model = $this->model->find($id);
         if(!empty($model->id))
         {
-            if($model->status == 'y')
+            if($model->status == 'publish')
             {
-                $updateStatus = 'n';
+                $updateStatus = 'unpublish';
                 $message = 'Data has been unpublished';
             }else{
-                $updateStatus = 'y';
+                $updateStatus = 'publish';
                 $message = 'Data has been published';
             }
 
@@ -223,4 +240,26 @@ class FotoController extends Controller
     		'model' => $model,
     	]);
     }
+     public function generateUniqueSlug($model,$title,$param)
+    {
+      
+            $temp = str_slug($title, '-');
+
+            if(!$model->where($param,$temp)->isEmpty()){
+
+                $i = 1;
+                $newslug = $temp . '-' . $i;
+
+                while(!$model->where($param,$newslug)->isEmpty()){
+
+                    $i++;
+                    $newslug = $temp . '-' . $i;
+                }
+
+                $temp =  $newslug;
+            }
+
+        return $temp;
+    }
+
 }
