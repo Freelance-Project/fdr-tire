@@ -17,113 +17,159 @@ class RacingController extends Controller
 	public function __construct()
 	{
 		$this->model = new NewsContent;
-		$this->category = 1;
+		$this->resource_view = 'backend.about.racing.';
 	}
 
 
-	public function getIndex()
+	public function getData($id=false)
 	{
-		return view('backend.about.racing.index');
-		
-	}
+		if($id==false){
+			$model = $this->model->whereParentId(null)->select('id' , 'title', 'status')->whereCategory('racing');
+		}else{
 
-	public function getData()
-	{
-		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('racing');
+			$model = $this->model->whereParentId($id)->select('id' , 'title', 'parent_id', 'image', 'created_at', 'status')->whereCategory('racing');
+		}
+
 		return Table::of($model)
-			->addColumn('image',function($model){
-				return '<img src = "'.asset('contents/about/small/'.$model->image).'"/>';
+			->addColumn('images' , function($model){
+				if(!empty($model->image)){
+
+					$images ='<img src="'.asset('contents/racing/thumbnail').'/'.$model->image.'" width="200" height="200" />';
+                }else{
+					$images ='<img src="'.asset('contents/no-images.jpg').'" width="200" height="200" />';                	
+                }
+				return $images;
+			})
+			->addColumn('published' , function($model){
+				 if($model->status == 'y')
+	            {
+	                $words = '<span class="label label-success">Published</span>';
+	            }else{
+	                $words = '<span class="label label-danger">Unpublished</span>';
+	            }
+				return $words;
 			})
 			->addColumn('action' , function($model){
-			return \Helper::buttons($model->id);
+
+				if($model->status == 'y')
+	            {
+	                $status = true;
+	            }else{
+	                $status = false;
+	            }
+	        if($model->parent_id==NULL){
+				return \Helper::buttons($model->id,[],$status);
+	        }else{
+				return \Helper::buttons($model->id.'/'.$model->parent_id,[],$status);
+	        }
 		})->make(true);
 	}
 
+	public function getIndex()
+	{	
+
+		return view($this->resource_view.'index');
+		
+	}
+	
 	public function getCreate()
 	{
 		$model = $this->model;
-		$date = '';
 
-		return view('backend.about.racing.form', ['model' => $model,'date' => $date]);
+		return view($this->resource_view.'form', ['model' => $model]);
 	}
 
 
-	public function postCreate(Request $request)
+	public function postCreate(Request $request,$id = false)
 	{
-		$inputs = $request->all();
 		
-		$values = [
-			'author_id' => \Auth::user()->id,
-			'title' => $request->title,
-			'brief' => $request->brief,
-			'description' => $request->description,
-			'created_at' => \Helper::dateToDb($request->date),
-			'slug' => str_slug($request->title),
-			'status' => $request->status,
-			'category' => 'racing',
-		];
-		
-		$save = $this->model->create($values);
-		
-		$image = str_replace("%20", " ", $request->image);
-
-        if(!empty($image))
-        {
-
-            $imageName = "racing-".$save->id;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'about');
+			$inputs = $request->all();
 			
-			$this->model->whereId($save->id)->update([
-            		'image' => $uploadImage['filename']          		
-            ]);
-        }		
-			
-		// dd($save);
-        return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
+			if($id==false){
+				$values = [
+				'author_id' => \Auth::user()->id,
+				'title' => $request->title,
+				'description' => $request->description,
+				'status' => $request->status,
+				'category' => 'racing',
+				];
+				
+				$save = $this->model->create($values);
+
+				$image = str_replace("%20", " ", $request->image);
+
+		        if(!empty($image))
+		        {
+					$imageName = "racing-".$save->id;
+					$uploadImage = \Helper::handleUpload($request, $imageName, 'racing');
+					// dd($uploadImage);
+					
+					$this->model->whereId($save->id)->update([
+		            		'image' => $uploadImage['filename']          		
+		            ]);
+		        }
+	       		return redirect(urlBackendAction('index'))->withSuccess('data has been saved');		
+			}else{
+				$values = [
+				'author_id' => \Auth::user()->id,
+				'parent_id' => $id,
+				'title' => $request->title,
+				'description' => $request->description,
+				'status' => $request->status,
+				'category' => 'racing',
+				];
+				
+				$save = $this->model->create($values);
+
+				$image = str_replace("%20", " ", $request->image);
+
+		        if(!empty($image))
+		        {
+					$imageName = "racing-".$save->id;
+					$uploadImage = \Helper::handleUpload($request, $imageName, 'racing');
+					// dd($uploadImage);
+					
+					$this->model->whereId($save->id)->update([
+		            		'image' => $uploadImage['filename']          		
+		            ]);
+		        }
+	       		return redirect(urlBackendAction('update/'.$id))->withSuccess('data has been saved');					
+
+			}	
+		
 	}
 
-	public function getUpdate($id)
+	public function getUpdate($id,$parent_id=false)
 	{
 		$model  = $this->model->find($id);
 		
 		$date = \Helper::dbToDate($model->created_at);
 		
-		return view('backend.about.racing.form' , [
+		return view($this->resource_view.'form' , [
 
 			'model' => $model,
 			'date' => $date,
+			'parent_id' => $parent_id,
 		]);
 	}
 
 
-	public function postUpdate(Request $request , $id)
+	public function postUpdate(Request $request , $id,$parent_id=false)
 	{
 					
 		$values = [
 			'title' => $request->title,
-			'brief' => $request->brief,
 			'description' => $request->description,
-			'created_at' => \Helper::dateToDb($request->date),
-			'slug' => str_slug($request->title),
 			'status' => $request->status
 		];
 
 		$update = $this->model->whereId($id)->update($values);
-		
-		
-		$image = str_replace("%20", " ", $request->image);
-
-        if(!empty($image))
-        {
-
-            $imageName = "racing-".$id;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'about');
-			
-			$this->model->whereId($id)->update([
-            		'image' => $uploadImage['filename']
-            ]);
-        }
-		return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
+		if($parent_id==false){
+			$url = "index";
+		}else{
+			$url = "update/".$parent_id;
+		}
+		return redirect(urlBackendAction($url))->withSuccess('Data has been saved');
 	}
 
 	public function getPublish($id)
@@ -135,14 +181,11 @@ class RacingController extends Controller
             {
                 $updateStatus = 'n';
                 $message = 'Data has been unpublished';
-                $words = 'Unpublished';
             }else{
                 $updateStatus = 'y';
                 $message = 'Data has been published';
-                $words = 'Published';
             }
 
-            Helper::history($words , '' , ['id' => $id]);
             $model->update(['status' => $updateStatus]);
             return redirect()->back()->withMessage($message);
         }else{
@@ -160,7 +203,7 @@ class RacingController extends Controller
         {
 			$model = $this->model->whereId($getmodel->id);
 			
-            $path_image = public_path('contents/about');
+            $path_image = public_path('contents/news');
             @unlink($path_image. '/large/'.$model->image);
             @unlink($path_image. '/medium/'.$model->image);
             @unlink($path_image. '/small/'.$model->image);

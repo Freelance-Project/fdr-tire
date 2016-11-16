@@ -1,7 +1,7 @@
 @extends('backend.layouts.layout')
 @section('content')
 
-@include('backend.common.flashes')
+@include('backend.common.sweet_flashes')
 <div class="inner" style="min-height: 700px;">
     <div class="row">
         <div class="col-lg-12">
@@ -14,8 +14,9 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    DataTables Advanced Tables
+                   Data Award
                 </div>
+               
                 <div class="panel-body">
                 
                         {!! helper::buttonCreate() !!}
@@ -27,9 +28,7 @@
                 <table class = 'table' id = 'table'>
                     <thead>
                         <tr>
-                            <th>Title</th>
-							<th></th>
-                            <th>Created</th>
+                            <th>Year</th>	
                             <th>Published</th>
                             <th>Action</th>
                         </tr>
@@ -38,10 +37,12 @@
                 </table>
 
                 </div>
+
             </div>
         </div>
     </div>
 </div>
+    @include('backend.popElfinder');
 
 @endsection
 
@@ -50,6 +51,12 @@
     <script type="text/javascript">
         
         $(document).ready(function(){
+
+        window.onload = function()
+        {
+          CKEDITOR.replace( 'description',{
+          filebrowserBrowseUrl: '{{ urlBackend("image/lib")}}'});
+        }
             $.fn.dataTable.ext.errMode = 'none';
             $('#table').DataTable({
                 processing: true,
@@ -57,9 +64,7 @@
                 ajax: '{{ urlBackendAction("data") }}',
                 columns: [
                     { data: 'title', name: 'title' },
-                    { data: 'image', name: 'image' },
-                    { data: 'created_at', name: 'created_at' },
-                    { data: 'status', name: 'status' },
+                    { data: 'published', name: 'published' },
                     { data: 'action', name: 'action' , searchable: false, "orderable":false},
                     
                 ]

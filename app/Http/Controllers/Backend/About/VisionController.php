@@ -18,37 +18,47 @@ class VisionController extends Controller
 	{
 		$this->model = new NewsContent;
 		$this->category = 1;
-	}
-
-
-	public function getIndex()
-	{
-		return view('backend.about.vision.index');
-		
+		$this->resource_view = 'backend.about.vision.';
 	}
 
 	public function getData()
 	{
-		$model = $this->model->select('id' , 'title' , 'image', 'created_at', 'status')->whereCategory('vision');
-		return Table::of($model)
-			->addColumn('image',function($model){
-				return '<img src = "'.asset('contents/about/small/'.$model->image).'"/>';
-			})
-			->addColumn('action' , function($model){
-			return \Helper::buttons($model->id);
-		})->make(true);
+
+		$data = $this->model->whereParentId(null)->where('category','vision')->first();
+
+		$model = $this->model->whereParentId($data->id)->select('id' , 'title', 'brief', 'description','created_at', 'status')->whereCategory('vision');
+		// return Table::of($model)
+			// ->addColumn('published' , function($model){
+				// if($model->status == 'y')
+	            // {
+	                // $words = '<span class="label label-success">Published</span>';
+	            // }else{
+	                // $words = '<span class="label label-danger">Unpublished</span>';
+	            // }
+				// return $words;
+			// })
+			// ->addColumn('action' , function($model){
+
+				// if($model->status == 'y')
+	            // {
+	                // $status = true;
+	            // }else{
+	                // $status = false;
+	            // }
+
+			// return \Helper::buttons($model->id,[],$status);
+			
+		// })->make(true);
 	}
 
-	public function getCreate()
-	{
-		$model = $this->model;
-		$date = '';
+	public function getIndex()
+	{	
+		$model = $this->model->whereParentId(null)->where('category','vision')->first();
 
-		return view('backend.about.vision.form', ['model' => $model,'date' => $date]);
+		return view($this->resource_view.'index',compact('model'));
+		
 	}
-
-
-	public function postCreate(Request $request)
+	public function postIndex(Request $request)
 	{
 		$inputs = $request->all();
 		
@@ -57,43 +67,85 @@ class VisionController extends Controller
 			'title' => $request->title,
 			'brief' => $request->brief,
 			'description' => $request->description,
-			'created_at' => \Helper::dateToDb($request->date),
-			'slug' => str_slug($request->title),
-			'status' => $request->status,
+			'status'=>'y',
 			'category' => 'vision',
 		];
-		
-		$save = $this->model->create($values);
+
+		if(!empty($request->id)){
+
+			$save = $this->model->whereId($request->id)->update($values);
+			$dataid=$save;
+		}else{
+
+			$save = $this->model->create($values);
+			$dataid=$save->id;
+		}
 		
 		$image = str_replace("%20", " ", $request->image);
 
         if(!empty($image))
         {
-
-            $imageName = "vision-".$save->id;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'about');
+			$imageName = "vision-".$dataid;
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'vision');
+			// dd($uploadImage);
 			
-			$this->model->whereId($save->id)->update([
+			$this->model->whereId($dataid)->update([
             		'image' => $uploadImage['filename']          		
             ]);
-        }		
-			
-		// dd($save);
-        return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
+        }
+
+        return redirect(urlBackendAction('index'))->withSuccess('data has been saved');		
 	}
 
-	public function getUpdate($id)
+	// public function getCreate()
+	// {
+		// $model = $this->model;
+
+		// return view($this->resource_view.'form', ['model' => $model]);
+	// }
+
+
+	public function postCreate(Request $request)
 	{
-		$model  = $this->model->find($id);
 		
-		$date = \Helper::dbToDate($model->created_at);
-		
-		return view('backend.about.vision.form' , [
+		$data = $this->model->whereParentId(null)->where('category','vision')->first();
 
-			'model' => $model,
-			'date' => $date,
-		]);
+		if(!empty($data->id)){
+			$inputs = $request->all();
+		
+			$values = [
+				'author_id' => \Auth::user()->id,
+				'parent_id' => $data->id,
+				'title' => $request->title,
+				'description' => $request->description,
+				'status' => $request->status,
+				'category' => 'tire-maintenance',
+			];
+			
+			$save = $this->model->create($values);
+
+        return redirect(urlBackendAction('index'))->withSuccess('data has been saved');		
+			
+		}else{
+
+        return redirect()->back()->withMessage('Sory Data Parent Not Found!');
+
+		}
+		
 	}
+
+	// public function getUpdate($id)
+	// {
+		// $model  = $this->model->find($id);
+		
+		// $date = \Helper::dbToDate($model->created_at);
+		
+		// return view($this->resource_view.'form' , [
+
+			// 'model' => $model,
+			// 'date' => $date,
+		// ]);
+	// }
 
 
 	public function postUpdate(Request $request , $id)
@@ -101,28 +153,12 @@ class VisionController extends Controller
 					
 		$values = [
 			'title' => $request->title,
-			'brief' => $request->brief,
 			'description' => $request->description,
-			'created_at' => \Helper::dateToDb($request->date),
-			'slug' => str_slug($request->title),
 			'status' => $request->status
 		];
 
 		$update = $this->model->whereId($id)->update($values);
 		
-		
-		$image = str_replace("%20", " ", $request->image);
-
-        if(!empty($image))
-        {
-
-            $imageName = "vision-".$id;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'about');
-			
-			$this->model->whereId($id)->update([
-            		'image' => $uploadImage['filename']
-            ]);
-        }
 		return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
 	}
 
@@ -160,7 +196,7 @@ class VisionController extends Controller
         {
 			$model = $this->model->whereId($getmodel->id);
 			
-            $path_image = public_path('contents/about');
+            $path_image = public_path('contents/news');
             @unlink($path_image. '/large/'.$model->image);
             @unlink($path_image. '/medium/'.$model->image);
             @unlink($path_image. '/small/'.$model->image);
