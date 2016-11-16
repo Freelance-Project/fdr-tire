@@ -8,7 +8,7 @@ function wigo(){
 
 function local(){
 	mysql_connect('localhost', 'root','');
-	mysql_select_db('tire');
+	mysql_select_db('fdr_tire_temp');
 }
 
 migrateContent();
@@ -54,7 +54,8 @@ function migrateContent()
 			$tmpF = implode(',', $fields);
 			$tmpV = implode(',', $values);
 			
-			$ins = "insert into tire.news_contents ({$tmpF}) values ({$tmpV})";
+			$ins = "insert into fdr_tire_temp.news_contents ({$tmpF}) values ({$tmpV})";
+			// print_r($ins);
 			// $ins = "select * from tire.news_contents";
 			$res = mysql_query($ins);
 			

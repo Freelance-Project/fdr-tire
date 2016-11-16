@@ -14,7 +14,7 @@
 						<div class="news-page-caption">
 							<h1>{{$val->title}}<br></h1>
 							<p>{{$val->brief}}</p>
-							<a href="news-list.php" class="learnMoreGrey">More Details</a>
+							<a href="{{url('news/list')}}" class="learnMoreGrey">More Details</a>
 						</div><!--news-page-caption-->
 						@endforeach
 						@endif
@@ -30,7 +30,7 @@
 					<div class="news-cap1">
 						<div class="title-cap">
 							<h3><span class="whiteFont">News</span></h3>
-							<a href="news-list.php" class="buttonskew"><div class="reserve-skew">View All</div></a>
+							<a href="{{url('news/list')}}" class="buttonskew"><div class="reserve-skew">View All</div></a>
 						</div>
 					</div>
 				</div><!--end.left-news1-->
