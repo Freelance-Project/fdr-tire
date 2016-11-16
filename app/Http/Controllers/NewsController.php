@@ -14,7 +14,7 @@ class NewsController extends Controller
 		
 		$this->model = $news;
 		// view()->share('static',$this->getStatic());
-		$this->paging = 5;
+		$this->paging = 25;
 	}
 	
     public function getIndex()
@@ -45,7 +45,10 @@ class NewsController extends Controller
     public function getList()
     {
 		
-		return view('frontend.news.list');
+		$getNews = $this->model->whereCategory('news')->whereStatus('publish')->orderBy('created_at','desc')->paginate($this->paging);
+		$data['resultNews'] = $getNews;
+		
+		return view('frontend.news.list', $data);
     }
 
     public function getDetail()

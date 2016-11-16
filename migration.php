@@ -1,11 +1,13 @@
 <?php
 
 
+
 $param = $argv[1];
 // $param = 'tire';
 $newDB = 'fdr_test';
 $oldDB = 'fdr_ori';
-$pass = 'root123root';
+$pass = '';
+
 
 switch ($param) {
 	case 'news':
@@ -83,7 +85,9 @@ function migrateContent($id, $cat='news')
 			$tmpF = implode(',', $fields);
 			$tmpV = implode(',', $values);
 			
+
 			$ins = "insert into {$newDB}.news_contents ({$tmpF}) values ({$tmpV})";
+
 			$res = mysql_query($ins);
 			$lastId = mysql_insert_id();
 			// exit;
