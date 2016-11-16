@@ -2585,6 +2585,48 @@ table.rounded tr td{
 	width: 100%;
 	padding: 20px 0;
 }
+.banner-berita{
+	border: 1px solid #000;
+	overflow: hidden;
+	margin-bottom: 50px;
+}
+.news-detail .left-content{
+	padding-right: 0;
+	width: 72%;
+}
+.news-detail .right-content{
+	padding-top: 90px;
+	min-height: 1800px;
+}
+.wrap-news{
+	padding-left: 80px;
+}
+.news-detail #list-news-page{
+	margin:-80px 0 0px 0;
+}
+.banner-berita .edge-left-content{
+	margin-bottom: -80px;
+}
+.isiBerita{
+	padding-right: 30px;
+}
+.isiBerita .date{
+	font-size: 14px;
+	color: #ec1c24;
+	display: block;
+}
+.isiBerita .title-news{
+	color: #404041;
+	font-size: 28px;
+    text-transform: uppercase;
+    font-family: 'Panton Black';
+    margin: 0 0 20px 0;
+}
+.share-row{
+	clear: both;
+	width: 100%;
+	padding:20px 0;
+}
 /*----------------------------------------------------------------*/
 /*--------footer-----------*/
 #top-footer{
