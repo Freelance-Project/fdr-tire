@@ -51,8 +51,12 @@ class NewsController extends Controller
 		return view('frontend.news.list', $data);
     }
 
-    public function getDetail()
+    public function getDetail($slug)
     {
-    	return view('frontend.news.detail');
+
+    	$getNews = $this->model->whereStatus('publish')->whereSlug($slug)->first();
+		$data['resultNews'] = $getNews;
+
+    	return view('frontend.news.detail', $data);
     }
 }
