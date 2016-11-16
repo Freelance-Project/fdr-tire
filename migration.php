@@ -1,6 +1,7 @@
 <?php
 
-$param = $argv[1];
+// $param = $argv[1];
+$param = 'tire';
 
 switch ($param) {
 	case 'news':
@@ -24,6 +25,9 @@ switch ($param) {
 		break;
 	case 'motor':
 		migrateMotor();
+		break;
+	case 'tire':
+		migrateTire();
 		break;
 	
 	default:
@@ -221,7 +225,45 @@ function migrateMotor()
 
 function migrateTire()
 {
-	
+	$sql = "select * from wigo_fdr.tire";
+	$res = fetch($sql);
+	if ($res) {
+
+		$kolom = ['name','brief','description','overview','size', 'image','banner','is_feature','feature_caption','is_new','sort','status', 'created_at','author_id'];
+		$field = implode(',', $kolom);
+		$i = 1;
+		foreach ($res as $key => $value) {
+			$data = [];
+			$data[] = "'".addslashes($value['t_name'])."'";
+			$data[] = "'".addslashes($value['t_brief'])."'";
+			$data[] = "'".addslashes($value['t_desc'])."'";
+			$data[] = "'".addslashes($value['t_overview'])."'";
+			$data[] = "'".addslashes($value['t_sizetable'])."'";
+			$data[] = "'".$value['t_image']."'";
+			$data[] = "'".$value['t_banner']."'";
+			$data[] = "'".strtolower($value['t_feature_caption'])."'";
+			$data[] = "'".$value['t_feature_caption']."'";
+			$data[] = "'".strtolower($value['t_is_new'])."'";
+			$data[] = "'".$value['t_order']."'";
+			if ($value['t_status'] == 'Active') $data[] = "'publish'";
+			else $data[] = "'unpublish'";
+			$data[] = "'".$value['t_entry']."'";
+			$data[] = 7;
+
+			$values = implode(',', $data);
+			$ins = "insert into tire.tires ({$field}) values ({$values}) ";	
+			// echo $ins;
+			$result = mysql_query($ins);
+
+			echo "record -".$i; 
+			echo "\n";
+			$i++;
+			if ($i == 100) {
+				$i = 0;
+				sleep(1);	
+			} 
+		}
+	}
 }
 
 function wigo()
