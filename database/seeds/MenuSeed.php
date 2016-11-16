@@ -357,6 +357,15 @@ class MenuSeed extends Seeder
                         ],['index','create','update','publish','delete']
                 ); 
 
+                \helper::addMenu([ 
+                            'parent_id'     => 'gallery',
+                            'title'         => 'Slideshow',
+                            'controller'    => 'Gallery\SlideshowController',
+                            'slug'          => 'slideshow',
+                            'order'         => '1'
+                        ],['index','create','update','publish','delete']
+                ); 
+
         \helper::addMenu([
                     'parent_id'     => null,
                     'title'         => 'Career',

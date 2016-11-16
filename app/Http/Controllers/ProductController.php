@@ -5,21 +5,29 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Models\Tire;
 
 class ProductController extends Controller
 {
-    public function __construct()
+    public function __construct(Tire $tire)
 	{
 		
-		// $this->model = $news;
+		$this->model = $tire;
 		// view()->share('static',$this->getStatic());
-		
+		$this->paging = 10;
 	}
 	
     public function getIndex()
     {
 		
-		return view('frontend.product.index');
+		$getSlide = $this->model->whereStatus('publish')->take(5)->get();
+		$data['resultSlide'] = $getSlide;
+
+		$getTire = $this->model->whereStatus('publish')->paginate($this->paging);
+		$data['resultTire'] = $getTire;
+
+		// dd($data);
+		return view('frontend.product.index', $data);
     }
 
     public function getDetail()

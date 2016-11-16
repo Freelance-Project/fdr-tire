@@ -153,24 +153,20 @@
 				</div><!--end.left-news1-->
 				<div class="slider-news">
 					<ul id="newsSlider" class="slider">
+						@if($resultNews)
+						@foreach ($resultNews as $val)
 						<li class="banner-news-home" style="background-image: url({{ asset(null) }}frontend/images/content/slide-news1.jpg)">
 							<div class="slide-caption">
 								<div class="caption-small">
-									<h4>  Lorem ipsum<br><span class="redFont">dolor sit amet</span></h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dictum urna, quis feugiat tellus. Aenean at leo hendrerit, auctor metus id, condimentum.</p>
-									<a href="#" class="learnMore">Learn More</a>
+									<h4>  {!! $val->title !!}</h4>
+									<p>{!! $val->brief !!}</p>
+									<a href="{{url('news/detail/'.$val->slug)}}" class="learnMore">Learn More</a>
 								</div><!--end.caption-small-->
 							</div><!--end.slide-caption-->
 						</li>
-						<li class="banner-news-home" style="background-image: url({{ asset(null) }}frontend/images/content/slide-news2.jpg)">
-							<div class="slide-caption">
-								<div class="caption-small">
-									<h4>  Lorem ipsum<br><span class="redFont">dolor sit amet</span></h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-									<a href="#" class="learnMore">Learn More</a>
-								</div><!--end.caption-small-->
-							</div><!--end.slide-caption-->
-						</li>
+						@endforeach
+						@endif
+						
 					</ul>
 				</div><!--end.silder-news-->
 			</div><!--end.news-section-->
@@ -181,38 +177,23 @@
 		 	<div class="eventSection">
 		 		<div class="left-event1">
 		 			<h3 class="event-title"><span class="redFont">Events</span><br>Calendar</h3>
+		 			@if($resultEvent)
+					@foreach ($resultEvent as $val)
 		 			<div class="event-row">
 		 				<div class="date-event">
 		 					<span class="number">1-2</span>
 		 					<span class="month">SEP</span>	
 		 				</div>
 		 				<div class="detail-event">
-		 					<h4>MotorPrix</h4>
-		 					<p><strong>REGION 1</strong></p>
+		 					<h4>{!! $val->title !!}</h4>
+		 					<p><strong>{!! $val->source !!}</strong></p>
 		 				</div>
 		 			</div><!--end.row-->
+		 			@endforeach
+		 			@endif
+		 			
 		 			<div class="event-row">
-		 				<div class="date-event">
-		 					<span class="number">6-7</span>
-		 					<span class="month">AUG</span>	
-		 				</div>
-		 				<div class="detail-event">
-		 					<h4>HRC</h4>
-		 					<p><strong>REGION 1</strong></p>
-		 				</div>
-		 			</div><!--end.row-->
-		 			<div class="event-row">
-		 				<div class="date-event">
-		 					<span class="number">21-23</span>
-		 					<span class="month">JUL</span>	
-		 				</div>
-		 				<div class="detail-event">
-		 					<h4>Bikers Gathering</h4>
-		 					<p><strong>REGION 1</strong></p>
-		 				</div>
-		 			</div><!--end.row-->
-		 			<div class="event-row">
-		 				<a href="#" class="viewAll">View All</a>
+		 				<a href="{{url('news/event')}}" class="viewAll">View All</a>
 		 			</div>
 		 		</div><!--end.left-event1-->
 		 		<div class="left-event-page1-reserve">

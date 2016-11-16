@@ -13,7 +13,7 @@
 						<div class="title-cap">
 							<h3>Product</h3>
 							<h3 class="whiteFont">Line UP</h3>
-						</div>
+						</div> 
 						<div class="sub-cap">
 							<div class="side-triangle">
 								<a href="#" class="capSub" data-kanalId="onRoad" data-imageUrl="{{ asset(null) }}frontend/images/content/bg-product.jpg">On Road</a>
@@ -136,11 +136,11 @@
 		<div class="edge-left-content">
 			<div class="content-carousel">
 				<div id="banCarousel">
+					@if($resultSlide)
+					@foreach ($resultSlide as $val)
 					<img src="{{ asset(null) }}frontend/images/content/ban-car.png" alt="Image 1" />
-					<img src="{{ asset(null) }}frontend/images/content/ban-car.png" alt="Image 2" />
-					<img src="{{ asset(null) }}frontend/images/content/ban-car.png" alt="Image 3" />
-					<img src="{{ asset(null) }}frontend/images/content/ban-car.png" alt="Image 4" />
-					<img src="{{ asset(null) }}frontend/images/content/ban-car.png" alt="Image 5" />
+					@endforeach
+					@endif
 				</div>
 				<a href="#" id="prev"></a>
 				<a href="#" id="next"></a>
@@ -171,168 +171,37 @@
 				</div>
 			</div><!--end.top--menu-->
 			<div class="row-listProduct">
+				@if($resultTire)
+				@foreach ($resultTire as $val)
+				<div class="items">
+					<div class="box-skew">
+						<div class="reserve-skew">
+							<div class="detail-product">
+								<h3 class="block-title">{{$val->name}}</h3>
+								<div class="icon-list">
+									<span class="icon-prod"><img src="{{ asset(null) }}frontend/images/material/ban-icon1.png"></span>
+									<span class="icon-prod"><img src="{{ asset(null) }}frontend/images/material/ban-icon2.png"></span>
+								</div>
+								<div class="desc-prod">
+									<p>{!! $val->brief !!}</p>
+									<span>Comfortable in tough terrain</span>
+								</div>
+								<a href="{{url('product/detail/'.$val->slug)}}" class="learnMore">More Details</a>
+							</div><!--end.detail-product-->
+							<div class="product-img">
+								<div class="inner-product">
+									<div class="label-new"><img src="{{ asset(null) }}frontend/images/material/label.png"></div>
+									<div class="product-ban">
+										<img src="{{ asset(null) }}frontend/images/content/ban.png">
+									</div><!--end.product-ban-->
+								</div><!--end.innder-product-->
+							</div><!--end.product-img-->
+						</div><!--end.reserve-skew-->
+					</div><!--end.box-skew-->
+				</div><!--row.item-->
+				@endforeach
+				@endif
 				
-				<div class="items">
-					<div class="box-skew">
-						<div class="reserve-skew">
-							<div class="detail-product">
-								<h3 class="block-title">Dozer</h3>
-								<div class="icon-list">
-									<span class="icon-prod"><img src="{{ asset(null) }}frontend/images/material/ban-icon1.png"></span>
-									<span class="icon-prod"><img src="{{ asset(null) }}frontend/images/material/ban-icon2.png"></span>
-								</div>
-								<div class="desc-prod">
-									<p>Ban nyaman di medan<br>menantang</p>
-									<span>Comfortable in tough terrain</span>
-								</div>
-								<a href="product-detail.php" class="learnMore">More Details</a>
-							</div><!--end.detail-product-->
-							<div class="product-img">
-								<div class="inner-product">
-									<div class="label-new"><img src="{{ asset(null) }}frontend/images/material/label.png"></div>
-									<div class="product-ban">
-										<img src="{{ asset(null) }}frontend/images/content/ban.png">
-									</div><!--end.product-ban-->
-								</div><!--end.innder-product-->
-							</div><!--end.product-img-->
-						</div><!--end.reserve-skew-->
-					</div><!--end.box-skew-->
-				</div><!--row.item-->
-
-				<div class="items">
-					<div class="box-skew">
-						<div class="reserve-skew">
-							<div class="detail-product">
-								<h3 class="block-title">Dozer</h3>
-								<div class="icon-list">
-									<span class="icon-prod"><img src="{{ asset(null) }}frontend/images/material/ban-icon1.png"></span>
-									<span class="icon-prod"><img src="{{ asset(null) }}frontend/images/material/ban-icon2.png"></span>
-								</div>
-								<div class="desc-prod">
-									<p>Ban nyaman di medan<br>menantang</p>
-									<span>Comfortable in tough terrain</span>
-								</div>
-								<a href="product-detail.php" class="learnMore">More Details</a>
-							</div><!--end.detail-product-->
-							<div class="product-img">
-								<div class="inner-product">
-									<div class="label-new"><img src="{{ asset(null) }}frontend/images/material/label.png"></div>
-									<div class="product-ban">
-										<img src="{{ asset(null) }}frontend/images/content/ban.png">
-									</div><!--end.product-ban-->
-								</div><!--end.innder-product-->
-							</div><!--end.product-img-->
-						</div><!--end.reserve-skew-->
-					</div><!--end.box-skew-->
-				</div><!--row.item-->
-
-				<div class="items">
-					<div class="box-skew">
-						<div class="reserve-skew">
-							<div class="detail-product">
-								<h3 class="block-title">Dozer</h3>
-								<div class="icon-list">
-									<span class="icon-prod"><img src="{{ asset(null) }}frontend/images/material/ban-icon1.png"></span>
-									<span class="icon-prod"><img src="{{ asset(null) }}frontend/images/material/ban-icon2.png"></span>
-								</div>
-								<div class="desc-prod">
-									<p>Ban nyaman di medan<br>menantang</p>
-									<span>Comfortable in tough terrain</span>
-								</div>
-								<a href="product-detail.php" class="learnMore">More Details</a>
-							</div><!--end.detail-product-->
-							<div class="product-img">
-								<div class="inner-product">
-									<div class="label-new"><img src="{{ asset(null) }}frontend/images/material/label.png"></div>
-									<div class="product-ban">
-										<img src="{{ asset(null) }}frontend/images/content/ban.png">
-									</div><!--end.product-ban-->
-								</div><!--end.innder-product-->
-							</div><!--end.product-img-->
-						</div><!--end.reserve-skew-->
-					</div><!--end.box-skew-->
-				</div><!--row.item-->
-
-				<div class="items">
-					<div class="box-skew">
-						<div class="reserve-skew">
-							<div class="detail-product">
-								<h3 class="block-title">Dozer</h3>
-								<div class="icon-list">
-									<span class="icon-prod"><img src="{{ asset(null) }}frontend/images/material/ban-icon1.png"></span>
-									<span class="icon-prod"><img src="{{ asset(null) }}frontend/images/material/ban-icon2.png"></span>
-								</div>
-								<div class="desc-prod">
-									<p>Ban nyaman di medan<br>menantang</p>
-									<span>Comfortable in tough terrain</span>
-								</div>
-								<a href="product-detail.php" class="learnMore">More Details</a>
-							</div><!--end.detail-product-->
-							<div class="product-img">
-								<div class="inner-product">
-									<div class="label-new"><img src="{{ asset(null) }}frontend/images/material/label.png"></div>
-									<div class="product-ban">
-										<img src="{{ asset(null) }}frontend/images/content/ban.png">
-									</div><!--end.product-ban-->
-								</div><!--end.innder-product-->
-							</div><!--end.product-img-->
-						</div><!--end.reserve-skew-->
-					</div><!--end.box-skew-->
-				</div><!--row.item-->
-
-				<div class="items">
-					<div class="box-skew">
-						<div class="reserve-skew">
-							<div class="detail-product">
-								<h3 class="block-title">Dozer</h3>
-								<div class="icon-list">
-									<span class="icon-prod"><img src="{{ asset(null) }}frontend/images/material/ban-icon1.png"></span>
-									<span class="icon-prod"><img src="{{ asset(null) }}frontend/images/material/ban-icon2.png"></span>
-								</div>
-								<div class="desc-prod">
-									<p>Ban nyaman di medan<br>menantang</p>
-									<span>Comfortable in tough terrain</span>
-								</div>
-								<a href="product-detail.php" class="learnMore">More Details</a>
-							</div><!--end.detail-product-->
-							<div class="product-img">
-								<div class="inner-product">
-									<div class="label-new"><img src="{{ asset(null) }}frontend/images/material/label.png"></div>
-									<div class="product-ban">
-										<img src="{{ asset(null) }}frontend/images/content/ban.png">
-									</div><!--end.product-ban-->
-								</div><!--end.innder-product-->
-							</div><!--end.product-img-->
-						</div><!--end.reserve-skew-->
-					</div><!--end.box-skew-->
-				</div><!--row.item-->
-
-				<div class="items">
-					<div class="box-skew">
-						<div class="reserve-skew">
-							<div class="detail-product">
-								<h3 class="block-title">Dozer</h3>
-								<div class="icon-list">
-									<span class="icon-prod"><img src="{{ asset(null) }}frontend/images/material/ban-icon1.png"></span>
-									<span class="icon-prod"><img src="{{ asset(null) }}frontend/images/material/ban-icon2.png"></span>
-								</div>
-								<div class="desc-prod">
-									<p>Ban nyaman di medan<br>menantang</p>
-									<span>Comfortable in tough terrain</span>
-								</div>
-								<a href="product-detail.php" class="learnMore">More Details</a>
-							</div><!--end.detail-product-->
-							<div class="product-img">
-								<div class="inner-product">
-									<div class="label-new"><img src="{{ asset(null) }}frontend/images/material/label.png"></div>
-									<div class="product-ban">
-										<img src="{{ asset(null) }}frontend/images/content/ban.png">
-									</div><!--end.product-ban-->
-								</div><!--end.innder-product-->
-							</div><!--end.product-img-->
-						</div><!--end.reserve-skew-->
-					</div><!--end.box-skew-->
-				</div><!--row.item-->
 			</div><!--end.rowlistproduct-->
 		</div><!--end.wrapper-->
 
