@@ -112,7 +112,8 @@ class TireController extends Controller
 		// dd($model->motorTire);
 		$tireid = [];
 		foreach ($model->motorTire as $value) {
-			$tireid[$value->motor_model_id] = $value->model->type->id;
+			$tireid[$value->motor_model_id][$value->model->type->id]['size'][] = $value->tire_size_id;
+			$tireid[$value->motor_model_id][$value->model->type->id]['category'][$value->tire_size_id] = $value->tire_size_id;
 		}
 		// dd($tireid);
 		return view('backend.product.tire.form', [
@@ -160,7 +161,7 @@ class TireController extends Controller
 						
 						$saveMotorTire = $this->tire->motorTire($motorTire);
 						// dd($motorTire);
-						$existId[] = $this->tire->isExistMotorTire($model->id, $motor, $tireCategory, $size, $type);
+						$existId[] = $this->tire->isExistMotorTire($model->id, $motormodel, $tireCategory, $size, $type);
 					}
 					
 				}
@@ -181,33 +182,7 @@ class TireController extends Controller
 		return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
 	}
 
-	public function getPublish($id)
-    {
-        $model = $this->model->find($id);
-        if(!empty($model->id))
-        {
-            if($model->status == 'y')
-            {
-                $updateStatus = 'n';
-                $message = 'Data has been unpublished';
-                $words = 'Unpublished';
-            }else{
-                $updateStatus = 'y';
-                $message = 'Data has been published';
-                $words = 'Published';
-            }
-
-            Helper::history($words , '' , ['id' => $id]);
-            $model->update(['status' => $updateStatus]);
-            return redirect()->back()->withMessage($message);
-        }else{
-
-            return redirect()->back()->withMessage('something wrong');
-
-        }
-    }
-
-    public function getDelete($id)
+	public function getDelete($id)
     {
         $getmodel = $this->model->find($id);
 		

@@ -56,11 +56,11 @@
                             $motorTypeCheck = false;
                             if (isset($tireSelected)) {
                               
-                              if (in_array($val->type->id, $tireSelected)) {
+                              if (isset($tireSelected[$val->id][$val->type->id])) {
                                 $motorTypeCheck = true;
                               }
                             }
-                            // dd($val->type->id);
+                            // dd($motorTypeCheck);
                             ?>
 
                             {!! Form::checkbox("motor_type[$val->id]", $val->type->id, $motorTypeCheck) !!} {{$val->type->name}}
@@ -72,12 +72,16 @@
                               $tireCat = false;
                               if (isset($model->motorTire)) {
                                 foreach ($model->motorTire as $data) {
-                                  if (($val->type->id == $data->motor_type_id) and ($s->id == $data->tire_size_id)) {
+                                  // dd($s->id);
+                                  if (isset($tireSelected[$val->id][$val->type->id]['size']) and in_array($s->id, $tireSelected[$val->id][$val->type->id]['size'])) {
                                     $sizeCheck = true;
-                                    $tireCat = $data->tire_category_id;
+                                    $tireCat = $tireSelected[$val->id][$val->type->id]['category'][$s->id];
+                                    
                                   }
+                                  
                                 }
                               }
+                              // dd($tireCat);
                               $motorType = $val->type->id;
                               ?>
                               <span style="margin-left:5em">{!! Form::checkbox("size[$motorType][]" , $s->id, $sizeCheck) !!} {{$s->size}}</span>

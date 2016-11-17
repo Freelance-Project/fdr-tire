@@ -30,10 +30,13 @@ class ProductController extends Controller
 		return view('frontend.product.index', $data);
     }
 
-    public function getDetail()
+    public function getDetail($slug)
     {
 		
-		return view('frontend.product.detail');
+		$getProduct = Tire::whereSlug($slug)->whereStatus('publish')->first();
+		$data['product'] = $getProduct;
+
+		return view('frontend.product.detail', $data);
     }
 
 }

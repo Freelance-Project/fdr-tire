@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Models\NewsContent;
+use App\Models\TireTipe;
 
 class DefaultController extends Controller
 {
@@ -20,7 +21,7 @@ class DefaultController extends Controller
     public function getIndex()
     {
 		
-		$getSlide = $this->model->orderBy('type','asc')->get();
+		$getSlide = TireTipe::get();
 		$data['resultSlide'] = $getSlide;
 
 		$getNews = $this->model->whereCategory('news')->whereStatus('publish')->where('type','>',0)->orderBy('type','asc')->take(3)->get();

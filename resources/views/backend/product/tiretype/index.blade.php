@@ -28,6 +28,7 @@
                     <thead>
                         <tr>
                             <th>Title</th>
+                            <th>Logo</th>
 							<th>Action</th>
                         </tr>
                     </thead>
@@ -53,7 +54,8 @@
                 serverSide: true,
                 ajax: '{{ urlBackendAction("data") }}',
                 columns: [
-					{ data: 'name', name: 'name', render: function(data, type, full, meta){ return '<a href="update/'+full.id+'">'+data+'</a>';}},
+                    { data: 'name', name: 'name', render: function(data, type, full, meta){ return '<a href="update/'+full.id+'">'+data+'</a>';}},
+					{ data: 'banner', name: 'banner'},
                     { data: 'action', name: 'action' , searchable: false, "orderable":false},
                     
                 ]

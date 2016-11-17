@@ -29,10 +29,10 @@ class TireTypeController extends Controller
 
 	public function getData()
 	{
-		$model = $this->model->select('id' , 'name');
+		$model = $this->model->select('id' , 'name', 'banner');
 		return Table::of($model)
-			->addColumn('image',function($model){
-				return '<img src = "'.asset('contents/product/small/'.$model->image).'"/>';
+			->addColumn('banner',function($model){
+				return '<img src = "'.asset('contents/product/small/'.$model->banner).'"/>';
 			})
 			->addColumn('action' , function($model){
 			return \Helper::buttons($model->id);
@@ -57,7 +57,17 @@ class TireTypeController extends Controller
 		
 		$save = $this->model->create($values);
 		
+		$image = str_replace("%20", " ", $request->image);
+        if(!empty($image))
+        {
+            $imageName = "product-".$save->id;
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'product');
 			
+			$this->model->whereId($save->id)->update([
+            		'banner' => $uploadImage['filename'],
+            ]);
+        }
+
 		// dd($save);
         return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
 	}
@@ -84,9 +94,20 @@ class TireTypeController extends Controller
 			'created_at' => \Helper::dateToDb($request->date)
 		];
 
-		$update = $this->model->whereId($id)->update($values);
+		$update = $this->model->whereId($id)->first();
+		$update->update($values);
 		
-		
+		$image = str_replace("%20", " ", $request->image);
+        if(!empty($image))
+        {
+            $imageName = "product-".$update->id;
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'product');
+			
+			$this->model->whereId($update->id)->update([
+            		'banner' => $uploadImage['filename'],
+            ]);
+        }
+
 		return redirect(urlBackendAction('index'))->withSuccess('Data has been saved');
 	}
 

@@ -22,12 +22,13 @@ class TireArea
 		$inputs['description'] = $data['description'];
 		$inputs['rating'] = $data['rating'];
 		$inputs['author_id'] = \Auth::user()->id;
-		dd($inputs);
+		// dd($inputs);
 		if (!$model) {
 			$save = Tire::create($inputs);
 			return $save->id;
 		} else {
-			$save = $model->save($inputs);
+
+			$save = $model->update($inputs);
 			return $model->id;
 		}
 	}

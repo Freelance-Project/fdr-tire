@@ -120,7 +120,7 @@ class TipsController extends Controller
 
             $imageName = "news-".$id;
 			$uploadImage = \Helper::handleUpload($request, $imageName, 'news');
-			
+			// dd($uploadImage);
 			$this->model->whereId($id)->update([
             		'image' => $uploadImage['filename']
             ]);

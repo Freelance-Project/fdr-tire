@@ -24,10 +24,10 @@
 				</div><!--end.main=product-->
 				<div class="main-desc">
 					<div class="top-desc">
-						<h1 class="title-block"><span class="redFont ">FLEMMO</span> PRO </h1><span class="miring">/</span><span class="type">ON ROAD / TUBETYPE</span>
+						<h1 class="title-block"><span class="redFont ">{{$product->name}}</span> PRO </h1><span class="miring">/</span><span class="type">ON ROAD / TUBETYPE</span>
 
 						<div class="desc-prod">
-							<p>Tampilan lidah api dengan multistep, memaksimalkan gaya<br>berkendaramu di kondisi kering dan basah</p>
+							<p>{!! $product->brief !!}</p>
 							<span>With multi-step pattern, FlemmoPRO will maximize your riding<br>style on wet or dry surfaces</span>
 						</div>
 						<div class="share-row">
