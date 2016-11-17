@@ -24,4 +24,26 @@ class Controller extends BaseController
     	NewsContentComment::create($value);
     	return true;
     }
+    public function generateUniqueSlug($model,$title,$param)
+    {
+      
+            $temp = str_slug($title, '-');
+
+            if(!$model->where($param,$temp)->isEmpty()){
+
+                $i = 1;
+                $newslug = $temp . '-' . $i;
+
+                while(!$model->where($param,$newslug)->isEmpty()){
+
+                    $i++;
+                    $newslug = $temp . '-' . $i;
+                }
+
+                $temp =  $newslug;
+            }
+
+        return $temp;
+    }
+
 }
