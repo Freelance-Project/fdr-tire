@@ -13,7 +13,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Form Album Foto
+                    DataTables Advanced Tables
                 </div>
                 <div class="panel-body">
 
@@ -22,24 +22,15 @@
                      {!! Form::model($model,['files' => true]) !!} 
 
                       <div class="form-group">
-                        <label>Title</label>
+                        <label>Question</label>
                         {!! Form::text('title' , null ,['class' => 'form-control']) !!}
                       </div>
-
-                    <div class="form-group">
-                        <label>Thumbnail Image</label>
-                        <div>
-                          <a class="Wbutton" onclick = "return browseElfinder('image'  , 'image_tempel' , 'elfinder_browse1' , 'cancelBrowse')" >Browse</a>
-                          Suggestion Image Size (726,449)
-                        </div>
-                        <input type = 'hidden' name = 'image' id = 'image' />
-                        
-                    </div>
-                    <div id="image_tempel" style = 'margin-top:30px;'>
-                        @if(!empty($model->image))
-                          <img src="{{ asset('contents/ecard/thumbnail').'/'.$model->image }}" width="200" height="200" />
-                        @endif
-                    </div>     					           					
+                      
+					  
+                      <div class="form-group">
+                        <label>Answer</label>
+                        {!! Form::textarea('description' , null ,['class' => 'form-control','id'=>'description']) !!}
+                      </div>          					           					
 
         						  <div class="form-group">
         							<label>Status</label>
@@ -53,7 +44,6 @@
                       </div>
                     
                     {!! Form::close() !!}
-                  
                 </div>
             </div>
         </div>
@@ -61,17 +51,12 @@
     @include('backend.popElfinder');
 @endsection
 @section('script')
- <script type="text/javascript">
-        
-        $(document).ready(function(){
-
-        window.onload = function()
-        {
-          CKEDITOR.replace( 'description',{
-          filebrowserBrowseUrl: '{{ urlBackend("image/lib")}}'});
-        }
-       
-        });
-
-    </script>
+<script type="text/javascript">
+  
+  window.onload = function()
+  {
+      CKEDITOR.replace( 'description',{
+      filebrowserBrowseUrl: '{{ urlBackend("image/lib")}}'});
+  }
+</script>
 @endsection

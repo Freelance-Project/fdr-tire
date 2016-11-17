@@ -40,7 +40,7 @@ class EcardController extends Controller
 				return $images;
 			})
 			->addColumn('published' , function($model){
-				 if($model->status == 'y')
+				 if($model->status == 'publish')
 	            {
 	                $words = '<span class="label label-success">Published</span>';
 	            }else{
@@ -50,7 +50,7 @@ class EcardController extends Controller
 			})
 			->addColumn('action' , function($model){
 
-				if($model->status == 'y')
+				if($model->status == 'publish')
 	            {
 	                $status = true;
 	            }else{
@@ -160,6 +160,18 @@ class EcardController extends Controller
 		];
 
 		$update = $this->model->whereId($id)->update($values);
+		$image = str_replace("%20", " ", $request->image);
+
+        if(!empty($image))
+        {
+			$imageName = "ecard-".$id;
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'ecard');
+			// dd($uploadImage);
+			
+			$this->model->whereId($id)->update([
+            		'image' => $uploadImage['filename']          		
+            ]);
+        }
 		if($parent_id==false){
 			$url = "index";
 		}else{
@@ -173,12 +185,12 @@ class EcardController extends Controller
         $model = $this->model->find($id);
         if(!empty($model->id))
         {
-            if($model->status == 'y')
+            if($model->status == 'publish')
             {
-                $updateStatus = 'n';
+                $updateStatus = 'unpublish';
                 $message = 'Data has been unpublished';
             }else{
-                $updateStatus = 'y';
+                $updateStatus = 'publish';
                 $message = 'Data has been published';
             }
 
@@ -199,7 +211,7 @@ class EcardController extends Controller
         {
 			$model = $this->model->whereId($getmodel->id);
 			
-            $path_image = public_path('contents/news');
+            $path_image = public_path('contents/ecard');
             @unlink($path_image. '/large/'.$model->image);
             @unlink($path_image. '/medium/'.$model->image);
             @unlink($path_image. '/small/'.$model->image);

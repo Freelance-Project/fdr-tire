@@ -159,8 +159,22 @@
 					</div>
 				</div><!--end.left-news1-->
 				<div class="news-jer downloadList" style="background:#fff;">
-					<img src="{{ asset(null) }}frontend/images/material/download.jpg">
-					
+					@if(!empty($ecard->id))
+					<a href="{{url('/gallery/downloadecard/'.$ecard->id)}}"><img src="{{ asset(null) }}frontend/images/material/download-ecard.jpg"></a>
+					@endif
+
+					@if(!empty($wallpaper->id))
+					<a href="{{url('/gallery/download/'.$wallpaper->id)}}"><img src="{{ asset(null) }}frontend/images/material/download-wallpaper.jpg"></a>
+					@endif
+					@if(!empty($chart->id))
+					<a href="{{url('/gallery/download/'.$chart->id)}}"><img src="{{ asset(null) }}frontend/images/material/download-chart.jpg"></a>
+					@endif
+					@if(!empty($calender->id))
+					<a href="{{url('/gallery/download/'.$calender->id)}}"><img src="{{ asset(null) }}frontend/images/material/download-calender.jpg"></a>
+					@endif
+					@if(!empty($bulletin->id))
+					<a href="{{url('/gallery/download/'.$bulletin->id)}}"><img src="{{ asset(null) }}frontend/images/material/download-buletin.jpg"></a>
+					@endif
 				</div><!--end.news-jer-->
 			</div><!--end.news-section-->
 		</div>

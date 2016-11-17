@@ -28,7 +28,7 @@
                 <table class = 'table' id = 'table'>
                     <thead>
                         <tr>
-                            <th>Thumbnail Image</th>
+                            <th>Thumbnail</th>
                             <th>Title</th>
                             <th>Category</th>
                             <th>Created</th>
@@ -68,7 +68,7 @@
                 columns: [
                     { data: 'images', name: 'images' , searchable: false, "orderable":false},
                     { data: 'title', name: 'title' },
-                    { data: 'category', name: 'category' },
+                    { data: 'types', name: 'types' },
                     { data: 'created_at', name: 'created_at' },
                     { data: 'published', name: 'published' },
                     { data: 'action', name: 'action' , searchable: false, "orderable":false},

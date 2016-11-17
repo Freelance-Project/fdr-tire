@@ -26,6 +26,11 @@
                         {!! Form::text('title' , null ,['class' => 'form-control']) !!}
                       </div>
 
+                      <div class="form-group">
+                        <label>Type Download</label>
+                        {!! Form::select('type' , ['1' => 'Wallpaper','2' => 'Chart', '3'=> 'Calender', '4'=>'Bulletin'] , null ,['class' => 'form-control']) !!}
+                      </div>
+
                     <div class="form-group">
                         <label>Thumbnail Image</label>
                         <div>
