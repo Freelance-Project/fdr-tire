@@ -51,6 +51,33 @@ class NewsController extends Controller
 		return view('frontend.news.list', $data);
     }
 
+    public function getTips()
+    {
+		
+		$getNews = $this->model->whereCategory('tips')->whereStatus('publish')->orderBy('created_at','desc')->paginate($this->paging);
+		$data['resultNews'] = $getNews;
+		
+		return view('frontend.news.list', $data);
+    }
+
+    public function getMediaHighlights()
+    {
+		
+		$getNews = $this->model->whereCategory('mediahighlights')->whereStatus('publish')->orderBy('created_at','desc')->paginate($this->paging);
+		$data['resultNews'] = $getNews;
+		
+		return view('frontend.news.list', $data);
+    }
+
+    public function getFdrNews()
+    {
+		
+		$getNews = $this->model->whereCategory('fdrnews')->whereStatus('publish')->orderBy('created_at','desc')->paginate($this->paging);
+		$data['resultNews'] = $getNews;
+		
+		return view('frontend.news.list', $data);
+    }
+
     public function getDetail($slug)
     {
 
