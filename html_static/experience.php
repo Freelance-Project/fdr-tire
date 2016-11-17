@@ -42,12 +42,7 @@
 					</div>
 				</div><!--end.right-->
 			</div><!--end.top-menu-->
-			<div class="title-mir">
-				<div class="title-cap">
-					<h3 class="redFont">FDR RACING</h3>
-					<h3 class="greyFont">EXPERIENCE</h3>
-				</div>
-			</div>
+						
 		</div>
 		<div class="list-awards">
 			<div class="row-year">
