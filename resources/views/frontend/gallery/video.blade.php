@@ -51,7 +51,7 @@
 							</div><!--end.images-->
 							<div class="details">
 								<p class="title">{{$valRacing->title}}</p>
-								<span class="count">Description Videos</span>
+								<span class="count">{!! str_limit($valRacing->description, $limit = 100, $end = '...') !!}</span>
 							</div>
 						</a>
 					</div><!--end.items-->
@@ -102,7 +102,7 @@
 							</div><!--end.images-->
 							<div class="details">
 								<p class="title">{{$valEvent->title}}</p>
-								<span class="count">Description Videos</span>
+								<span class="count">{!! str_limit($valEvent->description, $limit = 50, $end = '...') !!}</span>
 							</div>
 						</a>
 					</div><!--end.items-->
