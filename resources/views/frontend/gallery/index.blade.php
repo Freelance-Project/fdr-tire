@@ -159,7 +159,11 @@
 					</div>
 				</div><!--end.left-news1-->
 				<div class="news-jer downloadList" style="background:#fff;">
-					<img src="{{ asset(null) }}frontend/images/material/download.jpg">
+					<a href="{{url('/gallery/download/'.$ecard->id)}}"><img src="{{ asset(null) }}frontend/images/material/download-ecard.jpg"></a>
+					<a href="#"><img src="{{ asset(null) }}frontend/images/material/download-wallpaper.jpg"></a>
+					<a href="#"><img src="{{ asset(null) }}frontend/images/material/download-chart.jpg"></a>
+					<a href="#"><img src="{{ asset(null) }}frontend/images/material/download-calender.jpg"></a>
+					<a href="#"><img src="{{ asset(null) }}frontend/images/material/download-buletin.jpg"></a>
 					
 				</div><!--end.news-jer-->
 			</div><!--end.news-section-->

@@ -13,7 +13,8 @@ class GalleryController extends Controller
 	{
 		
 		$this->model = new NewsContent;
-		// view()->share('static',$this->getStatic());
+		
+        $this->pathFileDownload       = public_path('contents/ecard/large/');
 		
 	}
 	
@@ -21,6 +22,8 @@ class GalleryController extends Controller
     {
         $data['photo'] = $this->model->whereParentId(null)->whereCategory('foto')->where('status','publish')->take(3)->get();
 		$data['video'] = $this->model->whereParentId(null)->whereCategory('video')->where('status','publish')->take(3)->get();
+
+        $data['ecard'] = $this->model->whereParentId(null)->whereCategory('ecard')->where('status','publish')->first();
         // dd($photo);
 		return view('frontend.gallery.index',$data);
     }
@@ -69,6 +72,15 @@ class GalleryController extends Controller
 
     	}
 
+    }
+
+    public function getDownload($id)
+    {
+        $model = $this->model->findOrFail($id);
+
+        $path = $this->pathFileDownload.'/'.$model->image;
+
+        return response()->download($path);
     }
 
 }
