@@ -6,7 +6,13 @@ motor_brands
 motor_types
 - id
 - name
+- motor_brand_id (takeout)
+
+motor_models
+- id
+- name
 - motor_brand_id
+- motor_type_id
 
 motor_tire_categories
 - id
