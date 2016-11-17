@@ -7,23 +7,21 @@
 	<section id="career-page" class="edge-left">
 		<div class="edge-left-content">
 			<div class="career-section">
+			@if(!empty($faqBanner))
 				<div class="bg-career">
-					<img src="{{asset(null)}}frontend/images/content/job-bg.jpg">
+					<img src="{{ asset(null) }}contents/faq/large/{{$faqBanner->image}}">
 				</div>
 				<div class="career-right">
 					<div class="bg-right">
 						<img src="{{asset(null)}}frontend/images/material/career-right.png">
 					</div>
 					<div class="content-career">
-						<h3>Kesempatan<br><span class="redFont">Berkarir</span></h3>
-						<p>PT. Suryaraya Rubberindo Industries (Astra Group) memiliki visi untuk menjadi produsen ban motor terbaik dan nomor satu di Indonesia.  Untuk mencapai visi tersebut, perusahaan mengembangan strategi dan misi peningkatan riset teknologi, kontrol ketat atas kualitas hasil produksi, peningkatan pelayanan kepada pelanggan, budaya mutu dalam segala bidang, serta peningkatan benefit bagi segenap stake-holders secara berkesinambungan.</p>
-						<p>
-
-						Mari bergabung bersama kami! 
-						</p>
+						<h3>{{ $faqBanner->title }}</h3>
+						{!! $faqBanner->description !!}>
 						<a href="{{url('/career/event')}}" class="learnMore">Lihat Lowongan</a>
 					</div>
 				</div>
+			@endif
 			</div><!--end.product-section-->
 	        <a href="" class="findtire"></a>
     	</div>
@@ -128,19 +126,17 @@
 		 		</div><!--end.faq-title-->
 		 		<div class="faq-content">
 		 			<div id="content-accodion">
+		 			@if(!empty($faq))
+		 				@foreach($faq as $valFaq)
 		 				<div class="items">
-		 					<h4 class="page">Kerusakan apa saja yang yang mungkin bisa pada ban motor?</h4>
+		 					<h4 class="page">{{$valFaq->title}}</h4>
 		 					<div class="content">
-		 						<p>We aim to be a global organization that constantly stays a step ahead in dealing with change, creates new value, and contributes broadly to society.</p>
+		 						{!! $valFaq->description !!}
 							</div><!--end.content-->
 		 				</div><!--end.items-->
-		 				<div class="items">
-		 					<h4 class="page">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dictum urna, quis</h4>
-		 					<div class="content">
-		 						<p>We aim to be a global organization that constantly stays a step ahead in dealing with change, creates new value, and contributes broadly to society.</p>
-		 						<p>We aim to be a global organization that constantly stays a step ahead in dealing with change, creates new value, and contributes broadly to society.</p>
-							</div><!--end.content-->
-		 				</div><!--end.items-->
+		 				@endforeach
+		 			@endif
+		 			{{--
 		 				<div class="items">
 		 					<h4 class="page">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dictum urna, quis</h4>
 		 					<div class="content">
@@ -197,6 +193,14 @@
 		 						<p>We aim to be a global organization that constantly stays a step ahead in dealing with change, creates new value, and contributes broadly to society.</p>
 							</div><!--end.content-->
 		 				</div><!--end.items-->
+		 				<div class="items">
+		 					<h4 class="page">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis dictum urna, quis</h4>
+		 					<div class="content">
+		 						<p>We aim to be a global organization that constantly stays a step ahead in dealing with change, creates new value, and contributes broadly to society.</p>
+		 						<p>We aim to be a global organization that constantly stays a step ahead in dealing with change, creates new value, and contributes broadly to society.</p>
+							</div><!--end.content-->
+		 				</div><!--end.items-->
+		 				--}}
 		 			</div><!--end.contentaccodion-->
 		 		</div><!--end.faq-content-->
 		 	</div><!--end.faq-section-->

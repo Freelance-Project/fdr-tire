@@ -28,7 +28,7 @@ class FaqController extends Controller
 		$model = $this->model->whereParentId($data->id)->select('id' , 'title', 'created_at', 'status')->whereCategory('faq');
 		return Table::of($model)
 			->addColumn('published' , function($model){
-				 if($model->status == 'y')
+				 if($model->status == 'publish')
 	            {
 	                $words = '<span class="label label-success">Published</span>';
 	            }else{
@@ -38,7 +38,7 @@ class FaqController extends Controller
 			})
 			->addColumn('action' , function($model){
 
-				if($model->status == 'y')
+				if($model->status == 'publish')
 	            {
 	                $status = true;
 	            }else{
@@ -62,7 +62,7 @@ class FaqController extends Controller
 		$values = [
 			'author_id' => \Auth::user()->id,
 			'description' => $request->description,
-			'status'=>'y',
+			'status'=>'publish',
 			'category' => 'faq',
 		];
 
@@ -147,7 +147,7 @@ class FaqController extends Controller
 	{
 					
 		$values = [
-			'title' => $request->name,
+			'title' => $request->title,
 			'description' => $request->description,
 			'status' => $request->status
 		];
@@ -162,12 +162,12 @@ class FaqController extends Controller
         $model = $this->model->find($id);
         if(!empty($model->id))
         {
-            if($model->status == 'y')
+            if($model->status == 'publish')
             {
-                $updateStatus = 'n';
+                $updateStatus = 'unpublish';
                 $message = 'Data has been unpublished';
             }else{
-                $updateStatus = 'y';
+                $updateStatus = 'publish';
                 $message = 'Data has been published';
             }
 
