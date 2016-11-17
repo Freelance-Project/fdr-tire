@@ -19,7 +19,8 @@ class GalleryController extends Controller
 	
     public function getIndex()
     {
-		$data['photo'] = $this->model->whereCategory('foto')->where('status','publish')->take(3)->get();
+        $data['photo'] = $this->model->whereCategory('foto')->where('status','publish')->take(3)->get();
+		$data['video'] = $this->model->whereCategory('video')->where('status','publish')->take(3)->get();
         // dd($photo);
 		return view('frontend.gallery.index',$data);
     }
@@ -47,10 +48,24 @@ class GalleryController extends Controller
 
     	if($slug){
 
-			return view('frontend.gallery.video-detail');
+            $data['video'] = $this->model->whereCategory('video')->where('status','publish')->where('slug',$slug)->first();
+            $embed = explode('v=', $data['video']->video);
+            // dd($embed);
+
+            $data['youtube'] = false;
+            if(!empty($embed[1])){
+
+            $data['youtube'] = $embed[1];
+            }
+			return view('frontend.gallery.video-detail', $data);
 
     	}else{
-			return view('frontend.gallery.video');
+
+            $data['racing']= $this->model->whereCategory('video')->where('type',1)->where('status','publish')->take(3)->get();
+
+            $data['event']= $this->model->whereCategory('video')->where('type',2)->where('status','publish')->take(3)->get();
+
+			return view('frontend.gallery.video', $data);
 
     	}
 

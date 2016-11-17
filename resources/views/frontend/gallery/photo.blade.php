@@ -27,8 +27,8 @@
 				<div class="right">
 					<div class="breadcum-product">
 						<ol class="breadcrumb">
-			              <li><a href="#">Home</a></li>
-			              <li><a href="#">Gallery</a></li>
+			              <li><a href="{{url('/')}}">Home</a></li>
+			              <li><a href="{{url('/gallery/index')}}">Gallery</a></li>
 			              <li class="active">Photo All</li>
 			            </ol>
 					</div>

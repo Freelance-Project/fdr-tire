@@ -31,17 +31,22 @@
 					</div>
 				</div><!--end.left-news1-->
 				<div class="news-jer">
+
+				@if(!empty($video))
+					@foreach($video as $valVideo)
 					<div class="news-items-list with-border edge-news-list">
 						<div class="edge-reserve-news-list">
 							<div class="image-news">
-								<img src="{{ asset(null) }}frontend/images/content/news-image.jpg">
+								<img src="{{ asset(null) }}contents/video/medium/{{$valVideo->image}}">
 							</div><!--end.images-news-->
 							<div class="details-news video-play">
-								<a href="#" class="icon-play"></a>
+								<a href="{{url('/gallery/video/'.$valVideo->slug)}}" class="icon-play"></a>
 							</div><!--end.details-news-->
 						</div><!--.edge-reserve-news-list-->
 					</div><!--.news-items-list-->
-
+					@endforeach
+				@endif
+				{{--
 					<div class="news-items-list with-border edge-news-list">
 						<div class="edge-reserve-news-list">
 							<div class="image-news">
@@ -63,7 +68,7 @@
 							</div><!--end.details-news-->
 						</div><!--.edge-reserve-news-list-->
 					</div><!--.news-items-list-->
-
+				--}}
 
 				</div><!--end.news-jer-->
 			</div><!--end.news-section-->

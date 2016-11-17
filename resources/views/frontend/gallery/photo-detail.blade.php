@@ -10,9 +10,9 @@
 				<div class="right">
 					<div class="breadcum-product">
 						<ol class="breadcrumb">
-			              <li><a href="#">Home</a></li>
-			              <li><a href="#">Gallery</a></li>
-			              <li><a href="#">Photo All</a></li>
+                    <li><a href="{{url('/')}}">Home</a></li>
+                    <li><a href="{{url('/gallery/index')}}">Gallery</a></li>
+			              <li><a href="{{url('/gallery/index/photo')}}">Photo All</a></li>
 			              <li class="active">Photo</li>
 			            </ol>
 					</div>
@@ -27,25 +27,27 @@
 					</div>
 				</div>
 				<div class="slide-photo">
+        @if(!empty($photo->childs->where('status','publish')->first()->id))
+        
 					<div class="detail-slider">
-                    	<ul class="slidegal">
-                      
-                          @foreach($photo->childs as $childPhoto)
-                          <li><img src="{{ asset(null) }}contents/foto/large/{{$childPhoto->image}}" title="{{$childPhoto->title}}" /></li>
-                          @endforeach
-                        
+            	<ul class="slidegal">
+                  @foreach($photo->childs->where('status','publish') as $childPhoto)
+                  <li><img src="{{ asset(null) }}contents/foto/large/{{$childPhoto->image}}" title="{{$childPhoto->title}}" /></li>
+                  @endforeach
+                
 
-                          
-                        </ul>
-                        <div class="custom-pager">
-                            <ul class="pager-album">
+                  
+                </ul>
+                <div class="custom-pager">
+                    <ul class="pager-album">
 
-                          @foreach($photo->childs as $childPhotopager)
-                              <li><a data-slideIndex="0" href=""><img src="{{ asset(null) }}contents/foto/large/{{$childPhotopager->image}}" title="{{$childPhotopager->title}}" /></a></li>
-                          @endforeach
-                            
-                        </div><!--end.custom-pager-->
-                	</div><!--end.detail-slider-->
+                  @foreach($photo->childs as $key => $childPhotopager)
+                      <li><a data-slideIndex="{{$key}}" href=""><img src="{{ asset(null) }}contents/foto/large/{{$childPhotopager->image}}" title="{{$childPhotopager->title}}" /></a></li>
+                  @endforeach
+                    </ul>
+                </div><!--end.custom-pager-->
+        	</div><!--end.detail-slider-->
+          @endif
 				</div><!--end.slide-photo-->
 			</div><!--end.content-photo-details-->
 		</div>

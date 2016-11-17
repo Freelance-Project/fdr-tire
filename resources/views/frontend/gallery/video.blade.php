@@ -27,30 +27,36 @@
 				<div class="right">
 					<div class="breadcum-product">
 						<ol class="breadcrumb">
-			              <li><a href="#">Home</a></li>
-			              <li><a href="#">Gallery</a></li>
+			              <li><a href="{{url('/')}}">Home</a></li>
+			              <li><a href="{{url('/gallery/index')}}">Gallery</a></li>
 			              <li class="active">Video All</li>
 			            </ol>
 					</div>
 				</div><!--end.right-->
 			</div><!--end.top-menu-->
+
+			@if(!empty($racing))
 			<div class="row-photo">
 				<div class="title-edge">
 					<h3>Racing</h3>
 				</div>
 				<div class="photolist">
+
+				@foreach($racing as $valRacing)
 					<div class="items">
-						<a href="video-details.php">
+						<a href="{{url('/gallery/video/'.$valRacing->slug)}}">
 							<div class="images videos">
-								<img src="{{ asset(null) }}frontend/images/content/photo-list1.jpg">
+								<img src="{{ asset(null) }}contents/video/thumbnail/{{$valRacing->image}}">
 								<div class="icon-play"><img src="{{ asset(null) }}frontend/images/material/icon-play.png"></div>
 							</div><!--end.images-->
 							<div class="details">
-								<p class="title">Video Title</p>
+								<p class="title">{{$valRacing->title}}</p>
 								<span class="count">Description Videos</span>
 							</div>
 						</a>
 					</div><!--end.items-->
+				@endforeach
+				{{--
 					<div class="items">
 						<a href="video-details.php">
 							<div class="images videos">
@@ -75,26 +81,34 @@
 							</div>
 						</a>
 					</div><!--end.items-->
+				--}}
 				</div><!--end.photo-list-->
 			</div><!--end.row-photo-->
+			@endif
 
+			@if(!empty($event))
 			<div class="row-photo">
 				<div class="title-edge">
 					<h3>Events</h3>
 				</div>
 				<div class="photolist">
+
+				@foreach($event as $valEvent)
 					<div class="items">
-						<a href="video-details.php">
+						<a href="{{url('/gallery/video/'.$valEvent->slug)}}">
 							<div class="images videos">
-								<img src="{{ asset(null) }}frontend/images/content/photo-list1.jpg">
+								<img src="{{ asset(null) }}contents/video/thumbnail/{{$valEvent->image}}">
 								<div class="icon-play"><img src="{{ asset(null) }}frontend/images/material/icon-play.png"></div>
 							</div><!--end.images-->
 							<div class="details">
-								<p class="title">Video Title</p>
+								<p class="title">{{$valEvent->title}}</p>
 								<span class="count">Description Videos</span>
 							</div>
 						</a>
 					</div><!--end.items-->
+
+				@endforeach
+					{{--
 					<div class="items">
 						<a href="video-details.php">
 							<div class="images videos">
@@ -119,8 +133,10 @@
 							</div>
 						</a>
 					</div><!--end.items-->
+					--}}
 				</div><!--end.photo-list-->
 			</div><!--end.row-photo-->
+			@endif
 		</div>
 	</section>
 </div>
