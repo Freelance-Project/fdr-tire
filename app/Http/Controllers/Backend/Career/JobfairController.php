@@ -17,7 +17,7 @@ class JobfairController extends Controller
 	public function __construct()
 	{
 		$this->model = new NewsContent;
-		$this->resource_view = 'backend.career.faq.';
+		$this->resource_view = 'backend.career.jobfair.';
 	}
 
 	public function getData()
@@ -28,7 +28,7 @@ class JobfairController extends Controller
 		$model = $this->model->whereParentId($data->id)->select('id' , 'title', 'created_at', 'status')->whereCategory('jobfair');
 		return Table::of($model)
 			->addColumn('published' , function($model){
-				 if($model->status == 'y')
+				 if($model->status == 'publish')
 	            {
 	                $words = '<span class="label label-success">Published</span>';
 	            }else{
@@ -38,7 +38,7 @@ class JobfairController extends Controller
 			})
 			->addColumn('action' , function($model){
 
-				if($model->status == 'y')
+				if($model->status == 'publish')
 	            {
 	                $status = true;
 	            }else{
@@ -61,15 +61,15 @@ class JobfairController extends Controller
 		
 		$values = [
 			'author_id' => \Auth::user()->id,
-			'description' => $request->description,
-			'status'=>'y',
+			'description' => 'jobfair',
+			'status'=>'publish',
 			'category' => 'jobfair',
 		];
 
 		if(!empty($request->id)){
 
 			$save = $this->model->whereId($request->id)->update($values);
-			$dataid=$save;
+			$dataid=$request->id;
 		}else{
 
 			$save = $this->model->create($values);
@@ -80,8 +80,8 @@ class JobfairController extends Controller
 
         if(!empty($image))
         {
-			$imageName = "faq-".$dataid;
-			$uploadImage = \Helper::handleUpload($request, $imageName, 'faq');
+			$imageName = "jobfair-".$dataid;
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'jobfair',true);
 			// dd($uploadImage);
 			
 			$this->model->whereId($dataid)->update([
@@ -103,7 +103,7 @@ class JobfairController extends Controller
 	public function postCreate(Request $request)
 	{
 		
-		$data = $this->model->whereParentId(null)->where('category','faq')->first();
+		$data = $this->model->whereParentId(null)->where('category','jobfair')->first();
 
 		if(!empty($data->id)){
 			$inputs = $request->all();
@@ -114,7 +114,7 @@ class JobfairController extends Controller
 				'title' => $request->title,
 				'description' => $request->description,
 				'status' => $request->status,
-				'category' => 'faq',
+				'category' => 'jobfair',
 			];
 			
 			$save = $this->model->create($values);

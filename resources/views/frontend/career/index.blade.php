@@ -111,7 +111,7 @@
 			</div><!--.left-news-career-->
 			<div class="career-news-section">
 				<div class="content-career-news">
-					<img src="{{asset(null)}}frontend/images/content/bg_jobfair.jpg">
+					<img src="{{ asset(null) }}contents/jobfair/large/ori-{{$jobFair->image}}">
 				</div><!--end.content-career-news-->
 			</div><!--end.career-news-section-->
 		</div>

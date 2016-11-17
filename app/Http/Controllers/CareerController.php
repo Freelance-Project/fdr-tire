@@ -21,6 +21,7 @@ class CareerController extends Controller
     {
 		$data['faq'] = false;
         $data['faqBanner'] = $this->model->whereParentId(null)->whereCategory('faq')->first();
+        $data['jobFair'] = $this->model->whereParentId(null)->whereCategory('jobfair')->first();
         if(!empty($data['faqBanner']->id)){
 
 			$data['faq'] = $this->model->whereParentId($data['faqBanner']->id)->whereCategory('faq')->where('status','publish')->get();

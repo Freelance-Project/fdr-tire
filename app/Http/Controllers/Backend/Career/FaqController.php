@@ -70,7 +70,7 @@ class FaqController extends Controller
 		if(!empty($request->id)){
 
 			$save = $this->model->whereId($request->id)->update($values);
-			$dataid=$save;
+			$dataid=$request->id;
 		}else{
 
 			$save = $this->model->create($values);
