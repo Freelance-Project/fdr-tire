@@ -208,7 +208,7 @@ class VideoController extends Controller
         {
 			$model = $this->model->whereId($getmodel->id);
 			
-            $path_image = public_path('contents/news');
+            $path_image = public_path('contents/video');
             @unlink($path_image. '/large/'.$model->image);
             @unlink($path_image. '/medium/'.$model->image);
             @unlink($path_image. '/small/'.$model->image);

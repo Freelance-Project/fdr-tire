@@ -14,7 +14,8 @@ class GalleryController extends Controller
 		
 		$this->model = new NewsContent;
 		
-        $this->pathFileDownload       = public_path('contents/ecard/large/');
+        $this->pathFileDownloadecard       = public_path('contents/ecard/large/');
+        $this->pathFileDownload       = public_path('contents/download/large/');
 		
 	}
 	
@@ -24,6 +25,10 @@ class GalleryController extends Controller
 		$data['video'] = $this->model->whereParentId(null)->whereCategory('video')->where('status','publish')->take(3)->get();
 
         $data['ecard'] = $this->model->whereParentId(null)->whereCategory('ecard')->where('status','publish')->first();
+        $data['wallpaper'] = $this->model->whereParentId(null)->whereCategory('download')->whereType(1)->where('status','publish')->first();
+        $data['chart'] = $this->model->whereParentId(null)->whereCategory('download')->whereType(2)->where('status','publish')->first();
+        $data['calender'] = $this->model->whereParentId(null)->whereCategory('download')->whereType(3)->where('status','publish')->first();
+        $data['bulletin'] = $this->model->whereParentId(null)->whereCategory('download')->whereType(4)->where('status','publish')->first();
         // dd($photo);
 		return view('frontend.gallery.index',$data);
     }
@@ -72,6 +77,15 @@ class GalleryController extends Controller
 
     	}
 
+    }
+
+    public function getDownloadecard($id)
+    {
+        $model = $this->model->findOrFail($id);
+
+        $path = $this->pathFileDownloadecard.'/'.$model->image;
+
+        return response()->download($path);
     }
 
     public function getDownload($id)
