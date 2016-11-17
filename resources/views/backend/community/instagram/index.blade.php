@@ -26,7 +26,7 @@
                            
                       
                       <div class="form-group">
-                        <label>Title</label>
+                        <label>#hashtag</label>
                         {!! Form::text('title' , null ,['class' => 'form-control']) !!}
                       </div>   
 

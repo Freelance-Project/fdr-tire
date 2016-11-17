@@ -61,6 +61,7 @@ class InstagramController extends Controller
 		
 		$values = [
 			'author_id' => \Auth::user()->id,
+			'title' => $request->title,
 			'description' => 'instagram',
 			'status'=>'publish',
 			'category' => 'instagram',
