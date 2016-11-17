@@ -34,7 +34,7 @@
 
         						  <div class="form-group">
         							<label>Status</label>
-        							{!! Form::select('status' , ['n' => 'Unpublished','y' => 'Published'] , null ,['class' => 'form-control']) !!}
+        							{!! Form::select('status' , ['unpublish' => 'Unpublished','publish' => 'Published'] , null ,['class' => 'form-control']) !!}
         						  </div>
 
                       <div class="form-group">

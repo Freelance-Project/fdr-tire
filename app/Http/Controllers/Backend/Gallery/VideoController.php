@@ -40,7 +40,7 @@ class VideoController extends Controller
 				return $images;
 			})
 			->addColumn('published' , function($model){
-				 if($model->status == 'y')
+				 if($model->status == 'publish')
 	            {
 	                $words = '<span class="label label-success">Published</span>';
 	            }else{
@@ -50,7 +50,7 @@ class VideoController extends Controller
 			})
 			->addColumn('action' , function($model){
 
-				if($model->status == 'y')
+				if($model->status == 'publish')
 	            {
 	                $status = true;
 	            }else{
@@ -87,9 +87,12 @@ class VideoController extends Controller
 			if($id==false){
 				$values = [
 				'author_id' => \Auth::user()->id,
+        		'slug'      => $this->generateUniqueSlug(NewsContent::all(),$request->title,'slug'),
 				'title' => $request->title,
+				'type' => $request->type,
 				'description' => $request->description,
 				'status' => $request->status,
+				'video' => $request->video,
 				'category' => 'video',
 				];
 				
@@ -113,6 +116,7 @@ class VideoController extends Controller
 				'author_id' => \Auth::user()->id,
 				'parent_id' => $id,
 				'title' => $request->title,
+				'type' => $request->type,
 				'description' => $request->description,
 				'status' => $request->status,
 				'image' => $request->image,
@@ -146,11 +150,25 @@ class VideoController extends Controller
 					
 		$values = [
 			'title' => $request->title,
+			'type' => $request->type,
 			'description' => $request->description,
+			'video' => $request->video,
 			'status' => $request->status
 		];
 
 		$update = $this->model->whereId($id)->update($values);
+		$image = str_replace("%20", " ", $request->image);
+
+        if(!empty($image))
+        {
+			$imageName = "video-".$id;
+			$uploadImage = \Helper::handleUpload($request, $imageName, 'video');
+			// dd($uploadImage);
+			
+			$this->model->whereId($id)->update([
+            		'image' => $uploadImage['filename']          		
+            ]);
+        }
 		if($parent_id==false){
 			$url = "index";
 		}else{
@@ -164,12 +182,12 @@ class VideoController extends Controller
         $model = $this->model->find($id);
         if(!empty($model->id))
         {
-            if($model->status == 'y')
+            if($model->status == 'publish')
             {
-                $updateStatus = 'n';
+                $updateStatus = 'unpublish';
                 $message = 'Data has been unpublished';
             }else{
-                $updateStatus = 'y';
+                $updateStatus = 'publish';
                 $message = 'Data has been published';
             }
 

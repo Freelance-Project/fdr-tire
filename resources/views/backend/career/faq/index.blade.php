@@ -24,6 +24,17 @@
 
                     {!! Form::hidden('id' , null ,['class' => 'form-control']) !!}
                            
+                      
+                      <div class="form-group">
+                        <label>Title</label>
+                        {!! Form::text('title' , null ,['class' => 'form-control']) !!}
+                      </div>   
+
+                      <div class="form-group">
+                        <label>Description</label>
+                        {!! Form::textarea('description' , null ,['class' => 'form-control','id'=>'description']) !!}
+                      </div>                                                        
+
                     <div class="form-group">
                         <label>File</label>
                         <div>
@@ -38,12 +49,7 @@
                           <img src="{{ asset('contents/faq/thumbnail').'/'.$model->image }}" width="200" height="200" />
                         @endif
                     </div>
-                      
-                      <div class="form-group">
-                        <label>Description</label>
-                        {!! Form::textarea('description' , null ,['class' => 'form-control','id'=>'description']) !!}
-                      </div>                                                        
-
+                    <p>&nbsp;</p>
                       <div class="form-group">
 
                         <label>&nbsp;</label>

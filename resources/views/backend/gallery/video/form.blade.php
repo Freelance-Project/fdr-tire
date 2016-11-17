@@ -26,20 +26,17 @@
                         {!! Form::text('title' , null ,['class' => 'form-control']) !!}
                       </div>
                       
+                      <div class="form-group">
+                        <label>Type ALbum</label>
+                        {!! Form::select('type' , ['1' => 'Racing','2' => 'Event'] , null ,['class' => 'form-control']) !!}
+                      </div>
+                      
 					  
                       <div class="form-group">
                         <label>Description</label>
                         {!! Form::textarea('description' , null ,['class' => 'form-control','id'=>'description']) !!}
                       </div>     
-                    @if(!empty($id))
 
-                      <div class="form-group">
-                        <label>Video Yotube</label>
-                        {!! Form::text('image' , null ,['class' => 'form-control']) !!}
-                      </div>
-                    @else
-
-                    @if(empty($parent_id))
                         <div class="form-group">
                             <label>Thumbnail Image</label>
                             <div>
@@ -53,20 +50,18 @@
                             @if(!empty($model->image))
                               <img src="{{ asset('contents/video/thumbnail').'/'.$model->image }}" width="200" height="200" />
                             @endif
-                        </div>      
-                        @else
+                        </div>   
+
                           <div class="form-group">
                             <label>Video Yotube</label>
-                            {!! Form::text('image' , null ,['class' => 'form-control']) !!}
+                            {!! Form::text('video' , null ,['class' => 'form-control']) !!}
                           </div>
 
-                        @endif
-
-                    @endif			           					
+                 		           					
 
     				  <div class="form-group">
     					<label>Status</label>
-    					{!! Form::select('status' , ['n' => 'Unpublished','y' => 'Published'] , null ,['class' => 'form-control']) !!}
+    					{!! Form::select('status' , ['unpublish' => 'Unpublished','publish' => 'Published'] , null ,['class' => 'form-control']) !!}
     				  </div>
 
                       <div class="form-group">
@@ -76,7 +71,7 @@
                       </div>
                     
                     {!! Form::close() !!}
-
+{{--
                     @if(empty($parent_id))
                         @if(!empty($model->id))
 
@@ -100,6 +95,7 @@
 
                         @endif
                     @endif
+                    --}}
                 </div>
             </div>
         </div>

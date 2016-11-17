@@ -27,29 +27,34 @@
 				<div class="right">
 					<div class="breadcum-product">
 						<ol class="breadcrumb">
-			              <li><a href="#">Home</a></li>
-			              <li><a href="#">Gallery</a></li>
+			              <li><a href="{{url('/')}}">Home</a></li>
+			              <li><a href="{{url('/gallery/index')}}">Gallery</a></li>
 			              <li class="active">Photo All</li>
 			            </ol>
 					</div>
 				</div><!--end.right-->
 			</div><!--end.top-menu-->
+
+			@if(!empty($racing))
 			<div class="row-photo">
 				<div class="title-edge">
 					<h3>Racing</h3>
 				</div>
 				<div class="photolist">
+				@foreach($racing as $valRacing)
 					<div class="items">
-						<a href="photo-details.php">
+						<a href="{{url('/gallery/photo/'.$valRacing->slug)}}">
 							<div class="images">
-								<img src="{{ asset(null) }}frontend/images/content/photo-list1.jpg">
+								<img src="{{ asset(null) }}contents/foto/thumbnail/{{$valRacing->image}}" width="220px" height="220px">
 							</div><!--end.images-->
 							<div class="details">
-								<p class="title">Photo Title</p>
+								<p class="title">{{$valRacing->title}}</p>
 								<span class="count">100 Photos</span>
 							</div>
 						</a>
 					</div><!--end.items-->
+				@endforeach
+					{{--
 					<div class="items">
 						<a href="photo-details.php">
 							<div class="images">
@@ -72,25 +77,32 @@
 							</div>
 						</a>
 					</div><!--end.items-->
+					--}}
 				</div><!--end.photo-list-->
 			</div><!--end.row-photo-->
+			@endif
 
+			@if(!empty($event))
 			<div class="row-photo">
 				<div class="title-edge">
 					<h3>Events</h3>
 				</div>
 				<div class="photolist">
+
+				@foreach($event as $valEvent)
 					<div class="items">
-						<a href="photo-details.php">
+						<a href="{{url('/gallery/photo/'.$valEvent->slug)}}">
 							<div class="images">
-								<img src="{{ asset(null) }}frontend/images/content/photo-list1.jpg">
+								<img src="{{ asset(null) }}contents/foto/thumbnail/{{$valEvent->image}}" width="220px" height="220px">
 							</div><!--end.images-->
 							<div class="details">
-								<p class="title">Photo Title</p>
+								<p class="title">{{$valEvent->title}}</p>
 								<span class="count">100 Photos</span>
 							</div>
 						</a>
 					</div><!--end.items-->
+				@endforeach
+					{{--
 					<div class="items">
 						<a href="photo-details.php">
 							<div class="images">
@@ -113,8 +125,10 @@
 							</div>
 						</a>
 					</div><!--end.items-->
+					--}}
 				</div><!--end.photo-list-->
 			</div><!--end.row-photo-->
+			@endif
 		</div>
 	</section>
 </div>
