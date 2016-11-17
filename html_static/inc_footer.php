@@ -27,12 +27,11 @@
                 <div class="col5">
                     <h3>Tires</h3>
                     <ul>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">News & Events</a></li>
-                        <li><a href="#">Tirelogy</a></li>
-                        <li><a href="#">Gallery</a></li>
-                        <li><a href="#">Career</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">All Tires</a></li>
+                        <li><a href="#">On Road</a></li>
+                        <li><a href="#">On/Off Road</a></li>
+                        <li><a href="#">Racing</a></li>
+                        <li><a href="#">Tube</a></li>
                     </ul>
                 </div><!--end.col5-->
                 
@@ -64,6 +63,7 @@
                       <li><a href="#">News &amp; Events</a></li>
                       <li><a href="#">Tireology</a></li>
                       <li><a href="#">Gallery</a></li>
+                      <li><a href="community.php">Community</a></li>
                     </ul>
                 </div><!--end.col5-->
                 
