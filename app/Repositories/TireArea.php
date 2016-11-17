@@ -18,15 +18,17 @@ class TireArea
 	{
 		$inputs['name'] = $data['name'];
 		$inputs['slug'] = str_slug($data['name']);
+		$inputs['brief'] = $data['brief'];
 		$inputs['description'] = $data['description'];
 		$inputs['rating'] = $data['rating'];
 		$inputs['author_id'] = \Auth::user()->id;
-
+		// dd($inputs);
 		if (!$model) {
 			$save = Tire::create($inputs);
 			return $save->id;
 		} else {
-			$save = $model->save($inputs);
+
+			$save = $model->update($inputs);
 			return $model->id;
 		}
 	}
@@ -34,21 +36,21 @@ class TireArea
 	public function motorTire($data)
 	{
 		$inputs['tire_id'] = $data['tire_id'];
-		$inputs['motor_type_id'] = $data['motor_type_id'];
+		$inputs['motor_model_id'] = $data['motor_model_id'];
 		$inputs['tire_category_id'] = $data['tire_category_id'];
 		$inputs['tire_size_id'] = $data['tire_size_id'];
 		$inputs['tire_type_id'] = $data['tire_type_id'];
 
-		if (!$this->isExistMotorTire($data['tire_id'], $data['motor_type_id'], $data['tire_category_id'], $data['tire_size_id'], $data['tire_type_id'])) {
+		if (!$this->isExistMotorTire($data['tire_id'], $data['motor_model_id'], $data['tire_category_id'], $data['tire_size_id'], $data['tire_type_id'])) {
 			return MotorTire::create($inputs)->id;
 		}
 
 		return false;
 	}
 
-	public function isExistMotorTire($tire, $motor_type, $tire_category, $tire_size, $tire_type)
+	public function isExistMotorTire($tire, $motor_model, $tire_category, $tire_size, $tire_type)
 	{
-		$get = MotorTire::whereTireId($tire)->whereMotorTypeId($motor_type)->whereTireCategoryId($tire_category)
+		$get = MotorTire::whereTireId($tire)->whereMotorModelId($motor_model)->whereTireCategoryId($tire_category)
 				->whereTireSizeId($tire_size)->whereTireTypeId($tire_type)->first();
 		if (isset($get->id)) return $get->id;
 		return false;
@@ -60,20 +62,20 @@ class TireArea
 		return false;
 	}
 
-	public function motorTireCat($motorType, $tireCat)
+	public function motorTireCat($motorModel, $tireCat)
 	{
-		$isExist = $this->isExistMotorTireCat($motorType, $tireCat);
+		$isExist = $this->isExistMotorTireCat($motorModel, $tireCat);
 		
 		if (!$isExist) {
-			$save = MotorTireCategory::create(['motor_type_id'=>$motorType, 'tire_category_id'=>$tireCat]);
+			$save = MotorTireCategory::create(['motor_model_id'=>$motorModel, 'tire_category_id'=>$tireCat]);
 			return $save->id;
 		}
 		return false;
 	}
 
-	public function isExistMotorTireCat($motorType, $tireCat)
+	public function isExistMotorTireCat($motorModel, $tireCat)
 	{
-		$get = MotorTireCategory::whereMotorTypeId($motorType)->whereTireCategoryId($tireCat)->count();
+		$get = MotorTireCategory::whereMotorModelId($motorModel)->whereTireCategoryId($tireCat)->count();
 		if ($get > 0) return true;
 		return false;
 	}
@@ -111,7 +113,7 @@ class TireArea
 	{
 		$tire = $data['tire'];
 		$tireSize = $data['tire_size'];
-		$motorType = $data['motor_type'];
+		$motorModel = $data['motor_model'];
 		$tireCategory = $data['tire_category'];
 		
 		
@@ -125,7 +127,7 @@ class TireArea
 					foreach ($tireType as $key => $value) {
 						
 						$motorTire['tire_id'] = $tireid;
-						$motorTire['motor_type_id'] = $motorType;
+						$motorTire['motor_model_id'] = $motorModel;
 						$motorTire['tire_category_id'] = $tireCategory[$tireid][$size];
 						$motorTire['tire_size_id'] = $size;
 						$motorTire['tire_type_id'] = $value->tire_type_id;

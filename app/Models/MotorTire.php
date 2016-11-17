@@ -3,16 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\MotorType;
+use App\Models\MotorModel;
 use App\Models\TireCategory;
 
 class MotorTire extends Model
 {
     public $guarded = [];
 
-    public function motorType()
+    public function model()
     {
-    	return $this->belongsTo(MotorType::class);
+    	return $this->belongsTo(MotorModel::class, 'motor_model_id');
     }
 
     public function tireCategory()

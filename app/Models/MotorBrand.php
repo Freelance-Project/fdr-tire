@@ -11,6 +11,6 @@ class MotorBrand extends Model
 
     public function type()
     {
-    	return $this->hasMany(MotorType::class);
+    	return $this->belongsTo(MotorType::class);
     }
 }

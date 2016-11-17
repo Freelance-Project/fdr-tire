@@ -28,7 +28,7 @@
                       
 					            <div class="form-group">
                         <label>Overview</label>
-                        {!! Form::textarea('overview' , null ,['class' => 'form-control','id'=>'brief']) !!}
+                        {!! Form::textarea('brief' , null ,['class' => 'form-control','id'=>'brief']) !!}
                       </div>
 					  
                       <div class="form-group">
@@ -49,18 +49,21 @@
                         @foreach($motor as $val)
                           <br>
                           <label>{{$val->name}}</label>
-                          @foreach ($val->type as $value)
+                          
                             <br>
                             <?php
+                            
                             $motorTypeCheck = false;
                             if (isset($tireSelected)) {
                               
-                              if (in_array($value->id, $tireSelected)) {
+                              if (isset($tireSelected[$val->id][$val->type->id])) {
                                 $motorTypeCheck = true;
                               }
                             }
+                            // dd($motorTypeCheck);
                             ?>
-                            {!! Form::checkbox("motor_type[]", $value->id, $motorTypeCheck) !!} {{$value->name}}
+
+                            {!! Form::checkbox("motor_type[$val->id]", $val->type->id, $motorTypeCheck) !!} {{$val->type->name}}
                             </br>
                             
                             @foreach($size as $s)
@@ -69,21 +72,26 @@
                               $tireCat = false;
                               if (isset($model->motorTire)) {
                                 foreach ($model->motorTire as $data) {
-                                  if (($value->id == $data->motor_type_id) and ($s->id == $data->tire_size_id)) {
+                                  // dd($s->id);
+                                  if (isset($tireSelected[$val->id][$val->type->id]['size']) and in_array($s->id, $tireSelected[$val->id][$val->type->id]['size'])) {
                                     $sizeCheck = true;
-                                    $tireCat = $data->tire_category_id;
+                                    $tireCat = $tireSelected[$val->id][$val->type->id]['category'][$s->id];
+                                    
                                   }
+                                  
                                 }
                               }
+                              // dd($tireCat);
+                              $motorType = $val->type->id;
                               ?>
-                              <span style="margin-left:5em">{!! Form::checkbox("size[$value->id][]" , $s->id, $sizeCheck) !!} {{$s->size}}</span>
+                              <span style="margin-left:5em">{!! Form::checkbox("size[$motorType][]" , $s->id, $sizeCheck) !!} {{$s->size}}</span>
                               
-                              <span style="margin-left:5em">{!! Form::select("category[$value->id][$s->id]", $category, isset($tireCat) ? $tireCat : null) !!}</span>
+                              <span style="margin-left:5em">{!! Form::select("category[$motorType][$s->id]", $category, isset($tireCat) ? $tireCat : null) !!}</span>
                               </br>
                             @endforeach
                             
                             
-                          @endforeach
+                         
 
                         @endforeach
                         
@@ -139,6 +147,9 @@
   window.onload = function()
   {
       CKEDITOR.replace( 'description',{
+      filebrowserBrowseUrl: '{{ urlBackend("image/lib")}}'});
+
+      CKEDITOR.replace( 'brief',{
       filebrowserBrowseUrl: '{{ urlBackend("image/lib")}}'});
   }
 </script>

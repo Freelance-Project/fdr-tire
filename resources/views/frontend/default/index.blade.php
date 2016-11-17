@@ -94,9 +94,14 @@
 							<h3 class="whiteFont">Line UP</h3>
 						</div>
 						<div class="sub-cap">
-							<div class="side-triangle">
-								<a href="#" class="capSub" data-kanalId="onRoad" data-imageUrl="{{ asset(null) }}frontend/images/content/bg-product.jpg">On Road</a>
-							</div><br>
+							@if($resultSlide)
+							@foreach ($resultSlide as $k => $val)
+							<div class="side-triangle @if($k == 1)white-triangle @endif">
+								<a href="{{url('product')}}" class="capSub" data-kanalId="onRoad" data-imageUrl="{{ asset(null) }}contents/product/large/{{$val->banner}}">{{$val->name}}</a>
+							</div>@if($k == 0 || $k == 2)<br>@endif
+							@endforeach
+							@endif
+							{{--
 							<div class="side-triangle white-triangle">
 								<a href="#" class="capSub" data-kanalId="onOffRoad" data-imageUrl="{{ asset(null) }}frontend/images/content/bg-product2.jpg">On/Off Road</a>
 							</div>
@@ -106,16 +111,23 @@
 							<div class="side-triangle">
 								<a href="#" class="capSub" data-kanalId="tube" data-imageUrl="{{ asset(null) }}frontend/images/content/bg-product2.jpg">Tube</a>
 							</div>
+							--}}
 						</div><!--end.sub-cap-->
 					</div><!--end.caption1-->
 				</div><!--end.left-caption-->
-				<div class="left-capt2 left-capProduct" id="onRoad">
+				
+				@if($resultSlide)
+				@foreach ($resultSlide as $k => $val)
+				<div class="left-capt2 left-capProduct @if($k > 0)hide @endif" id="onRoad">
 					<div class="caption-small">
-						<h4>On Road</h4>
+						<h4>{{$val->name}}</h4>
 						<p>The perfect tire for asphalt, concrete, soil and gravel surfaces</p>
-						<a href="#" class="learnMore">Learn More</a>
+						<a href="{{url('product')}}" class="learnMore">Learn More</a>
 					</div><!--end.caption-small-->
 				</div><!--end.left-caption-->
+				@endforeach
+				@endif
+				{{--
 				<div class="left-capt2 left-capProduct hide" id="onOffRoad">
 					<div class="caption-small">
 						<h4>On/off road</h4>
@@ -137,6 +149,7 @@
 						<a href="#" class="learnMore">Learn More</a>
 					</div><!--end.caption-small-->
 				</div><!--end.left-caption-->
+				--}}
 			</div><!--end.product-section-->
 		</div>
 	</section>
@@ -155,7 +168,7 @@
 					<ul id="newsSlider" class="slider">
 						@if($resultNews)
 						@foreach ($resultNews as $val)
-						<li class="banner-news-home" style="background-image: url({{ asset(null) }}frontend/images/content/slide-news1.jpg)">
+						<li class="banner-news-home" style="background-image: url({{ asset(null) }}contents/news/large/{{$val->image}})">
 							<div class="slide-caption">
 								<div class="caption-small">
 									<h4>  {!! $val->title !!}</h4>
@@ -205,8 +218,12 @@
 				</div>
 		 		<div class="slider-event">
 		 			<ul id="eventSlider" class="slider"> 
-			            <li  style="background-image: url({{ asset(null) }}frontend/images/content/slide-event1.jpg)"></li>
-			            <li  style="background-image: url({{ asset(null) }}frontend/images/content/slide-event2.jpg)"></li>
+		 				@if($resultEvent)
+						@foreach ($resultEvent as $val)
+			            <li  style="background-image: url({{ asset(null) }}contents/news/large/{{$val->image}})"></li>
+			            @endforeach
+		 				@endif
+			            
 			        </ul>
 		 		</div>
 		 	</div><!--end.eventSection-->

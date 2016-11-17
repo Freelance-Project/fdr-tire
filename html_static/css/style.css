@@ -2305,7 +2305,7 @@ table.rounded tr td{
 	height: 555px;
 }
 .about-us-content #news-page-section2  .left-news-page1.tips-page{
-	padding: 190px 0px 0px 100px;
+	padding: 230px 0px 0px 100px;
 }
 .about-us-content #news-page-section2 .left-capt2{
 	    background: url(../images/material/bg-about2.png) no-repeat;
@@ -2625,6 +2625,80 @@ table.rounded tr td{
 	clear: both;
 	width: 100%;
 	padding:20px 0;
+}
+#tirelogy-page2{
+	overflow: hidden;
+	margin-top: -65px;
+    padding-top: 0;
+    z-index: 2;
+        border-bottom: 5px solid #fff;
+}
+#tirelogy-page2 .edge-right-content{
+	margin-bottom: -58px;
+}
+#tirelogy-page2 .left-capt1{
+    background: url(../images/material/bg-news-page2.png) no-repeat;
+}
+#tirelogy-page2 .news-page-section{
+	height: 540px;
+}
+#tirelogy-page2 .news-page-section .left-capt1 {
+    padding: 195px 75px;
+}
+
+#tirelogy-page2 .photo-title {
+    padding: 20px 20px 40px 105px;
+    background: rgba(0,0,0,0.4);
+    position: absolute;
+    bottom: 20px;
+    left: 300px;
+    width: 100%;
+    -ms-transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+    color: #fff;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-family: 'Panton Black';
+    font-weight: 700;
+    font-style: italic;
+}
+.tirelogy-content #news-page-section3 .news-jer-reserve.csrFeed {
+    padding-top: 140px;
+}
+.tirelogy-content #news-page-section4 .news-jer.downloadList {
+    text-align: right;
+    padding-left: 250px;
+    padding-top: 100px;
+    padding-right: 420px;
+}
+.tirelogy-content #news-page-section4 .left-news-page1.tips-page {
+    padding: 135px 0px 0px 40px;
+}
+.whiteRounded{
+	display: block;
+	margin-bottom: 10px;
+    color: #666666;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: 600;
+    position: relative;
+    cursor: pointer;
+}
+.body-tire-content{
+	margin-top: 50px;
+}
+.bottom-konten-tire{
+	clear: both;
+	padding-right: 10px;
+	padding-left:10px;
+}
+.bottom-konten-tire #content-accodion h4.page{
+	    background-color: #bbbdbf;
 }
 /*----------------------------------------------------------------*/
 /*--------footer-----------*/
