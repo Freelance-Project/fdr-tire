@@ -23,9 +23,9 @@ class JobfairController extends Controller
 	public function getData()
 	{
 
-		$data = $this->model->whereParentId(null)->where('category','faq')->first();
+		$data = $this->model->whereParentId(null)->where('category','jobfair')->first();
 
-		$model = $this->model->whereParentId($data->id)->select('id' , 'title', 'created_at', 'status')->whereCategory('faq');
+		$model = $this->model->whereParentId($data->id)->select('id' , 'title', 'created_at', 'status')->whereCategory('jobfair');
 		return Table::of($model)
 			->addColumn('published' , function($model){
 				 if($model->status == 'y')
@@ -50,7 +50,7 @@ class JobfairController extends Controller
 
 	public function getIndex()
 	{	
-		$model = $this->model->whereParentId(null)->where('category','faq')->first();
+		$model = $this->model->whereParentId(null)->where('category','jobfair')->first();
 
 		return view($this->resource_view.'index',compact('model'));
 		
@@ -63,7 +63,7 @@ class JobfairController extends Controller
 			'author_id' => \Auth::user()->id,
 			'description' => $request->description,
 			'status'=>'y',
-			'category' => 'faq',
+			'category' => 'jobfair',
 		];
 
 		if(!empty($request->id)){

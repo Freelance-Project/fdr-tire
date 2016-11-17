@@ -16,7 +16,7 @@
 						<img src="{{asset(null)}}frontend/images/material/career-right.png">
 					</div>
 					<div class="content-career">
-						<h3>{{ $faqBanner->title }}</h3>
+						<h3><span class="redFont">{{ $faqBanner->title }}</span></h3>
 						{!! $faqBanner->description !!}>
 						<a href="{{url('/career/event')}}" class="learnMore">Lihat Lowongan</a>
 					</div>

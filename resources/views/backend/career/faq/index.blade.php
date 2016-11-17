@@ -49,6 +49,7 @@
                           <img src="{{ asset('contents/faq/thumbnail').'/'.$model->image }}" width="200" height="200" />
                         @endif
                     </div>
+                    <p>&nbsp;</p>
                       <div class="form-group">
 
                         <label>&nbsp;</label>

@@ -62,6 +62,7 @@ class FaqController extends Controller
 		$values = [
 			'author_id' => \Auth::user()->id,
 			'description' => $request->description,
+			'title' => $request->title,
 			'status'=>'publish',
 			'category' => 'faq',
 		];
