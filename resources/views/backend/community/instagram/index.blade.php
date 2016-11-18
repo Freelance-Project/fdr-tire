@@ -40,6 +40,17 @@
                     
                     {!! Form::close() !!}
                 </div>
+                <div class="panel-body">
+                    <div class="row">
+                        @if(!empty($instagram))
+                        @foreach($instagram as $valInsta)
+                        <div class="col-lg-3">
+
+                        </div>
+                        @endforeach
+                        @endif
+                    </div>
+                </div>
                
             </div>
         </div>
