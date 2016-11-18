@@ -142,8 +142,15 @@
 					</div>
 				</div><!--end.left-news1-->
 				<div class="news-jer-reserve instagramFeed" style="background:#fff;">
-						<img src="{{ asset(null) }}frontend/images/material/instagram.jpg">
+                    @if(!empty($instagram))
+                        @foreach($instagram as $key => $valInsta)
+						<img src="{{$valInsta['thumbnail_src']}}" width="113px" height="115px">
+						@if($key==5)
+						<br/>
 
+						@endif
+						@endforeach
+					@endif
 				</div><!--end.news-jer-->
 			</div><!--end.news-section-->
 		</div>

@@ -30,6 +30,33 @@ class GalleryController extends Controller
         $data['calender'] = $this->model->whereParentId(null)->whereCategory('download')->whereType(3)->where('status','publish')->first();
         $data['bulletin'] = $this->model->whereParentId(null)->whereCategory('download')->whereType(4)->where('status','publish')->first();
         // dd($photo);
+
+        $data['instagram'] = false;
+
+        $modelinstagram = $this->model->whereParentId(null)->where('category','instagram')->first();
+        $instagram = false;
+        if(!empty($modelinstagram->id)){
+            $tag = $modelinstagram->title; // tag for which ou want images 
+            $results_array = $this->scrape_insta_hash($tag);
+            $limit = 12 ;// provide the limit thats important because one page only give some images then load more have to be clicked
+            $image_array= array(); // array to store images.
+
+            for ($i=0; $i < $limit; $i++) { 
+
+                if(!empty($results_array['entry_data']['TagPage'][0]['tag']['media']['nodes'][$i]))
+                {
+                    $latest_array = $results_array['entry_data']['TagPage'][0]['tag']['media']['nodes'][$i];
+                    // $image_data  = '<img src="'.$latest_array['thumbnail_src'].'">'; // thumbnail and same sizes 
+                    $image_data  = $latest_array; // thumbnail and same sizes 
+                    //$image_data  = '<img src="'.$latest_array['display_src'].'">'; actual image and different sizes 
+                    array_push($image_array, $image_data);
+
+                }
+            }
+
+            $data['instagram'] = $image_array;
+        }
+
 		return view('frontend.gallery.index',$data);
     }
 
@@ -95,6 +122,15 @@ class GalleryController extends Controller
         $path = $this->pathFileDownload.'/'.$model->image;
 
         return response()->download($path);
+    }
+
+
+    public function scrape_insta_hash($tag) {
+        $insta_source = file_get_contents('https://www.instagram.com/explore/tags/'.$tag.'/'); // instagrame tag url
+        $shards = explode('window._sharedData = ', $insta_source);
+        $insta_json = explode(';</script>', $shards[1]); 
+        $insta_array = json_decode($insta_json[0], TRUE);
+        return $insta_array; // this return a lot things print it and see what else you need
     }
 
 }

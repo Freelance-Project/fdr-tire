@@ -45,7 +45,7 @@
                         @if(!empty($instagram))
                         @foreach($instagram as $valInsta)
                         <div class="col-lg-3">
-
+                        <img src="{{$valInsta['thumbnail_src']}}" width="100%">
                         </div>
                         @endforeach
                         @endif
